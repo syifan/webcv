@@ -43,7 +43,17 @@ npm run build
 
 ### Deployment to GitHub Pages
 
-Deploy to GitHub Pages:
+#### Option 1: Using GitHub Actions (Recommended)
+
+1. Go to your repository Settings → Pages
+2. Under "Build and deployment", select "GitHub Actions" as the source
+3. Push to the main branch, and the workflow will automatically deploy your site
+
+The GitHub Actions workflow is already configured in `.github/workflows/deploy.yml`.
+
+#### Option 2: Manual Deployment
+
+Deploy to GitHub Pages manually:
 
 ```bash
 npm run deploy
