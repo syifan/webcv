@@ -1,0 +1,691 @@
+version: 1
+
+header:
+  name: "Yifan Sun"
+  tags:
+    - "Assistant Professor, Computer Science, William & Mary"
+    - "McGlothlin-Street Hall 117, Williamsburg, VA 23185"
+  contact:
+    phone: "(+1) 716-868-2480"
+    email: "ysun25@wm.edu"
+    website: "syifan.github.io"
+
+sections:
+  - id: academicAppointments
+    title: "Academic Appointments"
+    entries:
+      - left:
+          - "Assistant Professor"
+          - "Computer Science, William & Mary"
+          - "Williamsburg, VA"
+        right:
+          - "8/2020 - Present"
+          
+
+  - id: educationEntries
+    title: "Education"
+    entries:
+      - left:
+          - "Ph.D. in Computer Engineering"
+          - "Northeastern University"
+          - "Boston, MA"
+        right:
+          - "9/2013 - 8/2020"
+          
+         
+      - left:
+          - "M.S. in Electrical Engineering"
+          - "University at Buffalo"
+          - "Buffalo, NY"
+        right:
+          - "9/2011 - 6/2013"
+          
+      - left:
+          - "B.Eng. in Electrical Engineering"
+          - "Huazhong University of Science and Technology"
+          - "Wuhan, China"
+        right:
+          - "9/2007 - 6/2011"
+          
+      - left:
+          - "Bachelor in Business Administration (Minor)"
+          - "Wuhan University"
+          - "Wuhan, China"
+        right:
+          - "9/2008 - 6/2011"
+
+  - id: industryEntries
+    title: "Industry Experience"
+    condensed: true
+    entries:
+      - left:
+          - "AMD"
+          - "Software Engineer (Co-op)"
+          - "Boxborough, MA"
+          # - "Performance modeling and graphics simulator development for AMD Navi GPUs"
+        right:
+          - "7/2018 - 12/2018"
+          
+          
+      - left:
+          - "Dell EMC"
+          - "Software Engineer (Co-op)"
+          - "Hopkinton, MA"
+          # - "Cloud-based GPU-as-a-service system design, development, and deployment"
+        right:
+          - "7/2016 - 12/2016"
+          
+
+  - id: awardsEntries
+    title: "Honors & Awards"
+    condensed: true
+    entries:
+      - left: ["CAREER Award", "NSF"]
+        right: ["2025"]
+      - left: ["Best Paper Award", "CHI'23"]
+        right: ["2023"]
+      - left: ["Best Paper Honorable Mention", "CHI'20"]
+        right: ["2020"]
+      - left:
+          - "Outstanding Graduate Student in Experiential Learning"
+          - "Northeastern University"
+        right: ["2019"]
+      - left:
+          - "Teaching Award"
+          - "Northeastern University College of Engineering"
+        right: ["2019"]
+      - left: ["Best Paper Award", "ICPE"]
+        right: ["2018"]
+      - left: ["Best Paper Candidate", "IISWC"]
+        right: ["2016"]
+      - left: ["Best Student Paper Award", "WUWNET"]
+        right: ["2013"]
+
+  
+          
+          
+
+  - id: grantEntries
+    title: "Grants"
+    meta:
+      - "Total external funding at William & Mary: $1,685,843."
+    entries:
+      - left:
+          - "Advancing Tools and Resources for the AMD ROCm Platform"
+          - "AMD, Gift"
+          - "$100,000"
+          - "Sole PI"
+        right: ["12/2024"]
+      - left:
+          - "CAREER: Towards Next-Generation Human-in-the-Loop and Human-over-the-Loop Computer Architecture Performance Analysis Infrastructure"
+          - "NSF, CAREER"
+          - "$598,555"
+          - "Sole PI"
+        right: ["4/2025 - 3/2030"]
+      - left:
+          - "Enabling GPU Performance Simulation for Large-Scale Workloads with Lightweight Simulation Methods"
+          - "NSF, SHF Core, Medium"
+          - "$1,133,743 (my share $376,249)"
+          - "PI: Yifan Sun (lead institution lead PI), Adwait Jog, Sreepathi Pai"
+        right: ["5/2024 - 4/2028"]
+      - left:
+          - "Binary Instrumentation for GPU Programs on AMD Platforms"
+          - "AMD, Gift"
+          - "$50,000"
+          - "Sole PI"
+        right: ["12/2023"]
+      - left:
+          - "HIP Development on AMD ROCm Platform"
+          - "AMD, Gift"
+          - "$50,000"
+          - "Sole PI"
+        right: ["12/2023"]
+      - left:
+          - "The Methods of Profiling and Tracing of GPU Programs Running on AMD ROCm Platforms"
+          - "AMD, Gift"
+          - "$44,000"
+          - "Sole PI"
+        right: ["5/2023"]
+      - left:
+          - "Building Explainable Architecture with Simulation and Visualization Techniques"
+          - "NSF, CRII"
+          - "$175,000"
+          - "Sole PI"
+        right: ["5/2023 - 4/2026"]
+      - left:
+          - "Enabling Computer Architecture as a Service"
+          - "NSF, CCRI (later renamed as CIRC), Planning-C"
+          - "$100,000 (my share $72,369)"
+          - "PI: Yifan Sun (lead institution lead PI), Katherine E. Isaacs (University of Utah)"
+        right: ["3/2023 - 2/2026"]
+      - left:
+          - "AMD ROCm and HIP Platform Development"
+          - "AMD, Gift"
+          - "$60,000 + 2x AMD MI100 GPU"
+          - "Sole PI"
+        right: ["3/2022"]
+      - left:
+          - "Exploring Interpretable Deep Learning from Information Theoretic Perspective: Modeling and Applications"
+          - "Neocortex, Pittsburgh Supercomputing Center"
+          - "Access to Cerebras Wafer-Scale Computing Devices"
+          - "PI: Huajie Shao, Yifan Sun"
+        right: ["2/2022"]
+      - left:
+          - "Developing Infrastructure for Advancing Research and Teaching in Security and Reliability"
+          - "Coastal Virginia Center for Cyber Innovation (COVA CCI)"
+          - "$79,670 for equipment shared by the department"
+          - "PI: Dmitry Evtyushkin; Co-PI: Evgenia Smirni, Yifan Sun, Adwait Nadkarni"
+        right: ["12/2021"]
+      - left:
+          - "AMD ROCm and HIP Platform Development"
+          - "AMD, Gift"
+          - "$40,000"
+          - "Sole PI"
+        right: ["9/2021"]
+      - left:
+          - "General-Purpose Computing with AMD Graphics Processors"
+          - "AMD, Gift"
+          - "$40,000"
+          - "Sole PI"
+        right: ["4/2021"]
+
+  - id: publication
+    title: "Publications"
+    meta:
+      - html: "<span class=\"self-name\">Yifan Sun</span> -- self-name"
+      - html: "<span class=\"wm-advisee\">First Last</span> -- my PhD advisee at William &amp; Mary"
+
+  - id: softwareEntries
+    title: "Software & Datasets"
+    entries:
+      - left:
+          - "The CHIP Dataset"
+          - "https://chip-dataset.vercel.app"
+          - "A dataset with 2185 CPUs and 2668 GPUs helping researchers understand semiconductor development trends."
+          - "Featured in FiveThirtyEight and 'Data Is Plural' newsletter."
+          - "874 Downloads"
+        right: []
+      - left:
+          - "MGPUSim"
+          - "https://github.com/sarchlab/mgpusim"
+          - "A multi-GPU system simulator based on AMD GCN3 GPUs."
+          - "187 Stars on GitHub"
+        right: []
+      - left:
+          - "Akita"
+          - "https://github.com/sarchlab/akita"
+          - "A high-flexibility, high-performance, parallel computer architecture simulation framework."
+          - "89 Stars on GitHub"
+        right: []
+      - left:
+          - "Hetero-Mark"
+          - "https://github.com/NUCAR-DEV/Hetero-Mark"
+          - "A benchmark suite for CPU-GPU collaborative computing."
+        right: []
+      - left:
+          - "Drug Supply Chain Simulator"
+          - "https://gitlab.com/syifan/crisp"
+          - "A human-in-the-loop logistics simulator for the U.S. drug supply chain."
+        right: []
+      - left:
+          - "VistaLights"
+          - "https://github.com/syifan/VistaLights"
+          - "Strategic game for maritime traffic management and disaster relief."
+        right: []
+
+  - id: tutorials
+    title: "Tutorials"
+    entries:
+      - left:
+          - "Exploring Multi-GPU Simulation and Visual Profiling with MGPUSim"
+          - "With José L. Abellán, Trinayan Baruah, and David Kaeli. Tutorial at ISCA 2020"
+        right: ["5/2020"]
+      - left:
+          - "Tutorial on the Akita Simulator Framework and MGPUSim"
+          - "With Trinayan Baruah, Shi Dong, and David Kaeli. Tutorial at HPCA 2020"
+        right: ["2/2020"]
+      - left:
+          - "Multi2Sim 5.0"
+          - "Tutorial at IISWC 2016"
+        right: ["9/2016"]
+      
+
+  - id: talkEntries
+    title: "Talks"
+    entries:
+      - left:
+          - "User-Friendly Tools in Akita 3.0"
+          - "The 2nd Workshop on Computer Architecture Modeling and Simulation (CAMS '24)"
+        right: ["11/2024"]
+      - left:
+          - "On the Human Side of Computer Architecture, Towards Explainable Architecture"
+          - "North Carolina State University"
+        right: ["10/2024"]
+      - left:
+          - "Towards Building Explainable Computer Architecture"
+          - "Lehigh University"
+        right: ["2/2023"]
+      - left:
+          - "MGPUSim: A One-Stop Solution for GPU Architecture Simulation"
+          - "The 2020 International Conference on High Performance Computing & Simulation (HPCS '20)"
+        right: ["1/2021"]
+      - left:
+          - "MGPUSim: A High-Flexibility, High-Performance, Multi-GPU Simulator"
+          - "Alibaba"
+        right: ["7/2020"]
+      - left:
+          - "Collaborative Heterogeneous Computing"
+          - "William & Mary; University of California, Santa Cruz; University of Pittsburgh; University of Central Florida"
+        right: ["3/2020"]
+      - left:
+          - "Research in the NUCAR Laboratory at Northeastern University"
+          - "FutureWei. With David Kaeli"
+        right: ["7/2019"]
+      - left:
+          - "MGSim: a Flexible High-Performance Simulator for Multi-GPU Systems"
+          - "International Workshop on OpenCL (IWOCL)"
+        right: ["5/2019"]
+      - left:
+          - "AKITA: A Go-Based Computer Architecture Simulator Framework"
+          - "Google"
+        right: ["5/2019"]
+      - left:
+          - "Enabling Multi-GPU High Performance Computing with Memory System Design"
+          - "Lightning talk at Boston University Red Hat Collaboratory"
+        right: ["2/2019"]
+      - left:
+          - "Benchmarking the New Unified Memory of CUDA 8"
+          - "With Frank Zhao. GTC 2017, San Jose"
+        right: ["8/2017"]
+      
+
+  - id: teaching
+    title: "Teaching"
+    subsections:
+      - id: teachingWMEntries
+        title: "Teaching @ William & Mary"
+        entries:
+          - left: ["CSCI432 - Web Programming", "Senior undergraduate-level course"]
+            right: ["Fall 2025"]
+          - left: ["CSCI654 - Advanced Computer Architecture", "Graduate-level course; new course"]
+            right: ["Spring 2025"]
+          - left: ["CSCI432 - Web Programming", "Senior undergraduate-level course; new course"]
+            right: ["Fall 2024"]
+          - left: ["CSCI780 - Data Visualization", "Ph.D.-level course"]
+            right: ["Spring 2024"]
+          - left:
+              - "CSCI141 - Computational Problem Solving"
+              - "Undergraduate Python programming course (1st-2nd year)"
+              - "Redesigned the lab instruction materials that unifies the sections"
+            right: ["Fall 2023"]
+          - left: ["CSCI780 - Computer Architecture Modeling and Simulation", "Ph.D.-level course"]
+            right: ["Spring 2023"]
+          - left: ["CSCI141 - Computational Problem Solving", "Undergraduate Python programming course (1st-2nd year)"]
+            right: ["Fall 2022"]
+          - left: ["CSCI780 - Data Visualization", "Ph.D.-level course; new course"]
+            right: ["Spring 2022"]
+          - left: ["CSCI141 - Computational Problem Solving", "Undergraduate Python programming course (1st-2nd year)"]
+            right: ["Fall 2021"]
+          - left: ["CSCI780 - Topics in Computer Architecture", "Ph.D.-level course; new course"]
+            right: ["Spring 2021"]
+          - left: ["CSCI141 - Computational Problem Solving", "Undergraduate Python programming course (1st-2nd year)"]
+            right: ["Fall 2020"]
+
+      - id: teachingNEUEntries
+        title: "Teaching @ Northeastern University"
+        entries:
+          - left:
+              - "EECE2322 - Fundamental Digital Design and Computer Organization"
+              - "Co-instructor with Dr. Pereira da Silva Aloizio"
+              - "Intermediate-level undergraduate course (3rd year)"
+            right: ["Fall 2019"]
+          - left:
+              - "EECE2560 - Fundamentals of Engineering Algorithms"
+              - "Instructor"
+              - "Intermediate-level undergraduate course (3rd year)"
+              - "Course redesign with student learning score 4.7/5; instructor effectiveness 4.4/5"
+            right: ["Spring 2018"]
+          - left:
+              - "EECE2160 - Embedded Design Enabling Robotics"
+              - "Instructor"
+              - "Intermediate-level undergraduate course (2nd year)"
+              - "Instructor effectiveness 4.6/5"
+            right: ["Fall 2017"]
+
+  - id: mentees
+    title: "Student Mentees"
+    subsections:
+      - id: menteePhDEntries
+        title: "Ph.D. Students"
+        condensed: true
+        entries:
+          - left: ["Yijia Shi", "William & Mary"]
+            right: ["2024 - Present"]
+          - left: ["Enze Xu", "William & Mary"]
+            right: ["2024 - Present"]
+          - left: ["Daoxuan Xu", "William & Mary", "Co-advised with Jie Ren"]
+            right: ["2023 - Present"]
+          - left: ["Sabila Al Jannat", "William & Mary"]
+            right: ["2022 - Present"]
+          - left: ["Ying Li", "William & Mary"]
+            right: ["2021 - Present"]
+          - left: ["Chris Thames", "William & Mary", "Part-time, with full-time job at NASA"]
+            right: ["2020 - Present"]
+      - id: menteeMasterEntries
+        title: "Master Researchers"
+        condensed: true
+        entries:
+          - left: ["Daoxuan Xu", "University of Florida"]
+            right: ["2022 - 2023"]
+          - left: ["Yuhui Bao", "Northeastern University"]
+            right: ["2018 - 2020"]
+      - id: menteeUndergradEntries
+        title: "Undergraduate Researchers"
+        entries:
+          - left:
+              - "William & Mary"
+              - "Zhuoyan Zheng, Mengyang He, Pablo Ibarz, Aibo Li, Yexi Zheng, Xuzhong Wang, Huizhi Zhao, Jeremy Coonley"
+            right: []
+          - left: ["University of Michigan, Ann Arbor", "Ali Mosallaei"]
+            right: []
+          - left:
+              - "Huazhong University of Science & Technology (China)"
+              - "Shaoyu Wang, Hang Yan, Chen Gong"
+            right: []
+          - left: ["Istanbul Technical University (Turkey)", "Ali Tolga Dinçer"]
+            right: []
+          - left: ["Northeastern University", "Xin Li (REU Student)"]
+            right: []
+
+  - id: mediaCoverageEntries
+    title: "Selected Media Coverage"
+    entries:
+      - left:
+          - "William & Mary News"
+          - "William & Mary professor wins NSF CAREER award to study computer chip performance; Sun brings human-centered approach to computer architecture"
+        right: ["2025"]
+      - left:
+          - "William & Mary News"
+          - "Books published by William & Mary faculty in 2023"
+        right: ["2023"]
+      - left:
+          - "FiveThirtyEight"
+          - "The Datasets We're Looking At This Week (CHIP dataset highlighted by the 'Data Is Plural' column)"
+        right: ["2022"]
+      - left:
+          - "William & Mary News"
+          - "Misinformation examination: How trust and distrust shift during COVID-19"
+        right: ["2022"]
+      - left:
+          - "WYDaily"
+          - "W&M Professor Helps Medical Experts Study COVID-19 With GPUs"
+        right: ["2021"]
+      - left:
+          - "William & Mary News"
+          - "Sun is Teaching COVID-19 Researchers How to Use High-Performance AMD Computers"
+        right: ["2021"]
+      - left:
+          - "HiPEAC info 58"
+          - "MGPUSim announced at ISCA 2019"
+        right: ["2019"]
+      - left:
+          - "News@Northeastern College of Engineering"
+          - "Yifan Sun and NUCAR Research Lab featured in HiPEAC News"
+        right: ["2019"]
+      - left:
+          - "WIRED"
+          - "Finally, the Underwater We've All Been Waiting For"
+        right: ["2013"]
+      - left:
+          - "NBC News"
+          - "Deep-sea Internet to Detect Tsunamis, Spy on Smugglers, and Discover Oil"
+        right: ["2013"]
+
+  - id: service
+    title: "Service to the Profession"
+    subsections:
+      - id: servicePhdCommitteeEntries
+        title: "Ph.D. Dissertation Committee"
+        entries:
+          - left: ["Lishan Yang", "Joined GMU as Assistant Professor"]
+            right: ["William & Mary", "Defended Spring 2022"]
+          - left: ["Yuhui Bao", "First Job @ AMD Inc."]
+            right: ["Northeastern University"]
+          - left: ["Matin Raayai"]
+            right: ["Northeastern University"]
+      - id: serviceMasterCommitteeEntries
+        title: "Master Thesis Committee"
+        entries:
+          - left: ["Jiangtao Kong", "Continued Ph.D. study at William & Mary"]
+            right: ["William & Mary", "Defended Spring 2023"]
+      - id: serviceOrgEntries
+        title: "Professional Organization Participation"
+        entries:
+          - left:
+              - "Member"
+              - "Technical Community on Microprogramming and Microarchitecture (TCuARCH)"
+            right: ["2025 - Present"]
+
+      - id: serviceConferenceOrgEntries
+        title: "Conference Organization"
+        entries:
+          - left:
+              - "Local Organization Chair"
+              - "The 17th NASA Formal Methods Symposium (NFM '25)"
+            right: ["2025"]
+          - left:
+              - "Artifact Evaluation Chair"
+              - "2025 IEEE International Symposium on Workload Characterization (IISWC '25)"
+            right: ["2025"]
+          - left:
+              - "Workshop/Tutorial Chair"
+              - "IEEE International Symposium on High-Performance Computer Architecture (HPCA '23)"
+            right: ["2023"]
+
+      - id: serviceWorkshopChairEntries
+        title: "Workshop Chairing"
+        condensed: true
+        entries:
+          - left: ["Chair", "17th Workshop on General Purpose Processing Using GPU (GPGPU '25)"]
+            right: ["2025"]
+          - left: ["Chair", "2nd Workshop on Computer Architecture Modeling and Simulation (CAMS '24)"]
+            right: ["2024"]
+          - left: ["Chair", "16th Workshop on General Purpose Processing Using GPU (GPGPU '24)"]
+            right: ["2024"]
+          - left: ["Chair", "1st Workshop on Computer Architecture Modeling and Simulation (CAMS '23)"]
+            right: ["2023"]
+          - left: ["Chair", "15th Workshop on General Purpose Processing Using GPU (GPGPU '23)"]
+            right: ["2023"]
+          - left: ["Chair", "14th Workshop on General Purpose Processing Using GPU (GPGPU '22)"]
+            right: ["2022"]
+          - left: ["Web Chair", "6th Workshop on General Purpose Processing Using GPU (GPGPU '16)"]
+            right: ["2016"]
+      - id: serviceFundingPanelEntries
+        title: "Funding Agency Panelist"
+        entries:
+          - left:
+              - "DOE Panelist"
+              - "Office of Advanced Scientific Computing Research (ASCR), Early Career Research Program (ECRP)"
+            right: ["2025"]
+          - left:
+              - "NSF Panelist"
+              - "NSF Cyberinfrastructure for Sustained Scientific Innovation (CSSI), Element"
+            right: ["2022"]
+      - id: serviceProgramCommitteeEntries
+        title: "Program Committee"
+        condensed: true
+        entries:
+          - left: ["HPCA '25", "31st IEEE International Symposium on High-Performance Computer Architecture"]
+            right: ["2025"]
+          - left: ["CF '24", "21st ACM International Conference on Computing Frontiers"]
+            right: ["2024"]
+          - left: ["HPCA '24", "30th IEEE International Symposium on High-Performance Computer Architecture"]
+            right: ["2024"]
+          - left: ["AccML '24", "6th Workshop on Accelerated Machine Learning"]
+            right: ["2024"]
+          - left: ["ICCD '24", "42nd IEEE International Conference on Computer Design"]
+            right: ["2024"]
+          - left: ["ICCD '23", "41st IEEE International Conference on Computer Design"]
+            right: ["2023"]
+          - left: ["CF '23", "20th ACM International Conference on Computing Frontiers"]
+            right: ["2023"]
+          - left: ["AccML '23", "5th Workshop on Accelerated Machine Learning"]
+            right: ["2023"]
+          - left: ["HPCA '23", "IEEE International Symposium on High-Performance Computer Architecture"]
+            right: ["2023"]
+          - left: ["SBAC-PAD '22", "International Symposium on Computer Architecture and High Performance Computing"]
+            right: ["2022"]
+          - left: ["ICCD '22", "40th IEEE International Conference on Computer Design"]
+            right: ["2022"]
+          - left: ["AccML '22", "4th Workshop on Accelerated Machine Learning"]
+            right: ["2022"]
+          - left: ["SBAC-PAD '21", "IEEE International Symposium on Computer Architecture and High Performance Computing"]
+            right: ["2021"]
+          - left: ["ICCD '21", "40th IEEE International Conference on Computer Design"]
+            right: ["2021"]
+          - left: ["ICCD '20", "39th IEEE International Conference on Computer Design"]
+            right: ["2020"]
+          - left: ["GPGPU '20", "13th Workshop on General Purpose Processing Using GPU"]
+            right: ["2020"]
+      - id: serviceJournalReviewerEntries
+        title: "Journal Reviewer"
+        condensed: true
+        entries:
+          - left: ["FGCS", "Future Generation Computer Systems"]
+            right: ["2025"]
+          - left: ["TACO X3", "ACM Transactions on Architecture and Code Optimization"]
+            right: ["2025"]
+          - left: ["TCC", "IEEE Transactions on Cloud Computing"]
+            right: ["2024"]
+          - left: ["JPDC", "Journal of Parallel and Distributed Computing"]
+            right: ["2023"]
+          - left: ["TACO", "ACM Transactions on Architecture and Code Optimization"]
+            right: ["2023"]
+          - left: ["TOMPECS", "ACM Transactions on Modeling and Performance Evaluation of Computing Systems"]
+            right: ["2022"]
+          - left: ["TACO", "ACM Transactions on Architecture and Code Optimization"]
+            right: ["2022"]
+          - left: ["FGCS", "Future Generation Computer Systems"]
+            right: ["2022"]
+          - left: ["TPDS", "IEEE Transactions on Parallel and Distributed Systems"]
+            right: ["2022"]
+          - left: ["IEEE Micro"]
+            right: ["2022"]
+          - left: ["TPDS", "IEEE Transactions on Parallel and Distributed Systems"]
+            right: ["2021"]
+          - left: ["TACO", "ACM Transactions on Architecture and Code Optimization"]
+            right: ["2021"]
+          - left: ["CAL", "IEEE Computer Architecture Letters"]
+            right: ["2021"]
+          - left: ["JPDC", "Journal of Parallel and Distributed Computing"]
+            right: ["2020"]
+          - left: ["TPDS", "IEEE Transactions on Parallel and Distributed Systems"]
+            right: ["2020"]
+          - left: ["TOC", "IEEE Transactions on Computers"]
+            right: ["2020"]
+          - left: ["TACO", "ACM Transactions on Architecture and Code Optimization"]
+            right: ["2020"]
+      - id: serviceExternalReviewEntries
+        title: "External Review Committee / Ad-hoc Reviewer"
+        condensed: true
+        entries:
+          - left: ["ISPASS '25", "IEEE International Symposium on Performance Analysis of Systems and Software"]
+            right: ["2025"]
+          - left: ["ISCA '24", "International Symposium on Computer Architecture (External Review Committee)"]
+            right: ["2024"]
+          - left: ["PacificVis '24", "IEEE Pacific Visualization Symposium (Ad-hoc Reviewer)"]
+            right: ["2024"]
+
+  - id: serviceToWm
+    title: "Service to William & Mary"
+    subsections:
+    - id: eventOrganization
+      title: "Event Organization"
+      entries:
+        - left:
+          - "Local Organization Chair"
+          - "The 17th NASA Formal Methods Symposium (NFM '25)"
+          - "Secured $8,000+ in sponsorship funding from William & Mary CS Department, School of Arts & Sciences, and Provost's Office"
+          - "Coordinated full conference logistics including venue, AV infrastructure, parking, and hospitality services for attendees"
+          - "Room Tidewater at Saddler Center, William & Mary, Williamsburg, VA"
+          right: ["6/11/2025"]
+          
+        - left:
+          - "Chair"
+          - "The 3rd William & Mary Computer Science Symposium for Graduate Studies"
+          - "110+ Participants"
+          - "Developed academic program featuring faculty lightning talks, competitive poster session, and panel discussions across 10 research areas"
+          - "Supported national recruitment effort targeting prospective MS and PhD candidates"
+          right: ["11/9/2024"]
+    - id: serviceWmAdvisingEntries
+      title: "William & Mary Undergraduate Advising"
+      condensed: true
+      entries:
+        - left: ["Pre-Major Advisor", "7 students"]
+          right: ["2025 - 2026"]
+        - left: ["Pre-Major Advisor", "7 students"]
+          right: ["2024 - 2025"]
+        - left: ["CS Major Advisor", "4 students"]
+          right: ["2023 - 2024"]
+        - left: ["Pre-Major Advisor", "8 students"]
+          right: ["2023 - 2024"]
+        - left: ["CS Major Advisor", "2 students"]
+          right: ["2022 - 2023"]
+        - left: ["Pre-Major Advisor", "10 students"]
+          right: ["2022 - 2023"]
+        - left: ["Pre-Major Advisor", "6 students"]
+          right: ["2021 - 2022"]
+    - id: serviceWmUniversityEntries
+      title: "William & Mary University-Wide Committee"
+      condensed: true
+      entries:
+        - left:
+            - "Member"
+            - "Generative AI University Teaching & Learning Project (UTLP)"
+          right: ["2023 - 2024"]
+        - left:
+            - "Member"
+            - "S. Laurie Sanderson Awards for Excellence in Undergraduate Mentoring Committee"
+          right: ["2022 - 2023"]
+        - left: ["Member", "Research Computing Advisory Committee"]
+          right: ["2022 - 2023"]
+        - left:
+            - "Member"
+            - "S. Laurie Sanderson Awards for Excellence in Undergraduate Mentoring Committee"
+          right: ["2021 - 2022"]
+    - id: serviceWmDepartmentEntries
+      title: "William & Mary Department-Level Committee"
+      condensed: true
+      entries:
+        - left: ["Member", "Computer Science Undergraduate Curriculum"]
+          right: ["2025 - 2026"]
+        - left: ["Member", "Computer Science Web Presence"]
+          right: ["2025 - 2026"]
+        - left: ["Chair", "Computer Science Graduate Recruiting"]
+          right: ["2024 - 2025"]
+        - left: ["Member", "Computer Science Web Presence"]
+          right: ["2024 - 2025"]
+        - left: ["Member", "Computer Science Colloquium"]
+          right: ["2024 - 2025"]
+        - left: ["Member", "Computer Science Graduate Recruiting"]
+          right: ["2023 - 2024"]
+        - left: ["Member", "Computer Science Web Presence"]
+          right: ["2023 - 2024"]
+        - left: ["Member", "Computer Science Colloquium"]
+          right: ["2023 - 2024"]
+        - left: ["Chair", "Computer Science Web Presence"]
+          right: ["2022 - 2023"]
+        - left: ["Member", "Data Science Faculty Recruitment"]
+          right: ["2022 - 2023"]
+        - left: ["Member", "Computer Science Colloquium"]
+          right: ["2022 - 2023"]
+        - left: ["Chair", "Computer Science Graduate Admission"]
+          right: ["2022 - 2023"]
+        - left: ["Member", "Computer Science Graduate Recruiting"]
+          right: ["2022 - 2023"]
+        - left: ["Member", "Computer Science System"]
+          right: ["2022 - 2023"]
+        - left: ["Member", "Computer Science Web Presence"]
+          right: ["2021 - 2022"]
+        - left: ["Member", "Computer Science Curriculum"]
+          right: ["2021 - 2022"]
