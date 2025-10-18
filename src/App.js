@@ -23,16 +23,13 @@ function App() {
                     throw new Error(`Failed to load CV data: ${response.status}`);
                 }
                 const cvText = await response.text();
-                console.log('CV Text loaded, length:', cvText.length);
                 const data = yaml.load(cvText);
-                console.log('YAML parsed:', data);
                 if (!data || typeof data !== 'object') {
                     throw new Error('Invalid CV data format');
                 }
                 setCvData(data);
                 setLoading(false);
             } catch (err) {
-                console.error('Error loading CV:', err);
                 setError(err.message);
                 setLoading(false);
             }
