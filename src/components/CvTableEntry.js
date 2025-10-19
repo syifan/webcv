@@ -30,13 +30,13 @@ const renderValue = (value, { strong = false } = {}) => {
   return strong ? <strong>{content}</strong> : content
 }
 
-function CvTableEntry({ left = [], right = [], hanging = null, condensed = false }) {
-  const hasHangingColumn = hasContent(hanging)
-  const hasRightColumn = right.some(hasContent)
+function CvTableEntry({ content = [], meta = [], index = null, condensed = false }) {
+  const hasIndexColumn = hasContent(index)
+  const hasMetaColumn = meta.some(hasContent)
   const rowCount = Math.max(
-    left.length,
-    hasRightColumn ? right.length : 0,
-    hasHangingColumn ? 1 : 0
+    content.length,
+    hasMetaColumn ? meta.length : 0,
+    hasIndexColumn ? 1 : 0
   )
   const rows = Array.from({ length: rowCount }, (_, index) => index)
 
@@ -46,51 +46,51 @@ function CvTableEntry({ left = [], right = [], hanging = null, condensed = false
 
   return (
     <>
-      {rows.map((index) => {
+      {rows.map((rowIndex) => {
         const rowClassNames = [
-          index === 0 ? 'entry-start' : '',
+          rowIndex === 0 ? 'entry-start' : '',
           condensed ? 'condensed-row' : '',
         ]
           .join(' ')
           .trim()
 
-        const leftValue = left[index]
-        const leftHasContent = hasContent(leftValue)
+        const contentValue = content[rowIndex]
+        const contentHasContent = hasContent(contentValue)
 
         return (
-          <tr className={rowClassNames || undefined} key={index}>
-            {hasHangingColumn ? (
+          <tr className={rowClassNames || undefined} key={rowIndex}>
+            {hasIndexColumn ? (
               <td className="hanging-cell">
-                {index === 0 ? renderValue(hanging) : null}
+                {rowIndex === 0 ? renderValue(index) : null}
               </td>
             ) : null}
 
-            {hasRightColumn ? (
+            {hasMetaColumn ? (
               <td className="right-cell">
-                {hasContent(right[index]) ? renderValue(right[index]) : null}
+                {hasContent(meta[rowIndex]) ? renderValue(meta[rowIndex]) : null}
               </td>
             ) : null}
 
             {condensed ? (
-              index === 0 ? (
+              rowIndex === 0 ? (
                 <td className="left-cell" rowSpan={rowCount}>
-                  {left.map((value, leftIndex) =>
+                  {content.map((value, contentIndex) =>
                     hasContent(value) ? (
                       <span
-                        key={leftIndex}
+                        key={contentIndex}
                         className={
-                          leftIndex === 0 ? 'left-header-span' : 'left-entry-span'
+                          contentIndex === 0 ? 'left-header-span' : 'left-entry-span'
                         }
                       >
-                        {renderValue(value, { strong: leftIndex === 0 })}
+                        {renderValue(value, { strong: contentIndex === 0 })}
                       </span>
                     ) : null
                   )}
                 </td>
               ) : null
             ) : (
-              <td className={index === 0 && leftHasContent ? 'left-header' : undefined}>
-                {renderValue(leftValue, { strong: index === 0 })}
+              <td className={rowIndex === 0 && contentHasContent ? 'left-header' : undefined}>
+                {renderValue(contentValue, { strong: rowIndex === 0 })}
               </td>
             )}
           </tr>
