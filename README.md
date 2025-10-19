@@ -1,29 +1,20 @@
 # WebCV
 
-WebCV is a CV template that builds CV on a website using React. Your CV can still be easily exported as a PDF by printing the website.
+WebCV is a CV template built with React so you can present your résumé on the web and still export it to PDF with a browser print.  
+The project has been bootstrapped with [Create React App](https://github.com/facebook/create-react-app) to provide a familiar development experience.
 
-## Features
+## Prerequisites
 
-- **React-based**: Built with React for a modern, component-based architecture
-- **Data-driven**: Separate content (cv_data.yml) from presentation
-- **PDF Export**: Print directly from browser to PDF
-- **Responsive**: Mobile-friendly design
-- **GitHub Pages Ready**: Configured for easy deployment to GitHub Pages
+- Node.js 18+
+- npm 9+ (bundled with Node.js)
 
 ## Getting Started
 
-### Prerequisites
-
-- Node.js (v14 or higher)
-- npm or yarn
-
-### Installation
+Install dependencies:
 
 ```bash
 npm install
 ```
-
-### Development
 
 Start the development server:
 
@@ -31,72 +22,34 @@ Start the development server:
 npm start
 ```
 
-Open [http://localhost:3000/webcv](http://localhost:3000/webcv) to view it in the browser.
+The app runs at [http://localhost:3000](http://localhost:3000) and automatically reloads as you edit files in `src/`.
 
-### Building for Production
+## Production Build
 
-Create a production build:
+Create an optimized build:
 
 ```bash
 npm run build
 ```
 
-### Deployment to GitHub Pages
+The build output will be generated in `build/`. You can deploy that folder with any static site host (GitHub Pages, Netlify, etc.).
 
-#### Option 1: Using GitHub Actions (Recommended)
+## Testing
 
-1. Go to your repository Settings → Pages
-2. Under "Build and deployment", select "GitHub Actions" as the source
-3. Push to the main branch, and the workflow will automatically deploy your site
-
-The GitHub Actions workflow is already configured in `.github/workflows/deploy.yml`.
-
-#### Option 2: Manual Deployment
-
-Deploy to GitHub Pages manually:
+Run tests in watch mode:
 
 ```bash
-npm run deploy
+npm test
 ```
 
-This will build the project and publish it to the `gh-pages` branch.
+## Customization
 
-## Customizing Your CV
+- Edit `public/cv/cv_data.yml` to change the CV content. The React app parses this YAML file at runtime, so updates show up without a rebuild.
+- Component structure lives in `src/components/`. `CvTable` and `CvTableEntry` control table layout while `App.js` handles data loading and section rendering.
+- Static icons (phone/email/website) reside under `public/`. Replace them if you want different contact glyphs.
 
-Edit `public/cv_data.yml` to customize your CV content. The file follows this structure:
-
-```yaml
-version: 1
-
-header:
-  name: "Your Name"
-  tags:
-    - "Your Title"
-    - "Your Address"
-  contact:
-    phone: "Your Phone"
-    email: "your.email@example.com"
-    website: "yourwebsite.com"
-
-sections:
-  - id: sectionId
-    title: "Section Title"
-    entries:
-      - left:
-          - "Entry Title"
-          - "Details"
-        right:
-          - "Date Range"
-```
-
-## Project Structure
-
-- `src/App.js` - Main CV component
-- `src/CvTable.js` - Table component for CV entries
-- `src/CvTableEntry.js` - Individual table entry component
-- `public/cv_data.yml` - Your CV data
-- `public/*.svg` - Icons for contact information
+Additional automation (deployment scripts, GitHub Pages workflows, data-driven content) can be layered on once the CV components are in place.
 
 ## License
 
-See LICENSE file for details.
+See `LICENSE` for details.

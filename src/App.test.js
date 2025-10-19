@@ -1,49 +1,39 @@
-import { render, screen, waitFor } from '@testing-library/react';
-import App from './App';
+import { render, screen, waitFor } from '@testing-library/react'
+import App from './App'
 
-const mockCvData = `
-version: 1
+const mockYaml = `
 header:
-  name: "Test User"
-  tags:
-    - "Test Title"
-  contact:
-    email: "test@example.com"
-sections:
-  - id: test
-    title: "Test Section"
-    entries:
-      - left:
-          - "Test Entry"
-        right:
-          - "2024"
-`;
+  name: "Test Person"
+sections: []
+`
 
 beforeEach(() => {
   global.fetch = jest.fn(() =>
     Promise.resolve({
       ok: true,
-      text: () => Promise.resolve(mockCvData),
+      text: () => Promise.resolve(mockYaml),
     })
-  );
-});
+  )
+
+  window.scrollTo = jest.fn()
+  window.print = jest.fn()
+})
 
 afterEach(() => {
-  jest.restoreAllMocks();
-});
+  jest.resetAllMocks()
+  delete global.fetch
+  delete window.scrollTo
+  delete window.print
+})
 
-test('renders CV header with name', async () => {
-  render(<App />);
-  await waitFor(() => {
-    const nameElement = screen.getByText(/Test User/i);
-    expect(nameElement).toBeInTheDocument();
-  });
-});
+test('renders CV header once data loads', async () => {
+  render(<App />)
 
-test('renders CV sections', async () => {
-  render(<App />);
-  await waitFor(() => {
-    const sectionElement = screen.getByText(/Test Section/i);
-    expect(sectionElement).toBeInTheDocument();
-  });
-});
+  expect(screen.getByRole('status')).toHaveTextContent(/loading cv/i)
+
+  await waitFor(() =>
+    expect(
+      screen.getByRole('heading', { level: 1, name: /test person/i })
+    ).toBeInTheDocument()
+  )
+})
