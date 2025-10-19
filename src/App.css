@@ -1,7 +1,7 @@
 body {
   margin: 0;
   background: #e9eef3;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #111;
   font-size: 0.8rem;
   line-height: 1.45;
@@ -95,10 +95,7 @@ main {
   letter-spacing: 0.04em;
   cursor: pointer;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    background 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .action-button:hover,
@@ -127,39 +124,28 @@ main {
 }
 
 .cv-section h2 {
-  position: relative;
   display: inline-block;
   color: #1d2f4b;
   letter-spacing: 0.04em;
-  margin: 0 0 0.4rem;
-  font-size: 1.2rem;
+  font-size: 2.2rem;
   text-transform: uppercase;
+  font-weight: 50;
+  margin: 0;
 }
 
-.cv-section::before {
-  content: '';
-  position: absolute;
-  left: -1.5rem;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, rgba(29, 47, 75, 0.25), transparent);
-}
-
-.cv-section h2::after {
-  content: '';
-  position: absolute;
+.cv-section header::after {
+  content: "";
+  display: block;
   left: 0;
-  bottom: -0.4rem;
-  width: 45%;
-  height: 2px;
+  width: 100%;
+  height: 1px;
   background: rgba(29, 47, 75, 0.45);
+  margin-bottom: 0.4rem;
 }
 
 .subsection {
   margin-top: 1.1rem;
   padding-top: 0.6rem;
-  border-top: 1px solid rgba(29, 47, 75, 0.1);
 }
 
 .subsection h3 {
@@ -248,6 +234,10 @@ tr:not(.entry-start):not(.condensed-row) td {
 
 .condensed-row td {
   padding-top: 0.25rem;
+}
+
+.condensed-row td .left-entry-span {
+  margin-left: 0.5rem;
 }
 
 .entry {
