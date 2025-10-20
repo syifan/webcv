@@ -125,7 +125,8 @@ main {
 }
 
 .section-header {
-  margin-bottom: 0;
+  margin-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(29, 47, 75, 0.1);
 }
 
 .section-intro {
@@ -136,20 +137,11 @@ main {
   display: inline-block;
   color: #1d2f4b;
   letter-spacing: 0.04em;
-  font-size: 1.4rem;
+  font-size: 1rem;
   text-transform: uppercase;
-  font-weight: 50;
+  font-weight: 600;
   margin: 0;
-}
-
-.cv-section header::after {
-  content: "";
-  display: block;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: rgba(29, 47, 75, 0.45);
-  margin-bottom: 0.4rem;
+  margin-bottom: -0.2rem;
 }
 
 .subsection {
@@ -431,16 +423,8 @@ li {
     display: none !important;
   }
 
-  .cv-section::before {
-    left: -0.5in;
-  }
-
   a {
     color: inherit;
     text-decoration: none;
-  }
-
-  .cv-header {
-    border-bottom-width: 2px;
   }
 }
