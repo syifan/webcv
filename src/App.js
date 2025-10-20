@@ -4,10 +4,44 @@ import CvTable from "./components/CvTable";
 import "./App.css";
 
 const CONTACT_ORDER = ["phone", "email", "website"];
-const CONTACT_ICONS = {
-  phone: "/phone-solid-full.svg",
-  email: "/envelope-solid-full.svg",
-  website: "/globe-solid-full.svg",
+
+const isNonEmptyString = (value) =>
+  typeof value === "string" && value.trim().length > 0;
+
+const iconLooksLikeFontAwesome = (value) => /\bfa-[\w-]+/i.test(value);
+
+const resolveIconPath = (iconPath) => {
+  if (!isNonEmptyString(iconPath)) {
+    return "";
+  }
+
+  const trimmed = iconPath.trim();
+
+  if (/^[a-z]+:\/\//i.test(trimmed)) {
+    return trimmed;
+  }
+
+  const base = process.env.PUBLIC_URL || "";
+  if (trimmed.startsWith("/")) {
+    return `${base}${trimmed}`;
+  }
+
+  const normalized = trimmed.replace(/^\.?\//, "");
+  return `${base}/${normalized}`;
+};
+
+const getIconDescriptor = (iconValue) => {
+  if (isNonEmptyString(iconValue)) {
+    const trimmed = iconValue.trim();
+
+    if (iconLooksLikeFontAwesome(trimmed)) {
+      return { type: "fontawesome", value: trimmed };
+    }
+
+    return { type: "image", value: resolveIconPath(trimmed) };
+  }
+
+  return null;
 };
 
 const formatWebsite = (value) =>
@@ -20,6 +54,74 @@ const isHtmlMetaLine = (metaLine) =>
   typeof metaLine.html === "string";
 
 const normalizeArray = (value) => (Array.isArray(value) ? value : []);
+
+const createContactEntry = (key, rawValue) => {
+  if (isNonEmptyString(rawValue)) {
+    const value = rawValue.trim();
+    return {
+      key,
+      value,
+      displayValue: value,
+      icon: null,
+      href:
+        key === "email"
+          ? `mailto:${value}`
+          : key === "website"
+          ? formatWebsite(value)
+          : undefined,
+    };
+  }
+
+  if (
+    rawValue &&
+    typeof rawValue === "object" &&
+    !Array.isArray(rawValue)
+  ) {
+    const value = isNonEmptyString(rawValue.value)
+      ? rawValue.value.trim()
+      : "";
+
+    if (!value) {
+      return null;
+    }
+
+    const entry = {
+      key,
+      value,
+      displayValue: isNonEmptyString(rawValue.display)
+        ? rawValue.display.trim()
+        : value,
+      href: isNonEmptyString(rawValue.href)
+        ? rawValue.href.trim()
+        : undefined,
+      icon: isNonEmptyString(rawValue.icon)
+        ? getIconDescriptor(rawValue.icon)
+        : null,
+    };
+
+    if (!entry.href) {
+      if (key === "email") {
+        entry.href = `mailto:${value}`;
+      } else if (key === "website") {
+        entry.href = formatWebsite(value);
+      }
+    }
+
+    if (typeof rawValue.newTab === "boolean") {
+      entry.openInNewTab = rawValue.newTab;
+    }
+
+    if (isNonEmptyString(rawValue.label)) {
+      entry.label = rawValue.label.trim();
+    }
+
+    return entry;
+  }
+
+  return null;
+};
+
+const isExternalHref = (href) => /^https?:\/\//i.test(href);
 
 function App() {
   const [cvData, setCvData] = useState(null);
@@ -75,28 +177,63 @@ function App() {
   }, [header?.name]);
 
   const contactEntries = useMemo(() => {
-    const contact = header?.contact ?? {};
-    const entries = [];
-
-    for (const key of CONTACT_ORDER) {
-      const value = contact[key];
-      if (typeof value === "string" && value.trim().length > 0) {
-        entries.push({ key, value });
-      }
+    if (!header?.contact || typeof header.contact !== "object") {
+      return [];
     }
 
-    for (const [key, value] of Object.entries(contact)) {
-      if (
-        !CONTACT_ORDER.includes(key) &&
-        typeof value === "string" &&
-        value.trim().length > 0
-      ) {
-        entries.push({ key, value });
+    const entries = [];
+    const processedKeys = new Set();
+    const contact = header.contact;
+
+    const tryAddEntry = (key) => {
+      if (processedKeys.has(key)) {
+        return;
+      }
+
+      processedKeys.add(key);
+      const entry = createContactEntry(key, contact[key]);
+      if (entry) {
+        entries.push(entry);
+      }
+    };
+
+    CONTACT_ORDER.forEach(tryAddEntry);
+
+    for (const key of Object.keys(contact)) {
+      if (!processedKeys.has(key)) {
+        tryAddEntry(key);
       }
     }
 
     return entries;
   }, [header?.contact]);
+
+  const renderContactIcon = (iconDescriptor) => {
+    if (!iconDescriptor) {
+      return null;
+    }
+
+    if (iconDescriptor.type === "image") {
+      return (
+        <img
+          className="contact-icon"
+          src={iconDescriptor.value}
+          alt=""
+          aria-hidden="true"
+          width={16}
+          height={16}
+          loading="lazy"
+        />
+      );
+    }
+
+    return (
+      <span
+        className={`contact-icon fa-fw ${iconDescriptor.value}`}
+        aria-hidden="true"
+      />
+    );
+  };
 
   if (status === "loading") {
     return (
@@ -166,33 +303,36 @@ function App() {
 
         {contactEntries.length > 0 ? (
           <div className="contact">
-            {contactEntries.map((entry) => (
-              <div className="contact-item" key={entry.key}>
-                {CONTACT_ICONS[entry.key] ? (
-                  <img
-                    className="contact-icon"
-                    src={CONTACT_ICONS[entry.key]}
-                    alt=""
-                    aria-hidden="true"
-                    width={16}
-                    height={16}
-                  />
-                ) : null}
-                {entry.key === "email" ? (
-                  <a href={`mailto:${entry.value}`}>{entry.value}</a>
-                ) : entry.key === "website" ? (
-                  <a
-                    href={formatWebsite(entry.value)}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {entry.value}
-                  </a>
-                ) : (
-                  <span>{entry.value}</span>
-                )}
-              </div>
-            ))}
+            {contactEntries.map((entry) => {
+              const displayValue = entry.displayValue ?? entry.value;
+              const href = entry.href;
+              const openInNewTab =
+                typeof entry.openInNewTab === "boolean"
+                  ? entry.openInNewTab
+                  : href
+                  ? isExternalHref(href)
+                  : false;
+
+              return (
+                <div
+                  className="contact-item"
+                  key={`${entry.key}-${displayValue}`}
+                >
+                  {renderContactIcon(entry.icon)}
+                  {href ? (
+                    <a
+                      href={href}
+                      target={openInNewTab ? "_blank" : undefined}
+                      rel={openInNewTab ? "noreferrer" : undefined}
+                    >
+                      {displayValue}
+                    </a>
+                  ) : (
+                    <span>{displayValue}</span>
+                  )}
+                </div>
+              );
+            })}
           </div>
         ) : null}
       </header>

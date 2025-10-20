@@ -6,9 +6,16 @@ header:
     - "Assistant Professor, Computer Science, William & Mary"
     - "McGlothlin-Street Hall 117, Williamsburg, VA 23185"
   contact:
-    phone: "(+1) 716-868-2480"
-    email: "ysun25@wm.edu"
-    website: "syifan.github.io"
+    phone:
+      value: "(+1) 716-868-2480"
+      icon: "fa-solid fa-phone"
+    email:
+      value: "ysun25@wm.edu"
+      icon: "fa-solid fa-envelope"
+    website:
+      value: "syifan.github.io"
+      icon: "fa-solid fa-globe"
+      href: "https://syifan.github.io"
 
 sections:
   - id: academicAppointments
