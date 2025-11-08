@@ -12,13 +12,26 @@ body {
 }
 
 .cv-container {
+  width: 100%;
+  max-width: 58rem;
+  margin: 1.5rem auto 3rem;
+  padding: 0 1.5rem 3rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.cv-page {
   max-width: 53.125rem;
   min-height: 11in;
-  margin: 1.5rem auto;
+  margin: 0 auto;
   background: #fff;
   padding: 5rem 5rem 25rem;
   box-shadow: 0 0.875rem 2.25rem rgba(0, 0, 0, 0.12);
   box-sizing: border-box;
+  width: 100%;
 }
 
 .cv-header {
@@ -82,6 +95,28 @@ main {
   display: flex;
   flex-direction: column;
   gap: 1.45rem;
+}
+
+.template-attribution {
+  font-size: 0.72rem;
+  color: rgba(29, 47, 75, 0.7);
+  text-align: center;
+  margin: 0;
+  align-self: stretch;
+  padding: 0 0.5rem;
+}
+
+.template-attribution a {
+  color: inherit;
+  text-decoration: underline;
+  border: 0;
+}
+
+.template-attribution a:visited,
+.template-attribution a:hover,
+.template-attribution a:focus {
+  color: inherit;
+  text-decoration: underline;
 }
 
 .floating-actions {
@@ -331,6 +366,11 @@ li {
 
 @media screen and (max-width: 56.25rem) {
   .cv-container {
+    margin: 0 auto 2rem;
+    padding: 0 1rem 2rem;
+  }
+
+  .cv-page {
     margin: 0;
     min-height: auto;
     padding: 1.5rem;
@@ -411,6 +451,11 @@ li {
   }
 
   .cv-container {
+    margin: 0;
+    padding: 0;
+  }
+
+  .cv-page {
     box-shadow: none;
     margin: 0;
     width: 100%;
@@ -421,6 +466,11 @@ li {
 
   .floating-actions {
     display: none !important;
+  }
+
+  .template-attribution {
+    text-align: left;
+    padding: 0;
   }
 
   a {

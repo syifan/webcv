@@ -65,14 +65,8 @@ const createContactEntry = (key, rawValue, baseUrl) => {
     };
   }
 
-  if (
-    rawValue &&
-    typeof rawValue === "object" &&
-    !Array.isArray(rawValue)
-  ) {
-    const value = isNonEmptyString(rawValue.value)
-      ? rawValue.value.trim()
-      : "";
+  if (rawValue && typeof rawValue === "object" && !Array.isArray(rawValue)) {
+    const value = isNonEmptyString(rawValue.value) ? rawValue.value.trim() : "";
 
     if (!value) {
       return null;
@@ -84,9 +78,7 @@ const createContactEntry = (key, rawValue, baseUrl) => {
       displayValue: isNonEmptyString(rawValue.display)
         ? rawValue.display.trim()
         : value,
-      href: isNonEmptyString(rawValue.href)
-        ? rawValue.href.trim()
-        : undefined,
+      href: isNonEmptyString(rawValue.href) ? rawValue.href.trim() : undefined,
       icon: isNonEmptyString(rawValue.icon)
         ? getIconDescriptor(rawValue.icon, baseUrl)
         : null,
@@ -235,13 +227,31 @@ function Cv({ dataUrl, assetBase = process.env.PUBLIC_URL || "" }) {
 
   return (
     <div className="cv-container">
-      <CvHeader header={header} contactEntries={contactEntries} />
+      <div className="cv-page">
+        <CvHeader header={header} contactEntries={contactEntries} />
 
-      <main>
-        {sections.map((section) => (
-          <CvSection key={section.id ?? section.title} section={section} />
-        ))}
-      </main>
+        <main>
+          {sections.map((section) => (
+            <CvSection key={section.id ?? section.title} section={section} />
+          ))}
+        </main>
+      </div>
+
+      <footer className="template-attribution">
+        CV template provided by{" "}
+        <a href="https://sarchlab.org/syifan" target="_blank" rel="noreferrer">
+          Yifan Sun
+        </a>
+        . Template can be found at{" "}
+        <a
+          href="https://github.com/syifan/webcv"
+          target="_blank"
+          rel="noreferrer"
+        >
+          https://github.com/syifan/webcv
+        </a>
+        .
+      </footer>
 
       <div className="floating-actions" aria-label="page controls">
         <button type="button" className="action-button" onClick={scrollToTop}>
