@@ -1,5 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
-import { load as loadYaml } from "js-yaml";
+import { useEffect, useMemo } from "react";
 import CvHeader from "./CvHeader";
 import CvSection from "./CvSection";
 
@@ -10,34 +9,13 @@ const isNonEmptyString = (value) =>
 
 const iconLooksLikeFontAwesome = (value) => /\bfa-[\w-]+/i.test(value);
 
-const resolveIconPath = (iconPath, baseUrl = "") => {
-  if (!isNonEmptyString(iconPath)) {
-    return "";
-  }
-
-  const trimmed = iconPath.trim();
-
-  if (/^[a-z]+:\/\//i.test(trimmed)) {
-    return trimmed;
-  }
-
-  if (trimmed.startsWith("/")) {
-    return `${baseUrl}${trimmed}`;
-  }
-
-  const normalized = trimmed.replace(/^\.?\//, "");
-  return `${baseUrl}/${normalized}`;
-};
-
-const getIconDescriptor = (iconValue, baseUrl) => {
+const getIconDescriptor = (iconValue) => {
   if (isNonEmptyString(iconValue)) {
     const trimmed = iconValue.trim();
 
     if (iconLooksLikeFontAwesome(trimmed)) {
       return { type: "fontawesome", value: trimmed };
     }
-
-    return { type: "image", value: resolveIconPath(trimmed, baseUrl) };
   }
 
   return null;
@@ -48,7 +26,7 @@ const formatWebsite = (value) =>
 
 const normalizeArray = (value) => (Array.isArray(value) ? value : []);
 
-const createContactEntry = (key, rawValue, baseUrl) => {
+const createContactEntry = (key, rawValue) => {
   if (isNonEmptyString(rawValue)) {
     const value = rawValue.trim();
     return {
@@ -80,7 +58,7 @@ const createContactEntry = (key, rawValue, baseUrl) => {
         : value,
       href: isNonEmptyString(rawValue.href) ? rawValue.href.trim() : undefined,
       icon: isNonEmptyString(rawValue.icon)
-        ? getIconDescriptor(rawValue.icon, baseUrl)
+        ? getIconDescriptor(rawValue.icon)
         : null,
     };
 
@@ -106,59 +84,9 @@ const createContactEntry = (key, rawValue, baseUrl) => {
   return null;
 };
 
-function Cv({ dataUrl, assetBase = process.env.PUBLIC_URL || "" }) {
-  const [cvData, setCvData] = useState(null);
-  const [status, setStatus] = useState("loading");
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    let cancelled = false;
-
-    const loadData = async () => {
-      if (!isNonEmptyString(dataUrl)) {
-        setStatus("error");
-        setError(new Error("CV data URL is not defined"));
-        return;
-      }
-
-      setStatus("loading");
-      setError(null);
-
-      try {
-        const response = await fetch(dataUrl);
-        if (!response.ok) {
-          throw new Error(
-            `Failed to fetch CV data (status ${response.status})`
-          );
-        }
-        const yamlText = await response.text();
-        const parsed = loadYaml(yamlText);
-
-        if (!parsed || typeof parsed !== "object") {
-          throw new Error("CV data is not a valid YAML object");
-        }
-
-        if (!cancelled) {
-          setCvData(parsed);
-          setStatus("ready");
-        }
-      } catch (err) {
-        if (!cancelled) {
-          setStatus("error");
-          setError(err instanceof Error ? err : new Error("Unknown error"));
-        }
-      }
-    };
-
-    loadData();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [dataUrl]);
-
-  const header = cvData?.header ?? { name: "" };
-  const sections = normalizeArray(cvData?.sections);
+function Cv({ data }) {
+  const header = data?.header ?? { name: "" };
+  const sections = normalizeArray(data?.sections);
 
   useEffect(() => {
     if (header?.name) {
@@ -181,7 +109,7 @@ function Cv({ dataUrl, assetBase = process.env.PUBLIC_URL || "" }) {
       }
 
       processedKeys.add(key);
-      const entry = createContactEntry(key, contact[key], assetBase);
+      const entry = createContactEntry(key, contact[key]);
       if (entry) {
         entries.push(entry);
       }
@@ -196,26 +124,7 @@ function Cv({ dataUrl, assetBase = process.env.PUBLIC_URL || "" }) {
     }
 
     return entries;
-  }, [header?.contact, assetBase]);
-
-  if (status === "loading") {
-    return (
-      <div className="cv-loading" role="status" aria-live="polite">
-        Loading CV…
-      </div>
-    );
-  }
-
-  if (status === "error") {
-    return (
-      <div className="cv-error" role="alert">
-        <p>We were unable to load the CV.</p>
-        {error?.message ? (
-          <p className="cv-error-message">{error.message}</p>
-        ) : null}
-      </div>
-    );
-  }
+  }, [header?.contact]);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });

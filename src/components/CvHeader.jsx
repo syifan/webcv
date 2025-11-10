@@ -5,18 +5,8 @@ const renderContactIcon = (iconDescriptor) => {
     return null;
   }
 
-  if (iconDescriptor.type === "image") {
-    return (
-      <img
-        className="contact-icon"
-        src={iconDescriptor.value}
-        alt=""
-        aria-hidden="true"
-        width={16}
-        height={16}
-        loading="lazy"
-      />
-    );
+  if (iconDescriptor.type !== "fontawesome") {
+    return null;
   }
 
   return (
