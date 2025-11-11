@@ -2,9 +2,8 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Node Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)](https://nodejs.org/)
-[![React](https://img.shields.io/badge/react-19.2.0-61dafb.svg)](https://reactjs.org/)
 
-EasyCV is a React-powered CV template that lets you maintain a single source of truth for your CV, publish it on the web, and produce a polished PDF using the browser's native print dialog.
+EasyCV is a framework-free CV renderer that lets you maintain a single source of truth for your resume, publish it on the web, and produce a polished PDF using the browser's native print dialog.
 
 ## Live Demo
 
@@ -33,51 +32,44 @@ npm start
 
 The generator pulls the latest `main` branch from this repository, strips build artifacts, and updates `package.json` with your project name. Because it shells out to `git`, make sure Git ≥2.0 is installed locally. Use `npx create-easycv --help` to see extra flags such as `--ref <tag>` (pin to a release), `--repo <owner/name>` (use your own fork), or `--force` (allow writing into a non-empty directory).
 
-### Method 2: As a Component in Your Existing Site
+### Method 2: Drop EasyCV Into Any Site
 
-If you already have a React project and want to embed EasyCV as a component, follow these steps:
+Already have a site (React, Vue, Astro, vanilla HTML, etc.)? Import the renderer, load your YAML, and mount it wherever you want.
 
-1. **Install Dependencies**
+1. **Install dependencies**
 
    ```bash
-   npm install easycv react-yaml
+   npm install easycv js-yaml
    ```
 
-2. **Add CV Data**
+2. **Add your data**
 
-    Create a `cv_data.yml` file in your `public/` directory with your CV content.
+   Place `cv_data.yml` in whatever folder your bundler copies to the web root (for example, `public/`).
 
-3. **Import and Use the Component** 
+3. **Render the CV**
 
-Below is an example of how to integrate EasyCV into your existing React application:
-
-    
-```javascript
-import { useEffect, useState } from "react";
+```js
 import { load as loadYaml } from "js-yaml";
-import { Cv } from "easycv";
+import { renderCv } from "easycv";
 
-function MyCvPage() {
-  const publicUrl = process.env.PUBLIC_URL || "";
-  const dataUrl = `${publicUrl}/cv_data.yml`;
-  const [cvData, setCvData] = useState(null);
+async function mountCv() {
+  const response = await fetch("/cv_data.yml");
+  const yaml = await response.text();
+  const data = loadYaml(yaml);
 
-  useEffect(() => {
-    fetch(dataUrl)
-      .then((response) => response.text())
-      .then((yamlText) => setCvData(loadYaml(yamlText)))
-      .catch((err) => console.error("Failed to load CV data:", err));
-  }, [dataUrl]);
-
-  if (!cvData) {
-    return null;
-  }
-
-  return <Cv data={cvData} />;
+  // Accepts an element or any CSS selector
+  renderCv("#cv-root", data, {
+    titleTemplate: "%s — My CV", // optional
+    actions: true, // show Back to Top + Download buttons
+  });
 }
 
-export default App;
+mountCv().catch((error) => {
+  console.error("Failed to load CV data", error);
+});
 ```
+
+The CSS and Font Awesome icons ship with the package, so importing `renderCv` automatically applies the correct styles.
 
 ## Structure
 
@@ -154,7 +146,7 @@ If you prefer manual deployment to GitHub Pages:
 
 1. **Build the project**
    ```bash
-   npm run build
+   npm run build:demo
    ```
 
 2. **Deploy the build folder**
@@ -172,7 +164,7 @@ If you prefer manual deployment to GitHub Pages:
 
 WebCV can be deployed to any static hosting service:
 
-- **Netlify**: Connect your GitHub repository and set build command to `npm run build`
+- **Netlify**: Connect your GitHub repository and set the build command to `npm run build:demo`
 - **Vercel**: Import your GitHub repository for automatic deployments
 - **AWS S3**: Upload the contents of the `build/` folder to an S3 bucket with static hosting enabled
 - **Firebase Hosting**: Use `firebase deploy` after building
@@ -269,36 +261,9 @@ Example color customization:
 
 ### Advanced Usage
 
-**Embed in an Existing Site:**
-
-Treat `src/components/App.js` as a reusable widget:
-
-```javascript
-import CvApp from './components/App';
-import cvData from './cv_data.yml';
-
-function MyPage() {
-  return (
-    <div>
-      <CvApp data={cvData} />
-    </div>
-  );
-}
-```
-
-**Custom Data Source:**
-
-Skip the built-in YAML fetch and pass structured data directly to components:
-
-```javascript
-import { CvTable, CvTableEntry } from './components';
-
-function CustomCV({ data }) {
-  return (
-    <CvTable entries={data.entries} />
-  );
-}
-```
+- **Manual DOM control**: `createCvElement(data, { actions: false })` returns the fully rendered `.cv-container` node so you can insert it into a shadow-root, virtual scroller, etc.
+- **Custom document titles**: `renderCv(container, data, { titleTemplate: "Résumé – %s" })` changes how the `<title>` tag is generated. Pass `setDocumentTitle: false` to opt out entirely.
+- **Bring your own data**: You are not limited to YAML. The renderer only cares about plain JavaScript objects that follow the schema shown above, so you can fetch JSON from an API, hydrate from CMS data, or generate it at build time.
 
 ## npx Scaffolder (create-easycv)
 
@@ -318,7 +283,7 @@ The CLI relies on `git` to download this repository, strips build artifacts (`bu
 
 ### Build Fails
 
-**Issue**: `npm run build` fails with errors
+**Issue**: `npm run build` or `npm run build:demo` fails with errors
 
 **Solutions**:
 - Ensure Node.js 18+ is installed: `node --version`
@@ -368,8 +333,9 @@ Contributions are welcome! Here's how you can help:
 
 2. **Make your changes** and test thoroughly
    ```bash
-   npm start  # Test locally
-   npm run build  # Ensure build succeeds
+  npm start          # Dev server
+  npm run build      # Library bundle
+  npm run build:demo # Static site bundle
    ```
 
 3. **Commit your changes** with clear messages
