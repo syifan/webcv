@@ -22,38 +22,19 @@
     "./package.json": "./package.json"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "vite dev --config vite.site.config.js",
+    "dev": "vite dev --config vite.site.config.js",
     "build": "vite build",
-    "build:demo": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "preview": "vite preview"
+    "build:demo": "vite build --config vite.site.config.js",
+    "preview": "vite preview --config vite.site.config.js",
+    "test": "echo \"No automated tests\""
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.2",
     "js-yaml": "^4.1.0"
   },
-  "peerDependencies": {
-    "react": "^18.0.0 || ^19.0.0",
-    "react-dom": "^18.0.0 || ^19.0.0"
-  },
   "devDependencies": {
-    "@testing-library/dom": "^10.4.1",
-    "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/react": "^16.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@vitejs/plugin-react": "^4.3.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "react-scripts": "5.0.1",
-    "vite": "^7.2.2",
-    "web-vitals": "^2.1.4"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "vite": "^7.2.2"
   },
   "browserslist": {
     "production": [
