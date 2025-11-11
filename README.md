@@ -28,6 +28,7 @@ npx create-easycv my-cv
 cd my-cv
 npm install
 npm start
+# Edit public/cv_data.yml to customize your CV
 ```
 
 The generator pulls the latest `main` branch from this repository, strips build artifacts, and updates `package.json` with your project name. Because it shells out to `git`, make sure Git ≥2.0 is installed locally. Use `npx create-easycv --help` to see extra flags such as `--ref <tag>` (pin to a release), `--repo <owner/name>` (use your own fork), or `--force` (allow writing into a non-empty directory).
