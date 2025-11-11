@@ -17,22 +17,9 @@ EasyCV is a React-powered CV template that lets you maintain a single source of 
 - **Easier Than Word/LaTeX**: Skip the tedious layout tweaks of word processors and LaTeX while still achieving professional results.
 - **Print-Ready Design**: Browsers can convert web-based CV to high-quality PDFs by printing. 
 
-
-
-## Features
-
-- Single YAML data source for all CV content
-- Responsive web design with professional styling
-- High-quality PDF export via browser print
-- Support for multiple sections, subsections, and custom layouts
-- FontAwesome icon integration for contact information
-- Condensed and normal table layouts
-- HTML content support for rich formatting
-- Floating action buttons (print, scroll to top)
-- GitHub Pages deployment with automated CI/CD
-- Easy to fork, customize, and maintain
-
 ## Getting Started
+
+### Method 1: As a Dedicated Website
 
 If you just want a fresh copy of EasyCV, the fastest path is the scaffolder:
 
@@ -44,6 +31,53 @@ npm start
 ```
 
 The generator pulls the latest `main` branch from this repository, strips build artifacts, and updates `package.json` with your project name. Because it shells out to `git`, make sure Git ≥2.0 is installed locally. Use `npx create-easycv --help` to see extra flags such as `--ref <tag>` (pin to a release), `--repo <owner/name>` (use your own fork), or `--force` (allow writing into a non-empty directory).
+
+### Method 2: As a Component in Your Existing Site
+
+If you already have a React project and want to embed EasyCV as a component, follow these steps:
+
+1. **Install Dependencies**
+
+   ```bash
+   npm install easycv react-yaml
+   ```
+
+2. **Add CV Data**
+
+    Create a `cv_data.yml` file in your `public/` directory with your CV content.
+
+3. **Import and Use the Component** 
+
+Below is an example of how to integrate EasyCV into your existing React application:
+
+    
+```javascript
+import { useEffect, useState } from "react";
+import { load as loadYaml } from "js-yaml";
+import Cv from "./components/Cv";
+import "./App.css";
+
+function MyCvPage() {
+  const publicUrl = process.env.PUBLIC_URL || "";
+  const dataUrl = `${publicUrl}/cv_data.yml`;
+  const [cvData, setCvData] = useState(null);
+
+  useEffect(() => {
+    fetch(dataUrl)
+      .then((response) => response.text())
+      .then((yamlText) => setCvData(loadYaml(yamlText)))
+      .catch((err) => console.error("Failed to load CV data:", err));
+  }, [dataUrl]);
+
+  if (!cvData) {
+    return null;
+  }
+
+  return <Cv data={cvData} />;
+}
+
+export default App;
+```
 
 ## Structure
 
