@@ -54,8 +54,7 @@ Below is an example of how to integrate EasyCV into your existing React applicat
 ```javascript
 import { useEffect, useState } from "react";
 import { load as loadYaml } from "js-yaml";
-import Cv from "./components/Cv";
-import "./App.css";
+import { Cv } from "easycv";
 
 function MyCvPage() {
   const publicUrl = process.env.PUBLIC_URL || "";
