@@ -71,6 +71,15 @@ mountCv().catch((error) => {
 
 The CSS and Font Awesome icons ship with the package, so importing `renderCv` automatically applies the correct styles.
 
+### Method 3: Fork this repository
+
+If heavy customization is needed, you can fork this repository and modify the source code directly. After forking and cloning, run the following command to start the development server:
+
+```bash
+npm install
+npm run start
+```
+
 ## Structure
 
 EasyCV renders your CV by walking a consistent hierarchy:
