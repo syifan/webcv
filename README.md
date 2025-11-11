@@ -7,7 +7,7 @@ EasyCV is a framework-free CV renderer that lets you maintain a single source of
 
 ## Live Demo
 
-**[View Example Website →](https://webcv-exp.netlify.app/)**
+**[View Example Website →](https://yifancv.netlify.app/)**
 
 ## Why EasyCV
 
@@ -357,7 +357,7 @@ Contributions are welcome! Here's how you can help:
 
 ## Acknowledgment
 
-If WebCV helps your project, please credit Yifan Sun and link back to this repository. A simple note such as “CV powered by [WebCV](https://github.com/syifan/webcv) by [Yifan Sun](https://github.com/syifan)” in your README or site footer is perfect.
+If EazeCV helps your project, please credit Yifan Sun and link back to this repository. A simple note such as "CV powered by [EazeCV](https://github.com/syifan/easycv) by [Yifan Sun](https://github.com/syifan)" in your README or site footer is perfect.
 
 ## License
 
