@@ -12,6 +12,7 @@ permissions:
 jobs:
   publish-easycv:
     runs-on: ubuntu-latest
+    environment: npm publishing
     steps:
       - name: Checkout
         uses: actions/checkout@v4
