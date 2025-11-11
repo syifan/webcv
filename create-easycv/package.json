@@ -1,0 +1,25 @@
+{
+  "name": "create-easycv",
+  "version": "0.1.0",
+  "description": "Scaffold an EasyCV resume site in seconds",
+  "bin": {
+    "create-easycv": "./bin/index.js"
+  },
+  "keywords": [
+    "easycv",
+    "resume",
+    "cv",
+    "scaffolding"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/syifan/webcv.git"
+  },
+  "bugs": {
+    "url": "https://github.com/syifan/webcv/issues"
+  }
+}

@@ -1,42 +1,23 @@
-# WebCV
+# EasyCV 
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Node Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)](https://nodejs.org/)
 [![React](https://img.shields.io/badge/react-19.2.0-61dafb.svg)](https://reactjs.org/)
 
-WebCV is a React-powered CV template that lets you maintain a single source of truth for your résumé, publish it on the web, and produce a polished PDF using the browser's native print dialog. The project is bootstrapped with [Create React App](https://github.com/facebook/create-react-app) for a familiar developer experience.
+EasyCV is a React-powered CV template that lets you maintain a single source of truth for your CV, publish it on the web, and produce a polished PDF using the browser's native print dialog.
 
 ## Live Demo
 
 **[View Example Website →](https://webcv-exp.netlify.app/)**
 
-## Table of Contents
-
-- [Why WebCV](#why-webcv)
-- [Features](#features)
-- [Structure](#structure)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Local Development](#local-development)
-- [Deployment](#deployment)
-  - [GitHub Pages (Automated)](#github-pages-automated)
-  - [Manual Deployment](#manual-deployment)
-  - [Other Hosting Platforms](#other-hosting-platforms)
-- [Customization](#customization)
-  - [Updating Your CV Data](#updating-your-cv-data)
-  - [Styling](#styling)
-  - [Advanced Usage](#advanced-usage)
-- [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-- [Acknowledgment](#acknowledgment)
-- [License](#license)
-
-## Why WebCV
+## Why EasyCV
 
 - **Single Source of Truth**: Maintain one YAML file for both web and PDF versions—no more duplicate effort.
-- **Print-Ready Design**: CSS delivers rich, responsive layouts that modern browsers convert to high-quality PDFs via Print to PDF.
-- **Easier Than LaTeX**: Skip the tedious layout tweaks of word processors and LaTeX while still achieving professional results.
 - **Web-First**: Publish your CV online with a clean URL, making it easy to share and update.
+- **Easier Than Word/LaTeX**: Skip the tedious layout tweaks of word processors and LaTeX while still achieving professional results.
+- **Print-Ready Design**: Browsers can convert web-based CV to high-quality PDFs by printing. 
+
+
 
 ## Features
 
@@ -51,19 +32,27 @@ WebCV is a React-powered CV template that lets you maintain a single source of t
 - GitHub Pages deployment with automated CI/CD
 - Easy to fork, customize, and maintain
 
+## Getting Started
+
+If you just want a fresh copy of EasyCV, the fastest path is the scaffolder:
+
+```bash
+npx create-easycv my-cv
+cd my-cv
+npm install
+npm start
+```
+
+The generator pulls the latest `main` branch from this repository, strips build artifacts, and updates `package.json` with your project name. Because it shells out to `git`, make sure Git ≥2.0 is installed locally. Use `npx create-easycv --help` to see extra flags such as `--ref <tag>` (pin to a release), `--repo <owner/name>` (use your own fork), or `--force` (allow writing into a non-empty directory).
+
 ## Structure
 
-WebCV renders your CV by walking a consistent hierarchy:
+EasyCV renders your CV by walking a consistent hierarchy:
 - `title`: comes from `header.name` plus `header.contact`, giving the page banner and quick ways to reach you.
 - `section`: each item in `sections` defines a top-level block such as Education or Publications.
-- `subsection`: optional grouping inside a section; useful when you need multiple tables under a single heading.
+- `subsection`: optional grouping inside a section; useful when you need multiple tables under a single heading. For example, Publications can have Conference Papers and Journal Articles as subsections.
 - `table`: every section or subsection is rendered as a table so content and metadata stay aligned, even in condensed layouts.
-- `table entry`: the smallest unit, combining the main narrative with supporting metadata for a single row.
-
-Every table entry uses the same trio of fields:
-- `index`: optional leading marker (e.g., numbering for publications) shown only when present.
-- `meta`: right-column context like dates, locations, or roles.
-- `content`: the left-column narrative lines—job titles, bullet points, collaborators, and links.
+- `table entry`: the smallest unit that describes one item in your CV, such as a job, degree, or publication. An entry have 3 parts: index, meta, and content. Index and meta are optional, but content is required. The content field supports multiple lines for rich descriptions. The first row of the content is the entry title (bold text), and subsequent rows are additional details or bullet points.
 
 The `public/cv_data.yml` file stitches these pieces together. It starts with global metadata and then lists sections in the order they should appear:
 
@@ -94,51 +83,6 @@ sections:
             meta:
               - "1843"
 ```
-
-Components under `src/components/` (`CvTable`, `CvTableEntry`, and friends) map directly to this structure, keeping the data model and UI in sync.
-
-## Getting Started
-
-### Prerequisites
-
-Before you begin, ensure you have the following installed:
-
-- **Node.js** 18.0.0 or higher
-- **npm** 9.0.0 or higher (bundled with Node.js)
-
-You can verify your installation by running:
-
-```bash
-node --version
-npm --version
-```
-
-### Local Development
-
-1. **Fork and clone the repository**
-
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/webcv.git
-   cd webcv
-   ```
-
-2. **Install dependencies**
-
-   ```bash
-   npm install
-   ```
-
-3. **Start the development server**
-
-   ```bash
-   npm start
-   ```
-
-   The app will open automatically at [http://localhost:3000](http://localhost:3000) and reload as you edit files in `src/`.
-
-4. **Update your CV data**
-
-   Edit `public/cv_data.yml` with your personal information. The layout is intentionally minimal so you can focus on content.
 
 ## Deployment
 
@@ -321,6 +265,20 @@ function CustomCV({ data }) {
   );
 }
 ```
+
+## npx Scaffolder (create-easycv)
+
+The `create-easycv/` directory contains the code that powers `npx create-easycv`. To publish a new version:
+
+1. Update `create-easycv/package.json` with the desired version
+2. From the repository root, run:
+   ```bash
+   cd create-easycv
+   npm publish
+   ```
+3. Verify with `npx create-easycv --help`
+
+The CLI relies on `git` to download this repository, strips build artifacts (`build/`, `dist/`, `node_modules/`, etc.), and writes your chosen project name into `package.json`.
 
 ## Troubleshooting
 
