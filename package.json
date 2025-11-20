@@ -19,8 +19,11 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
     },
+    "./easycv.css": "./dist/easycv.css",
+    "./dist/easycv.css": "./dist/easycv.css",
     "./package.json": "./package.json"
   },
+  "style": "dist/easycv.css",
   "scripts": {
     "start": "vite dev --config vite.site.config.js",
     "dev": "vite dev --config vite.site.config.js",
