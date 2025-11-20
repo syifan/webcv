@@ -14,7 +14,7 @@ EasyCV is a framework-free CV renderer that lets you maintain a single source of
 - **Single Source of Truth**: Maintain one YAML file for both web and PDF versions—no more duplicate effort.
 - **Web-First**: Publish your CV online with a clean URL, making it easy to share and update.
 - **Easier Than Word/LaTeX**: Skip the tedious layout tweaks of word processors and LaTeX while still achieving professional results.
-- **Print-Ready Design**: Browsers can convert web-based CV to high-quality PDFs by printing. 
+- **Print-Ready Design**: Browsers can convert web-based CV to high-quality PDFs by printing.
 
 ## Getting Started
 
@@ -42,42 +42,44 @@ Already have a site (React, Vue, Astro, vanilla HTML, etc.)? Import the renderer
    npm install easycv js-yaml
    ```
 
+   `js-yaml` is only needed if you load YAML in the browser (as shown below). Because your app imports it directly, keep it as a top-level dependency—package managers like pnpm will otherwise block access to transitive deps. If you provide the data as JSON or pre-parse it on the server, you can skip `js-yaml`.
+
 2. **Add your data**
 
    Place `cv_data.yml` in whatever folder your bundler copies to the web root (for example, `public/`).
 
 3. **Render the CV**
 
-```js
-import { load as loadYaml } from "js-yaml";
-import { renderCv } from "easycv";
+   ```js
+   import { load as loadYaml } from "js-yaml";
+   import { renderCv } from "easycv";
 
-async function mountCv() {
-  const response = await fetch("/cv_data.yml");
-  const yaml = await response.text();
-  const data = loadYaml(yaml);
+   async function mountCv() {
+     const response = await fetch("/cv_data.yml");
+     const yaml = await response.text();
+     const data = loadYaml(yaml);
 
-  // Accepts an element or any CSS selector
-  renderCv("#cv-root", data, {
-    titleTemplate: "%s — My CV", // optional
-    actions: true, // show Back to Top + Download buttons
-  });
-}
+     // Accepts an element or any CSS selector
+     renderCv("#cv-root", data, {
+       titleTemplate: "%s — My CV", // optional
+       actions: true, // show Back to Top + Download buttons
+     });
+   }
 
-mountCv().catch((error) => {
-  console.error("Failed to load CV data", error);
-});
-```
+   mountCv().catch((error) => {
+     console.error("Failed to load CV data", error);
+   });
+   ```
 
 The CSS and Font Awesome icons ship with the package, so importing `renderCv` automatically applies the correct styles.
 
 ### Method 3: Fork this repository
 
-If heavy customization is needed, you can fork this repository and modify the source code directly. After forking and cloning, run the following command to start the development server:
+If heavy customization is needed, you can fork this repository and modify the source code directly. After forking and cloning, run the following commands to start the development server:
 
 ```bash
 npm install
-npm run start
+npm start
 ```
 
 ## Structure
@@ -87,7 +89,7 @@ EasyCV renders your CV by walking a consistent hierarchy:
 - `section`: each item in `sections` defines a top-level block such as Education or Publications.
 - `subsection`: optional grouping inside a section; useful when you need multiple tables under a single heading. For example, Publications can have Conference Papers and Journal Articles as subsections.
 - `table`: every section or subsection is rendered as a table so content and metadata stay aligned, even in condensed layouts.
-- `table entry`: the smallest unit that describes one item in your CV, such as a job, degree, or publication. An entry have 3 parts: index, meta, and content. Index and meta are optional, but content is required. The content field supports multiple lines for rich descriptions. The first row of the content is the entry title (bold text), and subsequent rows are additional details or bullet points.
+- `table entry`: the smallest unit that describes one item in your CV, such as a job, degree, or publication. An entry has 3 parts: index, meta, and content. Index and meta are optional, but content is required. The content field supports multiple lines for rich descriptions. The first row of the content is the entry title (bold text), and subsequent rows are additional details or bullet points.
 
 The `public/cv_data.yml` file stitches these pieces together. It starts with global metadata and then lists sections in the order they should appear:
 
@@ -171,7 +173,7 @@ If you prefer manual deployment to GitHub Pages:
 
 ### Other Hosting Platforms
 
-WebCV can be deployed to any static hosting service:
+EasyCV can be deployed to any static hosting service:
 
 - **Netlify**: Connect your GitHub repository and set the build command to `npm run build:demo`
 - **Vercel**: Import your GitHub repository for automatic deployments
@@ -342,9 +344,9 @@ Contributions are welcome! Here's how you can help:
 
 2. **Make your changes** and test thoroughly
    ```bash
-  npm start          # Dev server
-  npm run build      # Library bundle
-  npm run build:demo # Static site bundle
+   npm start          # Dev server
+   npm run build      # Library bundle
+   npm run build:demo # Static site bundle
    ```
 
 3. **Commit your changes** with clear messages
@@ -366,7 +368,7 @@ Contributions are welcome! Here's how you can help:
 
 ## Acknowledgment
 
-If EazeCV helps your project, please credit Yifan Sun and link back to this repository. A simple note such as "CV powered by [EazeCV](https://github.com/syifan/easycv) by [Yifan Sun](https://github.com/syifan)" in your README or site footer is perfect.
+If EasyCV helps your project, please credit Yifan Sun and link back to this repository. A simple note such as "CV powered by [EasyCV](https://github.com/syifan/easycv) by [Yifan Sun](https://github.com/syifan)" in your README or site footer is perfect.
 
 ## License
 
