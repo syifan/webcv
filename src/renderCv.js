@@ -429,7 +429,13 @@ const createAttribution = () => {
   return footer;
 };
 
-const createFloatingActions = () => {
+let printInstanceCounter = 0;
+const createPrintId = () => {
+  printInstanceCounter += 1;
+  return `easycv-${Date.now().toString(36)}-${printInstanceCounter.toString(36)}`;
+};
+
+const createFloatingActions = (printTargetId) => {
   const actions = createElement("div", {
     className: "floating-actions",
     attrs: { "aria-label": "page controls" },
@@ -452,9 +458,47 @@ const createFloatingActions = () => {
   });
   downloadButton.textContent = "Download PDF";
   downloadButton.addEventListener("click", () => {
-    if (typeof window !== "undefined" && typeof window.print === "function") {
+    if (typeof window === "undefined" || typeof document === "undefined") {
+      return;
+    }
+
+    const body = document.body;
+    const enableCvOnlyPrint = () => {
+      body.classList.add("easycv-print-cv-only");
+      if (printTargetId) {
+        body.setAttribute("data-easycv-print-id", printTargetId);
+      }
+    };
+
+    const disableCvOnlyPrint = () => {
+      body.classList.remove("easycv-print-cv-only");
+      if (printTargetId && body.getAttribute("data-easycv-print-id") === printTargetId) {
+        body.removeAttribute("data-easycv-print-id");
+      }
+    };
+
+    enableCvOnlyPrint();
+
+    const mediaQuery = window.matchMedia ? window.matchMedia("print") : null;
+    const handleChange = (event) => {
+      if (!event.matches) {
+        disableCvOnlyPrint();
+      }
+    };
+
+    if (mediaQuery) {
+      if (mediaQuery.addEventListener) {
+        mediaQuery.addEventListener("change", handleChange);
+      } else if (mediaQuery.addListener) {
+        mediaQuery.addListener(handleChange);
+      }
+    }
+
+    if (typeof window.print === "function") {
       window.print();
     }
+
+    setTimeout(disableCvOnlyPrint, 1500);
   });
 
   actions.appendChild(topButton);
@@ -465,6 +509,8 @@ const createFloatingActions = () => {
 const createCvDom = (data, { includeActions = true } = {}) => {
   const container = createElement("div", { className: "cv-container" });
   const page = createElement("div", { className: "cv-page" });
+  const printId = createPrintId();
+  container.dataset.easycvPrintId = printId;
   const headerData = data?.header ?? { name: "" };
   const sections = normalizeArray(data?.sections);
   const contactEntries = buildContactEntries(headerData.contact);
@@ -484,7 +530,7 @@ const createCvDom = (data, { includeActions = true } = {}) => {
   container.appendChild(createAttribution());
 
   if (includeActions) {
-    container.appendChild(createFloatingActions());
+    container.appendChild(createFloatingActions(printId));
   }
 
   return { element: container, headerName: resolveTrimmedValue(headerData?.name) };

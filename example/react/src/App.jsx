@@ -1,0 +1,66 @@
+import { useEffect, useRef, useState } from "react";
+import { load as loadYaml } from "js-yaml";
+import { renderCv } from "easycv";
+import "./App.css";
+import "easycv/easycv.css";
+
+const STATUS = {
+  idle: "idle",
+  loading: "loading",
+  error: "error",
+  ready: "ready",
+};
+
+export default function App() {
+  const [status, setStatus] = useState(STATUS.idle);
+  const [error, setError] = useState(null);
+  const rootRef = useRef(null);
+
+  useEffect(() => {
+    const run = async () => {
+      setStatus(STATUS.loading);
+      setError(null);
+      const response = await fetch("/cv_data.yml", { cache: "no-cache" });
+      if (!response.ok) {
+        throw new Error(`Failed to load cv_data.yml (status ${response.status})`);
+      }
+      const yamlText = await response.text();
+      const data = loadYaml(yamlText);
+
+      if (rootRef.current) {
+        renderCv(rootRef.current, data, {
+          titleTemplate: "%s — EasyCV (React)",
+          actions: true,
+        });
+      }
+      setStatus(STATUS.ready);
+    };
+
+    run().catch((err) => {
+      console.error("Failed to render CV", err);
+      setError(err);
+      setStatus(STATUS.error);
+    });
+  }, []);
+
+  return (
+    <div className="page">
+      <header className="hero">
+        <p className="badge">React</p>
+        <h1>EasyCV + React</h1>
+        <p className="lede">
+          This Vite app fetches a YAML file, parses it with <code>js-yaml</code>, and mounts EasyCV
+          into a React component.
+        </p>
+      </header>
+
+      <main className="content">
+        {status === STATUS.loading && <p className="status">Loading cv_data.yml…</p>}
+        {status === STATUS.error && (
+          <p className="status error">Unable to load CV data. Check the console for details.</p>
+        )}
+        <div ref={rootRef} aria-live="polite" aria-busy={status === STATUS.loading}></div>
+      </main>
+    </div>
+  );
+}

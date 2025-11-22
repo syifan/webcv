@@ -1,0 +1,11 @@
+{
+  "name": "easycv-examples",
+  "private": true,
+  "workspaces": [
+    "react"
+  ],
+  "scripts": {
+    "dev:vanilla": "cd vanilla && python3 -m http.server 4173",
+    "dev:react": "cd react && npm install && npm run dev"
+  }
+}

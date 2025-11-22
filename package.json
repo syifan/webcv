@@ -1,6 +1,6 @@
 {
   "name": "easycv",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "private": false,
   "homepage": ".",
   "main": "dist/index.cjs",
@@ -25,11 +25,7 @@
   },
   "style": "dist/easycv.css",
   "scripts": {
-    "start": "vite dev --config vite.site.config.js",
-    "dev": "vite dev --config vite.site.config.js",
     "build": "vite build",
-    "build:demo": "vite build --config vite.site.config.js",
-    "preview": "vite preview --config vite.site.config.js",
     "test": "echo \"No automated tests\""
   },
   "dependencies": {

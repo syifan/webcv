@@ -3,11 +3,11 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Node Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)](https://nodejs.org/)
 
-EasyCV is a framework-free CV renderer that lets you maintain a single source of truth for your resume, publish it on the web, and produce a polished PDF using the browser's native print dialog.
+EasyCV is a framework-free CV library that lets you maintain a single source of truth for your resume, publish it on the web, and produce a polished PDF using the browser's native print dialog.
 
 ## Live Demo
 
-**[View Example Website →](https://yifancv.netlify.app/)**
+**[View Example Website →](https://syifan.github.io/easycv)**
 
 ## Why EasyCV
 
@@ -26,7 +26,6 @@ If you just want a fresh copy of EasyCV, the fastest path is the scaffolder:
 npx create-easycv my-cv
 cd my-cv
 npm install
-npm start
 # Edit public/cv_data.yml to customize your CV
 ```
 
@@ -73,13 +72,23 @@ Already have a site (React, Vue, Astro, vanilla HTML, etc.)? Import the renderer
 
 The CSS and Font Awesome icons ship with the package, so importing `renderCv` automatically applies the correct styles.
 
+Want to see this running without any bundler? Check `example/vanilla/` for a plain HTML + YAML demo that imports EasyCV from CDNs.
+
 ### Method 3: Fork this repository
 
-If heavy customization is needed, you can fork this repository and modify the source code directly. After forking and cloning, run the following commands to start the development server:
+If heavy customization is needed, you can fork this repository and modify the source code directly. After forking and cloning, run the following commands to build the library:
 
 ```bash
 npm install
-npm start
+npm run build
+```
+
+The actual website is in the `example/react/` folder. You can run it locally with:
+
+```bash
+cd example/react
+npm install
+npm run dev
 ```
 
 ## Structure
@@ -123,62 +132,7 @@ sections:
 
 ## Deployment
 
-### GitHub Pages (Automated)
-
-This repository includes a GitHub Actions workflow that automatically builds and deploys your CV when you push to the `main` branch.
-
-**Setup Steps:**
-
-1. **Fork the repository** on GitHub
-
-2. **Update the homepage URL** in `package.json`:
-   ```json
-   "homepage": "https://YOUR_USERNAME.github.io/webcv"
-   ```
-
-3. **Enable GitHub Pages** in your repository:
-   - Go to **Settings** → **Pages**
-   - Under **Source**, select **GitHub Actions**
-
-4. **Push your changes** to the `main` branch:
-   ```bash
-   git add .
-   git commit -m "Update CV data"
-   git push origin main
-   ```
-
-5. **Access your CV** at `https://YOUR_USERNAME.github.io/webcv`
-
-The GitHub Actions workflow (`.github/workflows/deploy.yml`) will automatically build and deploy your site on every push to `main`.
-
-### Manual Deployment
-
-If you prefer manual deployment to GitHub Pages:
-
-1. **Build the project**
-   ```bash
-   npm run build:demo
-   ```
-
-2. **Deploy the build folder**
-   ```bash
-   # Install gh-pages if you haven't already
-   npm install -g gh-pages
-
-   # Deploy to gh-pages branch
-   gh-pages -d build
-   ```
-
-3. **Enable GitHub Pages** pointing to the `gh-pages` branch
-
-### Other Hosting Platforms
-
-EasyCV can be deployed to any static hosting service:
-
-- **Netlify**: Connect your GitHub repository and set the build command to `npm run build:demo`
-- **Vercel**: Import your GitHub repository for automatic deployments
-- **AWS S3**: Upload the contents of the `build/` folder to an S3 bucket with static hosting enabled
-- **Firebase Hosting**: Use `firebase deploy` after building
+EasyCV ships as a library. Use the vanilla example (`example/vanilla/`) or `create-easycv` to scaffold a site, then host it wherever you like.
 
 ## Customization
 
@@ -294,7 +248,7 @@ The CLI relies on `git` to download this repository, strips build artifacts (`bu
 
 ### Build Fails
 
-**Issue**: `npm run build` or `npm run build:demo` fails with errors
+**Issue**: `npm run build` fails with errors
 
 **Solutions**:
 - Ensure Node.js 18+ is installed: `node --version`
@@ -310,16 +264,6 @@ The CLI relies on `git` to download this repository, strips build artifacts (`bu
 - Ensure proper indentation (use spaces, not tabs)
 - Check that all quotes are properly closed
 - Verify array syntax uses hyphens for list items
-
-### GitHub Pages Not Updating
-
-**Issue**: Changes don't appear on the deployed site
-
-**Solutions**:
-- Check the **Actions** tab in GitHub to see if the workflow succeeded
-- Verify the `homepage` field in `package.json` matches your repository
-- Clear your browser cache or try incognito mode
-- Wait a few minutes for GitHub's CDN to update
 
 ### PDF Export Issues
 
@@ -344,9 +288,7 @@ Contributions are welcome! Here's how you can help:
 
 2. **Make your changes** and test thoroughly
    ```bash
-   npm start          # Dev server
    npm run build      # Library bundle
-   npm run build:demo # Static site bundle
    ```
 
 3. **Commit your changes** with clear messages

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EasyCV Examples</title>
+    <style>
+      :root {
+        --ink: #0f172a;
+        --muted: #475569;
+        --accent: #2563eb;
+        --card: #f8fafc;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Inter", "Segoe UI", sans-serif;
+        background: radial-gradient(circle at 20% 20%, #e0f2fe, #f8fafc 35%),
+          radial-gradient(circle at 80% 10%, #e2e8f0, #f8fafc 30%),
+          linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+        color: var(--ink);
+        min-height: 100vh;
+      }
+
+      .page {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 3rem 1.5rem 4rem;
+      }
+
+      header {
+        margin-bottom: 2rem;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2rem, 3vw + 1rem, 2.6rem);
+        letter-spacing: -0.02em;
+      }
+
+      p.lede {
+        margin: 0.4rem 0 0;
+        color: var(--muted);
+        max-width: 48rem;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+      }
+
+      a.card {
+        text-decoration: none;
+        color: inherit;
+        background: #ffffffdd;
+        border: 1px solid #e2e8f0;
+        border-radius: 1rem;
+        padding: 1.1rem 1.1rem 1rem;
+        display: grid;
+        gap: 0.35rem;
+        box-shadow: 0 16px 32px rgba(15, 23, 42, 0.08);
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+      }
+
+      a.card:hover,
+      a.card:focus-visible {
+        transform: translateY(-3px);
+        box-shadow: 0 22px 40px rgba(15, 23, 42, 0.12);
+        outline: none;
+        border-color: #bfdbfe;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.9rem;
+        color: var(--accent);
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+
+      .desc {
+        color: var(--muted);
+        line-height: 1.5;
+        font-size: 0.95rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <p class="badge">Examples</p>
+        <h1>EasyCV integration samples</h1>
+        <p class="lede">Pick a stack to see how to load YAML and render EasyCV in that environment.</p>
+      </header>
+
+      <div class="grid">
+        <a class="card" href="./vanilla/">
+          <strong>Vanilla HTML</strong>
+          <p class="desc">No build tools. CDN imports for EasyCV + js-yaml, straight DOM rendering.</p>
+        </a>
+        <a class="card" href="./react/">
+          <strong>React</strong>
+          <p class="desc">Minimal Vite + React example that mounts EasyCV inside a component.</p>
+        </a>
+        <a class="card" href="./jekyll/">
+          <strong>Jekyll</strong>
+          <p class="desc">Static Jekyll site (placeholder).</p>
+        </a>
+        <a class="card" href="./vue/">
+          <strong>Vue</strong>
+          <p class="desc">Vue single-file component example (placeholder).</p>
+        </a>
+        <a class="card" href="./svelte/">
+          <strong>Svelte</strong>
+          <p class="desc">SvelteKit-ready snippet (placeholder).</p>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>
