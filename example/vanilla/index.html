@@ -6,218 +6,44 @@
     <title>EasyCV Vanilla Example</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easycv@0.2.2/dist/easycv.css" />
-    <style>
-      :root {
-        --ink: #0f172a;
-        --accent: #0f4bf1;
-        --card: #f8fafc;
-      }
-
-      body {
-        margin: 0;
-        font-family: "Manrope", "Helvetica Neue", Arial, sans-serif;
-        background: radial-gradient(circle at 15% 20%, #eef2ff, #f8fafc 35%),
-          radial-gradient(circle at 85% 10%, #e0f2fe, #f8fafc 30%),
-          linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
-        color: var(--ink);
-        line-height: 1.6;
-      }
-
-      .page {
-        min-height: 100vh;
-        padding: 2.75rem 1.5rem 3.5rem;
-        box-sizing: border-box;
-      }
-
-      .shell {
-        max-width: 72rem;
-        margin: 0 auto;
-      }
-
-      header.hero {
-        margin: 0 auto 2rem;
-        display: grid;
-        gap: 0.85rem;
-        align-items: center;
-      }
-
-      .eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
-        background: #0f4bf10d;
-        color: var(--accent);
-        padding: 0.4rem 0.75rem;
-        border-radius: 999px;
-        font-weight: 700;
-        letter-spacing: 0.03em;
-        text-transform: uppercase;
-        font-size: 0.78rem;
-      }
-
-      h1 {
-        font-size: clamp(2rem, 3vw + 1rem, 2.8rem);
-        margin: 0;
-        color: var(--ink);
-        letter-spacing: -0.02em;
-      }
-
-      p.lede {
-        margin: 0;
-        max-width: 46rem;
-        font-size: 1.05rem;
-        color: #3b4256;
-      }
-
-      .steps {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-        gap: 0.75rem;
-        margin-top: 0.75rem;
-      }
-
-      .step {
-        background: #ffffffcc;
-        border: 1px solid #e2e8f0;
-        border-radius: 0.9rem;
-        padding: 0.9rem 1rem;
-        display: grid;
-        grid-template-columns: auto 1fr;
-        gap: 0.75rem;
-        align-items: center;
-        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
-      }
-
-      .step-number {
-        width: 2.2rem;
-        height: 2.2rem;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        background: var(--accent);
-        color: white;
-        font-weight: 700;
-        border-radius: 0.75rem;
-        box-shadow: 0 10px 25px rgba(15, 75, 241, 0.25);
-      }
-
-      .step p {
-        margin: 0;
-        color: #1f2937;
-      }
-
-      main.layout {
-        margin: 0 auto;
-        display: grid;
-        gap: 1.5rem;
-      }
-
-      .callout {
-        background: #ffffff;
-        border: 1px solid #d8e2f0;
-        border-radius: 1rem;
-        padding: 1rem 1.1rem;
-        display: grid;
-        gap: 0.5rem;
-        box-shadow: 0 16px 36px rgba(15, 23, 42, 0.07);
-      }
-
-      .callout strong {
-        color: var(--ink);
-      }
-
-      .callout code {
-        background: #0f172a08;
-        padding: 0.1rem 0.4rem;
-        border-radius: 0.4rem;
-      }
-
-      .cv-shell {
-        background: var(--card);
-        border: 1px solid #d9e2ec;
-        border-radius: 1rem;
-        padding: 1.25rem 1rem;
-        box-shadow: 0 26px 48px rgba(15, 23, 42, 0.09);
-      }
-
-      #cv-root {
-        min-height: 6rem;
-      }
-
-      .status {
-        margin: 0;
-        padding: 1.75rem 1rem;
-        text-align: center;
-        color: #0f2f5f;
-        font-weight: 600;
-        background: #f1f5f9;
-        border-radius: 0.75rem;
-        border: 1px dashed #cbd5e1;
-      }
-
-      .status.error {
-        color: #9a1b24;
-        background: #fff1f2;
-        border-color: #fecdd3;
-      }
-
-      a {
-        color: var(--accent);
-      }
-
-      @media (max-width: 640px) {
-        .page {
-          padding: 2rem 1rem 2.5rem;
-        }
-
-        .step {
-          grid-template-columns: 1fr;
-        }
-
-        .step-number {
-          justify-self: flex-start;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="./shared.css" />
   </head>
   <body>
         <div class="page">
       <div class="shell">
         <header class="hero">
           <span class="eyebrow">Vanilla HTML</span>
-          <h1>Embed EasyCV without a framework</h1>
+          <h1>EasyCV plain HTML</h1>
           <p class="lede">
-            This page uses only a couple of CDN imports, a YAML file, and a few lines of JavaScript.
-            Drop it into any static site to render your resume with EasyCV.
-        </p>
-        <div class="steps">
-          <div class="step">
-            <span class="step-number">1</span>
-            <p>Keep <code>cv_data.yml</code> in the same folder as this HTML.</p>
-          </div>
-          <div class="step">
-            <span class="step-number">2</span>
-            <p>Serve the folder locally (e.g. <code>python3 -m http.server 4173</code>).</p>
-          </div>
-          <div class="step">
-            <span class="step-number">3</span>
-            <p>Open the page and EasyCV renders itself—no build tools required.</p>
-          </div>
-        </div>
+            This page uses only CDN imports, a shared YAML file, and a few lines of JavaScript to
+            render EasyCV without any framework or bundler.
+          </p>
         </header>
 
         <main class="layout">
           <section class="callout">
-            <strong>How it works:</strong>
-            <span>
-              EasyCV and <code>js-yaml</code> are imported directly from CDNs, the YAML is fetched,
-              and <code>renderCv</code> mounts the page inside <code>#cv-root</code>.
-            </span>
+            <div class="callout-header">
+              <strong>How it works</strong>
+              <p>
+                EasyCV and <code>js-yaml</code> are imported from CDNs, the shared
+                <code>cv_data.yml</code> is fetched, and <code>renderCv</code> mounts into
+                <code>#cv-root</code>.
+              </p>
+            </div>
+            <div class="steps">
+              <div class="step">
+                <span class="step-number">1</span>
+                <p>Keep <code>cv_data.yml</code> in the shared <code>public/</code> folder.</p>
+              </div>
+              <div class="step">
+                <span class="step-number">2</span>
+                <p>Serve this folder locally (e.g. <code>python3 -m http.server 4173</code>).</p>
+              </div>
+              <div class="step">
+                <span class="step-number">3</span>
+                <p>Open the page; EasyCV renders automatically—no build tools required.</p>
+              </div>
+            </div>
           </section>
 
           <section class="cv-shell" aria-label="CV preview">
@@ -230,14 +56,27 @@
     </div>
 
     <script type="module">
-      import { renderCv } from "https://cdn.jsdelivr.net/npm/easycv@0.2.2/dist/index.mjs";
-      import { load as loadYaml } from "https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.mjs";
+      import { renderCv } from "./easycv.mjs";
+      import { load as loadYaml } from "./js-yaml.mjs";
 
-      const root = document.getElementById("cv-root");
+      const host = document.getElementById("cv-root");
+      const shadow = host.attachShadow({ mode: "open" });
+
+      const shared = document.createElement("link");
+      shared.rel = "stylesheet";
+      shared.href = "./shared.css";
+
+      const easycvCss = document.createElement("link");
+      easycvCss.rel = "stylesheet";
+      easycvCss.href = "./easycv.css";
+
+      const mount = document.createElement("div");
+      mount.id = "cv-mount";
+
+      shadow.append(shared, easycvCss, mount);
 
       const setStatus = (message, isError = false) => {
-        if (!root) return;
-        root.innerHTML = `<p class="status${isError ? " error" : ""}">${message}</p>`;
+        mount.innerHTML = `<p class="status${isError ? " error" : ""}">${message}</p>`;
       };
 
       const mountCv = async () => {
@@ -251,8 +90,8 @@
         const yamlText = await response.text();
         const data = loadYaml(yamlText);
 
-        root.innerHTML = "";
-        renderCv(root, data, {
+        mount.innerHTML = "";
+        renderCv(mount, data, {
           titleTemplate: "%s — EasyCV (Vanilla)",
           actions: true,
         });
