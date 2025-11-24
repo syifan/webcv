@@ -12,6 +12,13 @@ EasyCV is a framework-free CV library that lets you maintain a single source of 
 
 **[View Example Website (Vanilla JS) →](https://syifan.github.io/easycv/)**
 
+
+If you use Academic Pages, using EasyCV is simply replacing the `cv.md` file and provide a `cv_data.yml` file. You can see the example here. 
+
+**[cv.md](https://github.com/syifan/easycv_academicpages_example/blob/master/_pages/cv.md)**
+**[cv_data.yml](https://github.com/syifan/easycv_academicpages_example/blob/master/files/cv_data.yml)**
+**[View Academic Pages Example →](https://syifan.github.io/easycv_academicpages_example/cv/)**
+
 ## Why EasyCV
 
 - **Single Source of Truth**: Maintain one YAML file for both web and PDF versions—no more duplicate effort.
