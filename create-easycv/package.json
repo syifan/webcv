@@ -17,9 +17,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/syifan/webcv.git"
+    "url": "git+https://github.com/syifan/easycv.git"
   },
   "bugs": {
-    "url": "https://github.com/syifan/webcv/issues"
+    "url": "https://github.com/syifan/easycv/issues"
   }
 }

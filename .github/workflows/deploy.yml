@@ -33,18 +33,26 @@ jobs:
         with:
           enablement: true
 
-      - name: Install dependencies
+      - name: Install dependencies (library)
         run: npm ci
 
-      - name: Build demo site
-        run: npm run build:demo
+      - name: Build library
+        run: npm run build
+
+      - name: Install React example deps
+        run: npm install
+        working-directory: example/react
+
+      - name: Build React example
+        run: npm run build
+        working-directory: example/react
         env:
           CI: false
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./build
+          path: ./example/react/dist
 
   deploy:
     environment:

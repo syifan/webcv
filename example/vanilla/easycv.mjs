@@ -1,0 +1,1 @@
+./node_modules/easycv/dist/index.mjs

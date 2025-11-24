@@ -5,7 +5,7 @@ const os = require("os");
 const path = require("path");
 const { spawnSync } = require("child_process");
 
-const DEFAULT_REPO = "https://github.com/syifan/webcv.git";
+const DEFAULT_REPO = "https://github.com/syifan/easycv.git";
 const DEFAULT_REF = process.env.EASYCV_TEMPLATE_REF || "main";
 
 function showHelp() {
@@ -132,7 +132,7 @@ function cleanupClone(tempDir) {
     "node_modules",
     "build",
     "dist",
-    "WebCV-0.1.0.tgz",
+    "easycv-0.1.0.tgz",
     "create-easycv",
   ];
   stale.forEach((entry) => removeIfExists(path.join(tempDir, entry)));
