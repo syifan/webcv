@@ -1,7 +1,9 @@
 [build]
   base = "example/react"
-  command = "npm run build"
+  # Build the library first (two levels up), then build the React example.
+  command = "npm --prefix ../.. ci && npm --prefix ../.. run build && npm install && npm run build"
   publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "20"
+  NPM_CONFIG_PRODUCTION = "false"
