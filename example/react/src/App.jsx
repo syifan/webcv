@@ -20,7 +20,8 @@ export default function App() {
     const run = async () => {
       setStatus(STATUS.loading);
       setError(null);
-      const response = await fetch("/cv_data.yml", { cache: "no-cache" });
+      const cvDataUrl = new URL(`${import.meta.env.BASE_URL}cv_data.yml`, window.location.origin);
+      const response = await fetch(cvDataUrl.toString(), { cache: "no-cache" });
       if (!response.ok) {
         throw new Error(`Failed to load cv_data.yml (status ${response.status})`);
       }
