@@ -1,16 +1,3 @@
-html {
-  font-size: 16px;
-}
-
-body {
-  margin: 0;
-  background: #e9eef3;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #111;
-  font-size: 0.8rem;
-  line-height: 1.45;
-}
-
 /* Reset everything inside the CV shell so host-page CSS does not leak in */
 :where(.cv-container, .cv-container *) {
   all: revert;
@@ -225,8 +212,15 @@ body {
   padding-bottom: 0;
 }
 
-.cv-container tr {
+.cv-container table,
+.cv-container tbody,
+.cv-container tr,
+.cv-container td {
   border: none;
+  font-size: 1em;
+}
+
+.cv-container tr {
   background: none;
 }
 
@@ -234,10 +228,6 @@ body {
   padding: 0.05rem 0.35rem 0.05rem 0;
   vertical-align: top;
   line-height: 1.2;
-}
-
-.cv-container tr:not(.entry-start):not(.condensed-row) td {
-  font-size: 0.9em;
 }
 
 .hanging-cell {
@@ -449,15 +439,6 @@ body {
   @page {
     size: letter;
     margin: 0.7in;
-  }
-
-  html {
-    font-size: 16px;
-  }
-
-  body {
-    background: #fff;
-    margin: 0;
   }
 
   .cv-container {
