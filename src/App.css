@@ -11,7 +11,17 @@ body {
   line-height: 1.45;
 }
 
+/* Reset everything inside the CV shell so host-page CSS does not leak in */
+:where(.cv-container, .cv-container *) {
+  all: revert;
+  box-sizing: border-box;
+}
+
 .cv-container {
+  color: #111;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.45;
   width: 100%;
   max-width: 58rem;
   margin: 1.5rem auto 3rem;
@@ -91,7 +101,7 @@ body {
   border-bottom: 1px solid rgba(29, 47, 75, 0.35);
 }
 
-main {
+.cv-container main {
   display: flex;
   flex-direction: column;
   gap: 1.45rem;
@@ -215,18 +225,18 @@ main {
   padding-bottom: 0;
 }
 
-tr {
+.cv-container tr {
   border: none;
   background: none;
 }
 
-td {
+.cv-container td {
   padding: 0.05rem 0.35rem 0.05rem 0;
   vertical-align: top;
   line-height: 1.2;
 }
 
-tr:not(.entry-start):not(.condensed-row) td {
+.cv-container tr:not(.entry-start):not(.condensed-row) td {
   font-size: 0.9em;
 }
 
@@ -314,13 +324,13 @@ tr:not(.entry-start):not(.condensed-row) td {
   color: #333;
 }
 
-ul,
-ol {
+.cv-container ul,
+.cv-container ol {
   margin: 0.3rem 0 0.6rem 1.2rem;
   padding: 0;
 }
 
-li {
+.cv-container li {
   margin-bottom: 0.25rem;
 }
 
@@ -403,12 +413,12 @@ li {
 }
 
 @media screen and (max-width: 37.5rem) {
-  tr {
+  .cv-container tr {
     display: block;
     line-height: 1.1em;
   }
 
-  td,
+  .cv-container td,
   .right-cell,
   .left-cell {
     display: block;
@@ -473,7 +483,7 @@ li {
     padding: 0;
   }
 
-  a {
+  .cv-container a {
     color: inherit;
     text-decoration: none;
   }
