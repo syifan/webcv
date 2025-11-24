@@ -1,1 +1,1 @@
-../../node_modules/js-yaml/dist/js-yaml.mjs
+./node_modules/js-yaml/dist/js-yaml.mjs

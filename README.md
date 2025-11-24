@@ -1,6 +1,7 @@
 # EasyCV 
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![npm](https://img.shields.io/npm/v/easycv.svg)](https://www.npmjs.com/package/easycv)
 [![Node Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)](https://nodejs.org/)
 
 EasyCV is a framework-free CV library that lets you maintain a single source of truth for your resume, publish it on the web, and produce a polished PDF using the browser's native print dialog.
@@ -72,7 +73,7 @@ Already have a site (React, Vue, Astro, vanilla HTML, etc.)? Import the renderer
 
 The CSS and Font Awesome icons ship with the package, so importing `renderCv` automatically applies the correct styles.
 
-Want to see this running without any bundler? Check `example/vanilla/` for a plain HTML + YAML demo that imports EasyCV from CDNs.
+Want to see this running without any bundler? Check `example/vanilla/` for a plain HTML + YAML demo that pulls EasyCV from the installed package and runs with `npm run dev`.
 
 ### Method 3: Fork this repository
 
@@ -91,7 +92,7 @@ npm install
 npm run dev
 ```
 
-## Structure
+## CV Structure
 
 EasyCV renders your CV by walking a consistent hierarchy:
 - `title`: comes from `header.name` plus `header.contact`, giving the page banner and quick ways to reach you.
