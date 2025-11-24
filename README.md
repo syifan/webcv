@@ -8,7 +8,8 @@ EasyCV is a framework-free CV library that lets you maintain a single source of 
 
 ## Live Demo
 
-**[View Example Website →](https://yifancv.netlify.app)**
+**[View Example Website (React-based) →](https://yifancv.netlify.app)**
+**[View Example Website (Vanilla JS) →](https://syifan.github.io/easycv/)**
 
 ## Why EasyCV
 

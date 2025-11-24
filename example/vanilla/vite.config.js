@@ -6,7 +6,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const workspaceRoot = path.resolve(__dirname, "..", "..");
 
 export default defineConfig({
-  publicDir: path.resolve(workspaceRoot, "public"),
+  base: "./",
+  publicDir: path.resolve(__dirname, "public"),
   server: {
     host: true,
     port: 4173,
