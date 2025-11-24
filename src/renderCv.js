@@ -1,6 +1,7 @@
 const CONTACT_ORDER = ["phone", "email", "website"];
 
-const isNonEmptyString = (value) => typeof value === "string" && value.trim().length > 0;
+const isNonEmptyString = (value) =>
+  typeof value === "string" && value.trim().length > 0;
 
 const iconLooksLikeFontAwesome = (value) => /\bfa-[\w-]+/i.test(value);
 
@@ -14,7 +15,8 @@ const getIconDescriptor = (iconValue) => {
   return null;
 };
 
-const formatWebsite = (value) => (/^https?:\/\//i.test(value) ? value : `https://${value}`);
+const formatWebsite = (value) =>
+  /^https?:\/\//i.test(value) ? value : `https://${value}`;
 
 const normalizeArray = (value) => (Array.isArray(value) ? value : []);
 
@@ -25,7 +27,10 @@ const isHtmlMetaLine = (metaLine) =>
   typeof metaLine.html === "string";
 
 const isHtmlValue = (value) =>
-  value && typeof value === "object" && !Array.isArray(value) && typeof value.html === "string";
+  value &&
+  typeof value === "object" &&
+  !Array.isArray(value) &&
+  typeof value.html === "string";
 
 const hasContent = (value) => {
   if (value === null || value === undefined) {
@@ -40,7 +45,8 @@ const hasContent = (value) => {
   return String(value).trim().length > 0;
 };
 
-const resolveTrimmedValue = (value) => (isNonEmptyString(value) ? value.trim() : "");
+const resolveTrimmedValue = (value) =>
+  isNonEmptyString(value) ? value.trim() : "";
 
 const createContactEntry = (key, rawValue) => {
   if (isNonEmptyString(rawValue)) {
@@ -70,7 +76,9 @@ const createContactEntry = (key, rawValue) => {
       value,
       displayValue: resolveTrimmedValue(rawValue.display) || value,
       href: resolveTrimmedValue(rawValue.href) || undefined,
-      icon: isNonEmptyString(rawValue.icon) ? getIconDescriptor(rawValue.icon) : null,
+      icon: isNonEmptyString(rawValue.icon)
+        ? getIconDescriptor(rawValue.icon)
+        : null,
     };
 
     if (!entry.href) {
@@ -211,7 +219,9 @@ const renderHeader = (header, contactEntries) => {
 
   if (contactEntries.length > 0) {
     const contact = createElement("div", { className: "contact" });
-    contactEntries.forEach((entry) => contact.appendChild(renderContactEntry(entry)));
+    contactEntries.forEach((entry) =>
+      contact.appendChild(renderContactEntry(entry))
+    );
     headerElement.appendChild(contact);
   }
 
@@ -262,7 +272,11 @@ const renderTableEntry = (entry, condensed) => {
   const meta = normalizeArray(entry?.meta ?? []);
   const hasIndexColumn = hasContent(entry?.index);
   const hasMetaColumn = meta.some(hasContent);
-  const rowCount = Math.max(content.length, hasMetaColumn ? meta.length : 0, hasIndexColumn ? 1 : 0);
+  const rowCount = Math.max(
+    content.length,
+    hasMetaColumn ? meta.length : 0,
+    hasIndexColumn ? 1 : 0
+  );
 
   if (rowCount === 0) {
     return null;
@@ -312,9 +326,12 @@ const renderTableEntry = (entry, condensed) => {
             return;
           }
           const span = createElement("span", {
-            className: contentIndex === 0 ? "left-header-span" : "left-entry-span",
+            className:
+              contentIndex === 0 ? "left-header-span" : "left-entry-span",
           });
-          const valueNode = renderValueNode(value, { strong: contentIndex === 0 });
+          const valueNode = renderValueNode(value, {
+            strong: contentIndex === 0,
+          });
           if (valueNode) {
             span.appendChild(valueNode);
             td.appendChild(span);
@@ -328,7 +345,9 @@ const renderTableEntry = (entry, condensed) => {
       if (rowIndex === 0 && hasContent(contentValue)) {
         td.className = "left-header";
       }
-      const valueNode = renderValueNode(contentValue, { strong: rowIndex === 0 });
+      const valueNode = renderValueNode(contentValue, {
+        strong: rowIndex === 0,
+      });
       if (valueNode) {
         td.appendChild(valueNode);
       }
@@ -410,7 +429,9 @@ const renderSection = (section) => {
 
   const entries = normalizeArray(section.entries);
   if (entries.length > 0) {
-    sectionElement.appendChild(renderTable(entries, Boolean(section.condensed)));
+    sectionElement.appendChild(
+      renderTable(entries, Boolean(section.condensed))
+    );
   }
 
   const subsections = normalizeArray(section.subsections);
@@ -425,14 +446,16 @@ const renderSection = (section) => {
 const createAttribution = () => {
   const footer = createElement("footer", { className: "template-attribution" });
   footer.innerHTML =
-    'CV template provided by <a href="https://sarchlab.org/syifan" target="_blank" rel="noreferrer">Yifan Sun</a>. Template can be found at <a href="https://github.com/syifan/webcv" target="_blank" rel="noreferrer">https://github.com/syifan/webcv</a>.';
+    'CV template provided by <a href="https://sarchlab.org/syifan" target="_blank" rel="noreferrer">Yifan Sun</a>. Template can be found at <a href="https://github.com/syifan/easycv" target="_blank" rel="noreferrer">https://github.com/syifan/easycv</a>.';
   return footer;
 };
 
 let printInstanceCounter = 0;
 const createPrintId = () => {
   printInstanceCounter += 1;
-  return `easycv-${Date.now().toString(36)}-${printInstanceCounter.toString(36)}`;
+  return `easycv-${Date.now().toString(36)}-${printInstanceCounter.toString(
+    36
+  )}`;
 };
 
 const createFloatingActions = (printTargetId) => {
@@ -447,7 +470,10 @@ const createFloatingActions = (printTargetId) => {
   });
   topButton.textContent = "Back to Top";
   topButton.addEventListener("click", () => {
-    if (typeof window !== "undefined" && typeof window.scrollTo === "function") {
+    if (
+      typeof window !== "undefined" &&
+      typeof window.scrollTo === "function"
+    ) {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   });
@@ -472,7 +498,10 @@ const createFloatingActions = (printTargetId) => {
 
     const disableCvOnlyPrint = () => {
       body.classList.remove("easycv-print-cv-only");
-      if (printTargetId && body.getAttribute("data-easycv-print-id") === printTargetId) {
+      if (
+        printTargetId &&
+        body.getAttribute("data-easycv-print-id") === printTargetId
+      ) {
         body.removeAttribute("data-easycv-print-id");
       }
     };
@@ -533,7 +562,10 @@ const createCvDom = (data, { includeActions = true } = {}) => {
     container.appendChild(createFloatingActions(printId));
   }
 
-  return { element: container, headerName: resolveTrimmedValue(headerData?.name) };
+  return {
+    element: container,
+    headerName: resolveTrimmedValue(headerData?.name),
+  };
 };
 
 const resolveContainer = (target) => {
