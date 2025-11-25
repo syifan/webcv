@@ -204,7 +204,7 @@ const renderTagline = (tags) => {
 };
 
 const renderHeader = (header, contactEntries) => {
-  const headerElement = createElement("header", { className: "cv-header" });
+  const headerElement = createElement("header", { className: "easycv-header" });
   const nameWrapper = document.createElement("div");
   const heading = document.createElement("h1");
   heading.textContent = header.name ?? "";
@@ -361,7 +361,7 @@ const renderTableEntry = (entry, condensed) => {
 };
 
 const renderTable = (entries, condensed) => {
-  const table = createElement("table", { className: "cv-table" });
+  const table = createElement("table", { className: "easycv-table" });
   const tbody = document.createElement("tbody");
 
   entries.forEach((entry) => {
@@ -376,7 +376,7 @@ const renderTable = (entries, condensed) => {
 };
 
 const renderSubsection = (subsection) => {
-  const wrapper = createElement("div", { className: "subsection" });
+  const wrapper = createElement("div", { className: "easycv-subsection" });
   if (subsection.id) {
     wrapper.id = subsection.id;
   }
@@ -406,7 +406,7 @@ const renderSection = (section) => {
     return null;
   }
   const sectionElement = createElement("section", {
-    className: "cv-section",
+    className: "easycv-section",
     attrs: {
       id: section.id || undefined,
       "aria-label": section.title || undefined,
@@ -536,8 +536,8 @@ const createFloatingActions = (printTargetId) => {
 };
 
 const createCvDom = (data, { includeActions = true } = {}) => {
-  const container = createElement("div", { className: "cv-container" });
-  const page = createElement("div", { className: "cv-page" });
+  const container = createElement("div", { className: "easycv-container" });
+  const page = createElement("div", { className: "easycv-page" });
   const printId = createPrintId();
   container.dataset.easycvPrintId = printId;
   const headerData = data?.header ?? { name: "" };

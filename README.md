@@ -244,7 +244,7 @@ For instance, the demo uses that file to style tagged names:
 
 ### Advanced Usage
 
-- **Manual DOM control**: `createCvElement(data, { actions: false })` returns the fully rendered `.cv-container` node so you can insert it into a shadow-root, virtual scroller, etc.
+- **Manual DOM control**: `createCvElement(data, { actions: false })` returns the fully rendered `.easycv-container` node so you can insert it into a shadow-root, virtual scroller, etc.
 - **Custom document titles**: `renderCv(container, data, { titleTemplate: "Résumé – %s" })` changes how the `<title>` tag is generated. Pass `setDocumentTitle: false` to opt out entirely.
 - **Bring your own data**: You are not limited to YAML. The renderer only cares about plain JavaScript objects that follow the schema shown above, so you can fetch JSON from an API, hydrate from CMS data, or generate it at build time.
 

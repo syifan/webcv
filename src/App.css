@@ -1,10 +1,10 @@
 /* Reset everything inside the CV shell so host-page CSS does not leak in */
-:where(.cv-container, .cv-container *) {
+:where(.easycv-container, .easycv-container *) {
   all: revert;
   box-sizing: border-box;
 }
 
-.cv-container {
+.easycv-container {
   color: #111;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 0.8rem;
@@ -20,7 +20,7 @@
   gap: 1.2rem;
 }
 
-.cv-page {
+.easycv-page {
   max-width: 53.125rem;
   min-height: 11in;
   margin: 0 auto;
@@ -31,7 +31,7 @@
   width: 100%;
 }
 
-.cv-header {
+.easycv-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -41,7 +41,7 @@
   gap: 1.5rem;
 }
 
-.cv-header h1 {
+.easycv-header h1 {
   font-size: 2.4rem;
   letter-spacing: 0.03rem;
   margin: 0;
@@ -88,7 +88,7 @@
   border-bottom: 1px solid rgba(29, 47, 75, 0.35);
 }
 
-.cv-container main {
+.easycv-container main {
   display: flex;
   flex-direction: column;
   gap: 1.45rem;
@@ -152,7 +152,7 @@
   outline-offset: 0.1875rem;
 }
 
-.cv-section {
+.easycv-section {
   position: relative;
 }
 
@@ -165,7 +165,7 @@
   margin-bottom: 0.9rem;
 }
 
-.cv-section h2 {
+.easycv-section h2 {
   display: inline-block;
   color: #1d2f4b;
   letter-spacing: 0.04em;
@@ -177,7 +177,7 @@
   border: none;
 }
 
-.subsection {
+.easycv-subsection {
   /* padding-top: 0.6rem; */
   margin-top: 0;
   & + & {
@@ -185,7 +185,7 @@
   }
 }
 
-.subsection h3 {
+.easycv-subsection h3 {
   color: #243f68;
   font-size: 1.05rem;
   /* letter-spacing: 0.03em; */
@@ -199,33 +199,33 @@
   color: #333;
 }
 
-.cv-table {
+.easycv-table {
   width: 100%;
   border-collapse: collapse;
   margin: 0;
 }
 
-.cv-table tbody tr:first-child td {
+.easycv-table tbody tr:first-child td {
   padding-top: 0;
 }
 
-.cv-table tbody tr:last-child td {
+.easycv-table tbody tr:last-child td {
   padding-bottom: 0;
 }
 
-.cv-container table,
-.cv-container tbody,
-.cv-container tr,
-.cv-container td {
+.easycv-container table,
+.easycv-container tbody,
+.easycv-container tr,
+.easycv-container td {
   border: none;
   font-size: 1em;
 }
 
-.cv-container tr {
+.easycv-container tr {
   background: none;
 }
 
-.cv-container td {
+.easycv-container td {
   padding: 0.05rem 0.35rem 0.05rem 0;
   vertical-align: top;
   line-height: 1.2;
@@ -315,13 +315,13 @@
   color: #333;
 }
 
-.cv-container ul,
-.cv-container ol {
+.easycv-container ul,
+.easycv-container ol {
   margin: 0.3rem 0 0.6rem 1.2rem;
   padding: 0;
 }
 
-.cv-container li {
+.easycv-container li {
   margin-bottom: 0.25rem;
 }
 
@@ -333,8 +333,8 @@
   font-weight: 700;
 }
 
-.cv-loading,
-.cv-error {
+.easycv-loading,
+.easycv-error {
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -346,7 +346,7 @@
   font-size: 1.1rem;
 }
 
-.cv-error-message {
+.easycv-error-message {
   font-size: 0.9rem;
   color: #a33;
   max-width: 26.25rem;
@@ -354,12 +354,12 @@
 }
 
 @media screen and (max-width: 56.25rem) {
-  .cv-container {
+  .easycv-container {
     margin: 0 auto 2rem;
     padding: 0 1rem 2rem;
   }
 
-  .cv-page {
+  .easycv-page {
     margin: 0;
     min-height: auto;
     padding: 1.5rem;
@@ -367,7 +367,7 @@
     padding-bottom: 11.25rem;
   }
 
-  .cv-header {
+  .easycv-header {
     flex-direction: column;
     text-align: left;
     align-items: flex-start;
@@ -378,7 +378,7 @@
     align-items: flex-start;
   }
 
-  .cv-section::before {
+  .easycv-section::before {
     left: -0.4rem;
   }
 
@@ -392,12 +392,12 @@
 }
 
 @media screen and (max-width: 37.5rem) {
-  .cv-container tr {
+  .easycv-container tr {
     display: block;
     line-height: 1.1em;
   }
 
-  .cv-container td,
+  .easycv-container td,
   .meta-cell,
   .content-cell {
     display: block;
@@ -430,12 +430,12 @@
     margin: 0.7in;
   }
 
-  .cv-container {
+  .easycv-container {
     margin: 0;
     padding: 0;
   }
 
-  .cv-page {
+  .easycv-page {
     box-shadow: none;
     margin: 0;
     width: 100%;
@@ -453,7 +453,7 @@
     padding: 0;
   }
 
-  .cv-container a {
+  .easycv-container a {
     color: inherit;
     text-decoration: none;
   }
@@ -463,15 +463,15 @@
   }
 
   body.easycv-print-cv-only[data-easycv-print-id]
-    .cv-container[data-easycv-print-id],
+    .easycv-container[data-easycv-print-id],
   body.easycv-print-cv-only[data-easycv-print-id]
-    .cv-container[data-easycv-print-id]
+    .easycv-container[data-easycv-print-id]
     * {
     visibility: visible !important;
   }
 
   body.easycv-print-cv-only[data-easycv-print-id]
-    .cv-container[data-easycv-print-id] {
+    .easycv-container[data-easycv-print-id] {
     position: absolute;
     inset: 0;
     margin: 0;
