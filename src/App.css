@@ -174,6 +174,7 @@
   font-weight: 600;
   margin: 0;
   margin-bottom: -0.2rem;
+  border: none;
 }
 
 .subsection {
@@ -230,7 +231,7 @@
   line-height: 1.2;
 }
 
-.hanging-cell {
+.index-cell {
   padding: 0.05rem 0.5rem 0.05rem 0;
   white-space: nowrap;
   vertical-align: top;
@@ -238,25 +239,25 @@
   text-align: right;
 }
 
-.left-cell {
+.content-cell {
   padding-left: 1rem;
   padding-right: 0.5rem;
   min-width: 10rem;
 }
 
-.left-cell span {
+.content-cell span {
   display: inline;
 }
 
-.left-header-span {
+.content-header-span {
   font-size: 1.05em;
 }
 
-.left-entry-span {
+.content-entry-span {
   font-size: 0.95em;
 }
 
-.right-cell {
+.meta-cell {
   padding: 0;
   padding-right: 1rem;
   text-align: left;
@@ -264,7 +265,7 @@
   width: 1%;
 }
 
-.left-header {
+.content-header {
   font-weight: 600;
 }
 
@@ -276,7 +277,7 @@
   padding-top: 0.25rem;
 }
 
-.condensed-row td .left-entry-span {
+.condensed-row td .content-entry-span {
   margin-left: 0.5rem;
 }
 
@@ -330,18 +331,6 @@
 
 .publication-title {
   font-weight: 700;
-}
-
-.self-name {
-  text-decoration: underline;
-  text-decoration-thickness: 0.125rem;
-  text-decoration-color: #1d2f4b;
-}
-
-.wm-advisee {
-  text-decoration-line: underline;
-  text-decoration-style: wavy;
-  text-decoration-color: #1d2f4b;
 }
 
 .cv-loading,
@@ -409,8 +398,8 @@
   }
 
   .cv-container td,
-  .right-cell,
-  .left-cell {
+  .meta-cell,
+  .content-cell {
     display: block;
     padding-right: 0;
     padding-left: 0;
@@ -418,7 +407,7 @@
     text-align: left;
   }
 
-  .left-cell {
+  .content-cell {
     margin-bottom: 0.2rem;
   }
 
@@ -473,12 +462,16 @@
     visibility: hidden !important;
   }
 
-  body.easycv-print-cv-only[data-easycv-print-id] .cv-container[data-easycv-print-id],
-  body.easycv-print-cv-only[data-easycv-print-id] .cv-container[data-easycv-print-id] * {
+  body.easycv-print-cv-only[data-easycv-print-id]
+    .cv-container[data-easycv-print-id],
+  body.easycv-print-cv-only[data-easycv-print-id]
+    .cv-container[data-easycv-print-id]
+    * {
     visibility: visible !important;
   }
 
-  body.easycv-print-cv-only[data-easycv-print-id] .cv-container[data-easycv-print-id] {
+  body.easycv-print-cv-only[data-easycv-print-id]
+    .cv-container[data-easycv-print-id] {
     position: absolute;
     inset: 0;
     margin: 0;

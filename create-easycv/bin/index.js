@@ -4,12 +4,23 @@ const fs = require("fs");
 const os = require("os");
 const path = require("path");
 const { spawnSync } = require("child_process");
+const readline = require("readline");
 
 const DEFAULT_REPO = "https://github.com/syifan/easycv.git";
 const DEFAULT_REF = process.env.EASYCV_TEMPLATE_REF || "main";
+const TEMPLATES = {
+  vanilla: {
+    label: "Vanilla JS",
+    path: path.join("example", "vanilla"),
+  },
+  react: {
+    label: "React",
+    path: path.join("example", "react"),
+  },
+};
 
 function showHelp() {
-  const help = `\nUsage: create-easycv [project-directory] [options]\n\nOptions:\n  -h, --help          Show this help message\n  -f, --force         Allow using a non-empty target directory\n  -r, --repo <repo>   Use a different template repository (owner/name or git url)\n      --ref <ref>     Checkout a specific branch, tag, or commit\n\nExamples:\n  npx create-easycv my-cv\n  npx create-easycv . --force\n  npx create-easycv phd-site --ref v0.1.0\n`;
+  const help = `\nUsage: create-easycv [project-directory] [options]\n\nOptions:\n  -h, --help            Show this help message\n  -f, --force           Allow using a non-empty target directory\n  -r, --repo <repo>     Use a different template repository (owner/name or git url)\n      --ref <ref>       Checkout a specific branch, tag, or commit\n  -t, --template <name> Choose a template (vanilla or react). Prompts if omitted.\n\nExamples:\n  npx create-easycv my-cv\n  npx create-easycv . --force\n  npx create-easycv phd-site --ref v0.1.0\n  npx create-easycv demo --template react\n`;
   console.log(help);
 }
 
@@ -19,6 +30,7 @@ function parseArgs(argv) {
     repo: DEFAULT_REPO,
     ref: undefined,
     force: false,
+    template: undefined,
   };
 
   for (let i = 0; i < argv.length; i += 1) {
@@ -52,6 +64,16 @@ function parseArgs(argv) {
         i += 1;
         break;
       }
+      case "-t":
+      case "--template": {
+        const templateValue = argv[i + 1];
+        if (!templateValue) {
+          throw new Error("Missing value for --template");
+        }
+        options.template = templateValue;
+        i += 1;
+        break;
+      }
       default:
         if (!options.dir) {
           options.dir = arg;
@@ -63,6 +85,51 @@ function parseArgs(argv) {
   }
 
   return options;
+}
+
+function normalizeTemplate(input) {
+  if (!input) return undefined;
+
+  const value = input.toLowerCase();
+  if (["vanilla", "vanilla-js", "vanillajs", "js"].includes(value)) {
+    return "vanilla";
+  }
+  if (value === "react") {
+    return "react";
+  }
+
+  throw new Error('Template must be "vanilla" or "react".');
+}
+
+function selectTemplate(preference) {
+  const normalized = normalizeTemplate(preference);
+  if (normalized) {
+    return Promise.resolve(normalized);
+  }
+
+  if (!process.stdin.isTTY) {
+    return Promise.resolve("vanilla");
+  }
+
+  return new Promise((resolve) => {
+    const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout,
+    });
+
+    console.log("\nChoose a template:");
+    console.log("  1) Vanilla JS");
+    console.log("  2) React");
+    rl.question("Enter 1 or 2 [1]: ", (answer) => {
+      rl.close();
+      const normalizedAnswer = answer.trim();
+      if (normalizedAnswer === "2" || normalizedAnswer.toLowerCase() === "react") {
+        resolve("react");
+      } else {
+        resolve("vanilla");
+      }
+    });
+  });
 }
 
 function normalizeRepo(input) {
@@ -126,21 +193,29 @@ function removeIfExists(targetPath) {
   }
 }
 
-function cleanupClone(tempDir) {
-  const stale = [
-    ".git",
-    "node_modules",
-    "build",
-    "dist",
-    "easycv-0.1.0.tgz",
-    "create-easycv",
-  ];
-  stale.forEach((entry) => removeIfExists(path.join(tempDir, entry)));
+function resolveTemplatePath(tempDir, template) {
+  const templateMeta = TEMPLATES[template];
+  if (!templateMeta) {
+    throw new Error(`Unknown template "${template}".`);
+  }
+  return path.join(tempDir, templateMeta.path);
 }
 
-function copyTemplate(tempDir, targetDir) {
+function copyTemplate(sourceDir, targetDir) {
+  const skipEntries = new Set(["node_modules", "dist", ".DS_Store"]);
+
   fs.mkdirSync(targetDir, { recursive: true });
-  fs.cpSync(tempDir, targetDir, { recursive: true });
+  fs.cpSync(sourceDir, targetDir, {
+    recursive: true,
+    dereference: true,
+    filter: (src) => {
+      const rel = path.relative(sourceDir, src);
+      if (!rel) return true;
+
+      const parts = rel.split(path.sep);
+      return !parts.some((part) => skipEntries.has(part));
+    },
+  });
 }
 
 function updatePackageName(targetDir, dirInput) {
@@ -181,7 +256,7 @@ function printNextSteps(relativeDir, reusedDir) {
   console.log("\nNext steps:\n");
   process.stdout.write(dirInstruction);
   console.log("  npm install");
-  console.log("  npm start\n");
+  console.log("  npm run dev\n");
   console.log("Happy shipping!");
 }
 
@@ -192,7 +267,7 @@ function resolveTargetDir(input) {
   return path.resolve(process.cwd(), input);
 }
 
-function main() {
+async function main() {
   try {
     ensureGitAvailable();
     const options = parseArgs(process.argv.slice(2));
@@ -202,14 +277,21 @@ function main() {
 
     ensureTargetDirectory(targetDir, options.force);
 
+    const template = await selectTemplate(options.template);
     console.log("Downloading EasyCV template...");
     const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "easycv-"));
 
     try {
       cloneTemplate(options.repo, options.ref, tempDir);
-      cleanupClone(tempDir);
-      console.log("Copying project files...");
-      copyTemplate(tempDir, targetDir);
+      const templateDir = resolveTemplatePath(tempDir, template);
+      if (!fs.existsSync(templateDir)) {
+        throw new Error(
+          `Template folder "${templateDir}" not found. Make sure the repo contains example templates.`
+        );
+      }
+
+      console.log(`Copying ${TEMPLATES[template].label} project files...`);
+      copyTemplate(templateDir, targetDir);
       updatePackageName(targetDir, dirInput);
     } finally {
       removeIfExists(tempDir);

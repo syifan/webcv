@@ -3,72 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EasyCV Vanilla Example</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="./easycv.css" />
-    <link rel="stylesheet" href="./shared.css" />
+    <title>EasyCV (Vanilla)</title>
   </head>
   <body>
-    <div class="page">
-      <div class="shell">
-        <header class="hero">
-          <h1>EasyCV plain HTML</h1>
-          <p class="lede">
-            This page uses local EasyCV bundles, a YAML file, and a few lines of
-            JavaScript to render EasyCV without any framework or bundler.
-          </p>
-        </header>
-
-        <main class="layout">
-          <section class="cv-shell" aria-label="CV preview">
-            <div id="cv-root" aria-live="polite" aria-busy="true">
-              <p class="status">Loading <code>cv_data.yml</code>…</p>
-            </div>
-          </section>
-        </main>
-      </div>
-    </div>
-
-    <script type="module">
-      import { renderCv } from "./easycv.mjs";
-      import { load as loadYaml } from "./js-yaml.mjs";
-
-      const mount = document.getElementById("cv-root");
-
-      const setStatus = (message, isError = false) => {
-        mount.innerHTML = `<p class="status${
-          isError ? " error" : ""
-        }">${message}</p>`;
-      };
-
-      const mountCv = async () => {
-        setStatus("Loading cv_data.yml…");
-
-        const response = await fetch("./cv_data.yml", { cache: "no-cache" });
-        if (!response.ok) {
-          throw new Error(
-            `Failed to load cv_data.yml (status ${response.status})`
-          );
-        }
-
-        const yamlText = await response.text();
-        const data = loadYaml(yamlText);
-
-        mount.innerHTML = "";
-        renderCv(mount, data, {
-          titleTemplate: "%s — EasyCV (Vanilla)",
-          actions: true,
-        });
-      };
-
-      mountCv().catch((error) => {
-        console.error("Unable to render CV", error);
-        setStatus(
-          "Unable to load cv_data.yml. Open the console for details.",
-          true
-        );
-      });
-    </script>
+    <div id="cv-root">Loading cv_data.yml...</div>
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>

@@ -295,7 +295,7 @@ const renderTableEntry = (entry, condensed) => {
     tr.className = rowClassNames.filter(Boolean).join(" ");
 
     if (hasIndexColumn) {
-      const td = createElement("td", { className: "hanging-cell" });
+      const td = createElement("td", { className: "index-cell" });
       if (rowIndex === 0) {
         const valueNode = renderValueNode(entry.index);
         if (valueNode) {
@@ -306,7 +306,7 @@ const renderTableEntry = (entry, condensed) => {
     }
 
     if (hasMetaColumn) {
-      const td = createElement("td", { className: "right-cell" });
+      const td = createElement("td", { className: "meta-cell" });
       const metaValue = meta[rowIndex];
       if (hasContent(metaValue)) {
         const valueNode = renderValueNode(metaValue);
@@ -319,7 +319,7 @@ const renderTableEntry = (entry, condensed) => {
 
     if (condensed) {
       if (rowIndex === 0) {
-        const td = createElement("td", { className: "left-cell" });
+        const td = createElement("td", { className: "content-cell" });
         td.setAttribute("rowspan", String(rowCount));
         content.forEach((value, contentIndex) => {
           if (!hasContent(value)) {
@@ -327,7 +327,7 @@ const renderTableEntry = (entry, condensed) => {
           }
           const span = createElement("span", {
             className:
-              contentIndex === 0 ? "left-header-span" : "left-entry-span",
+              contentIndex === 0 ? "content-header-span" : "content-entry-span",
           });
           const valueNode = renderValueNode(value, {
             strong: contentIndex === 0,
@@ -343,7 +343,7 @@ const renderTableEntry = (entry, condensed) => {
       const contentValue = content[rowIndex];
       const td = document.createElement("td");
       if (rowIndex === 0 && hasContent(contentValue)) {
-        td.className = "left-header";
+        td.className = "content-header";
       }
       const valueNode = renderValueNode(contentValue, {
         strong: rowIndex === 0,
