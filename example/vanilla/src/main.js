@@ -22,7 +22,7 @@ async function mountCv() {
   }
 
   setStatus("Loading cv_data.yml...");
-  const cvDataUrl = new URL(`${import.meta.env.BASE_URL}cv_data.yml`, window.location.origin);
+  const cvDataUrl = new URL(`${import.meta.env.BASE_URL}cv_data.yml`, window.location.href);
   const response = await fetch(cvDataUrl.toString(), { cache: "no-cache" });
   if (!response.ok) {
     throw new Error(`Failed to load cv_data.yml (status ${response.status})`);
