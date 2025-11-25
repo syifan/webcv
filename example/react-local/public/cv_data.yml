@@ -1,0 +1,1093 @@
+version: 1
+
+header:
+  name: "Yifan Sun"
+  tags:
+    - "Assistant Professor, Computer Science, William & Mary"
+    - "McGlothlin-Street Hall 117, Williamsburg, VA 23185"
+  contact:
+    phone:
+      value: "(+1) 716-868-2480"
+      icon: "fa-solid fa-phone"
+    email:
+      value: "ysun25@wm.edu"
+      icon: "fa-solid fa-envelope"
+    website:
+      value: "syifan.github.io"
+      icon: "fa-solid fa-globe"
+      href: "https://syifan.github.io"
+
+sections:
+  - id: academicAppointments
+    title: "Academic Appointments"
+    entries:
+      - content:
+          - "Assistant Professor"
+          - "Computer Science, William & Mary"
+          - "Williamsburg, VA"
+        meta:
+          - "8/2020 - Present"
+          
+
+  - id: educationEntries
+    title: "Education"
+    entries:
+      - content:
+          - "Ph.D. in Computer Engineering"
+          - "Northeastern University"
+          - "Boston, MA"
+        meta:
+          - "9/2013 - 8/2020"
+          
+         
+      - content:
+          - "M.S. in Electrical Engineering"
+          - "University at Buffalo"
+          - "Buffalo, NY"
+        meta:
+          - "9/2011 - 6/2013"
+          
+      - content:
+          - "B.Eng. in Electrical Engineering"
+          - "Huazhong University of Science and Technology"
+          - "Wuhan, China"
+        meta:
+          - "9/2007 - 6/2011"
+          
+      - content:
+          - "Bachelor in Business Administration (Minor)"
+          - "Wuhan University"
+          - "Wuhan, China"
+        meta:
+          - "9/2008 - 6/2011"
+
+  - id: industryEntries
+    title: "Industry Experience"
+    condensed: true
+    entries:
+      - content:
+          - "AMD"
+          - "Software Engineer (Co-op)"
+          - "Boxborough, MA"
+          # - "Performance modeling and graphics simulator development for AMD Navi GPUs"
+        meta:
+          - "7/2018 - 12/2018"
+          
+          
+      - content:
+          - "Dell EMC"
+          - "Software Engineer (Co-op)"
+          - "Hopkinton, MA"
+          # - "Cloud-based GPU-as-a-service system design, development, and deployment"
+        meta:
+          - "7/2016 - 12/2016"
+          
+
+  - id: awardsEntries
+    title: "Honors & Awards"
+    condensed: true
+    entries:
+      - content: ["CAREER Award", "NSF"]
+        meta: ["2025"]
+      - content: ["Best Paper Award", "CHI'23"]
+        meta: ["2023"]
+      - content: ["Best Paper Honorable Mention", "CHI'20"]
+        meta: ["2020"]
+      - content:
+          - "Outstanding Graduate Student in Experiential Learning"
+          - "Northeastern University"
+        meta: ["2019"]
+      - content:
+          - "Teaching Award"
+          - "Northeastern University College of Engineering"
+        meta: ["2019"]
+      - content: ["Best Paper Award", "ICPE"]
+        meta: ["2018"]
+      - content: ["Best Paper Candidate", "IISWC"]
+        meta: ["2016"]
+      - content: ["Best Student Paper Award", "WUWNET"]
+        meta: ["2013"]
+
+  
+          
+          
+
+  - id: grantEntries
+    title: "Grants"
+    meta:
+      - "Total external funding at William & Mary: $1,685,843."
+    entries:
+      - content:
+          - "Advancing Tools and Resources for the AMD ROCm Platform"
+          - "AMD, Gift"
+          - "$100,000"
+          - "Sole PI"
+        meta: ["12/2024"]
+      - content:
+          - "CAREER: Towards Next-Generation Human-in-the-Loop and Human-over-the-Loop Computer Architecture Performance Analysis Infrastructure"
+          - "NSF, CAREER"
+          - "$598,555"
+          - "Sole PI"
+        meta: ["4/2025 - 3/2030"]
+      - content:
+          - "Enabling GPU Performance Simulation for Large-Scale Workloads with Lightweight Simulation Methods"
+          - "NSF, SHF Core, Medium"
+          - "$1,133,743 (my share $376,249)"
+          - "PI: Yifan Sun (lead institution lead PI), Adwait Jog, Sreepathi Pai"
+        meta: ["5/2024 - 4/2028"]
+      - content:
+          - "Binary Instrumentation for GPU Programs on AMD Platforms"
+          - "AMD, Gift"
+          - "$50,000"
+          - "Sole PI"
+        meta: ["12/2023"]
+      - content:
+          - "HIP Development on AMD ROCm Platform"
+          - "AMD, Gift"
+          - "$50,000"
+          - "Sole PI"
+        meta: ["12/2023"]
+      - content:
+          - "The Methods of Profiling and Tracing of GPU Programs Running on AMD ROCm Platforms"
+          - "AMD, Gift"
+          - "$44,000"
+          - "Sole PI"
+        meta: ["5/2023"]
+      - content:
+          - "Building Explainable Architecture with Simulation and Visualization Techniques"
+          - "NSF, CRII"
+          - "$175,000"
+          - "Sole PI"
+        meta: ["5/2023 - 4/2026"]
+      - content:
+          - "Enabling Computer Architecture as a Service"
+          - "NSF, CCRI (later renamed as CIRC), Planning-C"
+          - "$100,000 (my share $72,369)"
+          - "PI: Yifan Sun (lead institution lead PI), Katherine E. Isaacs (University of Utah)"
+        meta: ["3/2023 - 2/2026"]
+      - content:
+          - "AMD ROCm and HIP Platform Development"
+          - "AMD, Gift"
+          - "$60,000 + 2x AMD MI100 GPU"
+          - "Sole PI"
+        meta: ["3/2022"]
+      - content:
+          - "Exploring Interpretable Deep Learning from Information Theoretic Perspective: Modeling and Applications"
+          - "Neocortex, Pittsburgh Supercomputing Center"
+          - "Access to Cerebras Wafer-Scale Computing Devices"
+          - "PI: Huajie Shao, Yifan Sun"
+        meta: ["2/2022"]
+      - content:
+          - "Developing Infrastructure for Advancing Research and Teaching in Security and Reliability"
+          - "Coastal Virginia Center for Cyber Innovation (COVA CCI)"
+          - "$79,670 for equipment shared by the department"
+          - "PI: Dmitry Evtyushkin; Co-PI: Evgenia Smirni, Yifan Sun, Adwait Nadkarni"
+        meta: ["12/2021"]
+      - content:
+          - "AMD ROCm and HIP Platform Development"
+          - "AMD, Gift"
+          - "$40,000"
+          - "Sole PI"
+        meta: ["9/2021"]
+      - content:
+          - "General-Purpose Computing with AMD Graphics Processors"
+          - "AMD, Gift"
+          - "$40,000"
+          - "Sole PI"
+        meta: ["4/2021"]
+
+  - id: publication
+    title: "Publications"
+    meta:
+      - html: "<span class=\"self-name\">Yifan Sun</span> -- self-name, <span class=\"wm-advisee\">First Last</span> -- my PhD advisee at William &amp; Mary"
+    subsections:
+      - title: "Conference Papers"
+        entries:
+          - content:
+              - "(2025) Will Your Next Pair Programming Partner Be Human? An Empirical Evaluation of Generative AI as a Collaborative Teammate in a Semester-Long Classroom Setting"
+              - html: "Wenhan Lyu, Yimeng Wang, <span class=\"self-name\">Yifan Sun</span>, Yixuan Zhang"
+              - "12th ACM Conference on Learning at Scale (L@S 2025), 83-94."
+              - html: "DOI: <a href=\"https://doi.org/10.1145/3698205.3729544\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1145/3698205.3729544</a>"
+              - "Acceptance Rate: 18/84 (~21.4%)"
+            index: "33."
+          - content:
+              - "(2025) NetCrafter: Tailoring Network Traffic for Non-Uniform Bandwidth Multi-GPU Systems"
+              - html: "Amel Fatima, Yang Yang, <span class=\"self-name\">Yifan Sun</span>, Rachata Ausavarungnirun, Adwait Jog"
+              - "52nd International Symposium on Computer Architecture (ISCA 2025), 1064–1078."
+              - html: "DOI: <a href=\"https://doi.org/10.1145/3695053.3731040\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1145/3695053.3731040</a>"
+              - "Acceptance Rate: 132/570 (~23.2%)"
+            index: "32."
+          - content:
+              - "(2025) The Sparsity-Aware LazyGPU Architecture"
+              - html: "Changxi Liu, Miao Yu, <span class=\"self-name\">Yifan Sun</span>, Trevor E. Carlson"
+              - "52nd International Symposium on Computer Architecture (ISCA 2025), 1020–1034."
+              - html: "DOI: <a href=\"https://doi.org/10.1145/3695053.3731009\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1145/3695053.3731009</a>"
+              - "Acceptance Rate: 132/570 (~23.2%)"
+            index: "31."
+          - content:
+              - "(2025) TrioSim: A Lightweight Simulator for Large-Scale DNN Workloads on Multi-GPU Systems"
+              - html: "<span class=\"wm-advisee\">Ying Li</span>, Yuhui Bao, Gongyu Wang, Xinxin Mei, Pranav Vaid, Anandaroop Ghosh, Adwait Jog, Darius Bunandar, Ajay Joshi, <span class=\"self-name\">Yifan Sun</span>"
+              - "52nd International Symposium on Computer Architecture (ISCA 2025), 1524–1538."
+              - html: "DOI: <a href=\"https://doi.org/10.1145/3695053.3731082\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1145/3695053.3731082</a>"
+              - "Acceptance Rate: 132/570 (~23.2%)"
+            index: "30."
+          - content:
+              - "(2025) Luthier: A Dynamic Binary Instrumentation Framework Targeting AMD GPUs"
+              - html: "Matin Raayai Ardakani, Andrew Nguyen, Ivan Rosales, <span class=\"wm-advisee\">Daoxuan Xu</span>, Yuwei Sun, <span class=\"self-name\">Yifan Sun</span>, David Kaeli, Norm Rubin"
+              - "2025 IEEE International Symposium on Performance Analysis of Systems and Software (ISPASS 2025), 137–149."
+              - html: "DOI: <a href=\"https://doi.org/10.1109/ISPASS64960.2025.00022\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1109/ISPASS64960.2025.00022</a>"
+              - "Acceptance Rate: 28/99 (~28%)"
+            index: "29."
+          - content:
+              - "(2024) Looking into the Black Box: Monitoring Computer Architecture Simulations in Real-Time with AkitaRTM"
+              - html: "Ali Mosallaei, Katherine Isaacs, <span class=\"self-name\">Yifan Sun</span>"
+              - "57th IEEE/ACM International Symposium on Microarchitecture (MICRO 2024)"
+              - html: "DOI: <a href=\"https://doi.org/10.1109/MICRO61859.2024.00063\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1109/MICRO61859.2024.00063</a>"
+              - "Acceptance Rate: 113/489 (~22.7%)"
+            index: "28."
+          - content:
+              - "(2024) Evaluating the Effectiveness of LLMs in Introductory Computer Science Education: A Semester-Long Field Study"
+              - html: "Wenhan Lyu, Yimeng Wang, Tingting (Rachel) Chung, <span class=\"self-name\">Yifan Sun</span>, Yixuan Zhang"
+              - "Eleventh ACM Conference on Learning at Scale (L@S 2024), 63–74."
+              - html: "DOI: <a href=\"https://doi.org/10.1145/3657604.3662036\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1145/3657604.3662036</a>"
+              - "Acceptance Rate: 22/90 (~24.4%)"
+            index: "27."
+          - content:
+              - "(2024) Impact of Raindrops on Camera-Based Detection in Software-Defined Vehicles"
+              - html: "Yichen Luo, <span class=\"wm-advisee\">Daoxuan Xu</span>, Gang Zhou, <span class=\"self-name\">Yifan Sun</span>, Sidi Lu"
+              - "2024 IEEE International Conference on Mobility, Operations, Services and Technologies (MOST 2024), 193–205."
+              - html: "DOI: <a href=\"https://doi.org/10.1109/MOST60774.2024.00028\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1109/MOST60774.2024.00028</a>"
+            index: "26."
+          - content:
+              - "(2023) Path Forward Beyond Simulators: Fast and Accurate GPU Execution Time Prediction for DNN Workloads"
+              - html: "<span class=\"wm-advisee\">Ying Li</span>, <span class=\"self-name\">Yifan Sun</span>, Adwait Jog"
+              - "56th IEEE/ACM International Symposium on Microarchitecture (MICRO 2023), 380–394."
+              - html: "DOI: <a href=\"https://doi.org/10.1145/3613424.3614277\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1145/3613424.3614277</a>"
+              - "Acceptance Rate: 101/424 (~23.8%)"
+            index: "25."
+          - content:
+              - "(2023) Photon: A Fine-grained Sampled Simulation Methodology for GPU Workloads"
+              - html: "Changxi Liu, <span class=\"self-name\">Yifan Sun</span>, Trevor E. Carlson"
+              - "56th IEEE/ACM International Symposium on Microarchitecture (MICRO 2023), 1227–1241."
+              - html: "DOI: <a href=\"https://doi.org/10.1145/3613424.3623773\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1145/3613424.3623773</a>"
+              - "Acceptance Rate: 101/424 (~23.8%)"
+            index: "24."
+          - content:
+              - "(2023) What Do We Mean When We Talk about Trust in Social Media? A Systematic Review"
+              - html: "Yixuan Zhang, Joseph D Gaggiano, Nutchanon Yongsatianchot, Nurul M Suhaimi, Miso Kim, <span class=\"self-name\">Yifan Sun</span>, Jacqueline Griffin, and Andrea G Parker"
+              - "2023 CHI Conference on Human Factors in Computing Systems (CHI 2023), Article 670, 1–22."
+              - html: "DOI: <a href=\"https://doi.org/10.1145/3544548.3581019\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1145/3544548.3581019</a>"
+              - "Acceptance Rate: 879/3182 (~27.6%)"
+            index: "23."
+          - content:
+              - "(2023) Visualization Design Practices in a Crisis: Behind the Scenes with COVID-19 Dashboard Creators"
+              - html: "Yixuan Zhang, <span class=\"self-name\">Yifan Sun</span>, Joseph D Gaggiano, Neha Kumar, Clio Maria Adris, and Andrea G Parker"
+              - "IEEE Transactions on Visualization and Computer Graphics (IEEE VIS), 29(1), 1037–1047."
+              - html: "DOI: <a href=\"https://doi.org/10.1109/TVCG.2022.3209493\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1109/TVCG.2022.3209493</a>"
+              - "Acceptance Rate: 122/460 (~26.5%)"
+            index: "22."
+          - content:
+              - "(2022) NaviSim: A Highly Accurate GPU Simulator for AMD RDNA GPUs"
+              - html: "Yuhui Bao, <span class=\"self-name\">Yifan Sun</span>, Zlatan Feric, Michael Tian Shen, Micah Weston, José L. Abellán, Trinayan Baruah, John Kim, Ajay Joshi, David Kaeli"
+              - "International Conference on Parallel Architectures and Compilation Techniques (PACT 2022), 333–345."
+              - html: "DOI: <a href=\"https://doi.org/10.1145/3559009.3569666\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1145/3559009.3569666</a>"
+              - "Acceptance Rate: 50/118 (~42.4%)"
+            index: "21."
+          - content:
+              - "(2022) Shifting Trust: Examining How Trust and Distrust Emerge, Transform, and Collapse in COVID-19 Information Seeking"
+              - html: "Yixuan Zhang, Nurul Suhaimi, Nutchanon Yongsatianchot, Joseph D Gaggiano, Miso Kim, Shivani A Patel, <span class=\"self-name\">Yifan Sun</span>, Stacy Marsella, Jacqueline Griffin, Andrea G Parker"
+              - "2022 CHI Conference on Human Factors in Computing Systems (CHI 2022), Article 78, 1–21."
+              - html: "DOI: <a href=\"https://doi.org/10.1145/3491102.3501889\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1145/3491102.3501889</a>"
+              - "Acceptance Rate: 638/2597 (~24.6%)"
+            index: "20."
+          - content:
+              - "(2021) Daisen: A Framework for Visualizing Detailed GPU Execution"
+              - html: "<span class=\"self-name\">Yifan Sun</span>, Yixuan Zhang, Ali Mosallaei, Michael D. Shah, Cody Dunne, David Kaeli"
+              - "Eurographics Conference on Visualization (EuroVis 2021), 40(3), 239–250."
+              - html: "DOI: <a href=\"https://doi.org/10.1111/cgf.14303\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1111/cgf.14303</a>"
+              - "Acceptance Rate: 26.0%"
+            index: "19."
+          - content:
+              - "(2021) Mapping the Landscape of COVID-19 Crisis Visualizations"
+              - html: "Yixuan Zhang, <span class=\"self-name\">Yifan Sun</span>, Lace Padilla, Submit Barua, Enrico Bertini, Andrea G. Parker"
+              - "2021 CHI Conference on Human Factors in Computing Systems (CHI 2021), Article 608, 1–23."
+              - html: "DOI: <a href=\"https://doi.org/10.1145/3411764.3445381\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1145/3411764.3445381</a>"
+              - "Acceptance Rate: ~26.3%"
+            index: "18."
+          - content:
+              - "(2021) GNNMark: A Benchmark Suite to Characterize Graph Neural Network Training on GPUs"
+              - html: "Trinayan Baruah, Kaustubh Shivdikar, Shi Dong, <span class=\"self-name\">Yifan Sun</span>, Saiful A. Mojumder, Kihoon Jung, José L. Abellán, Yash Ukidave, Ajay Joshi, John Kim, David Kaeli"
+              - "2021 IEEE International Symposium on Performance Analysis of Systems and Software (ISPASS 2021), 13–23."
+              - html: "DOI: <a href=\"https://doi.org/10.1109/ISPASS51385.2021.00013\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1109/ISPASS51385.2021.00013</a>"
+              - "Acceptance Rate: ~36.9%"
+            index: "17."
+          - content:
+              - "(2020) Valkyrie: Leveraging Inter-TLB Locality to Enhance GPU Performance"
+              - html: "Trinayan Baruah, <span class=\"self-name\">Yifan Sun</span>, Saiful A. Mojumder, José L. Abellán, Yash Ukidave, Ajay Joshi, Norman Rubin, John Kim, David Kaeli"
+              - "ACM International Conference on Parallel Architectures and Compilation Techniques (PACT 2020), 455–466."
+              - html: "DOI: <a href=\"https://doi.org/10.1145/3410463.3414639\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1145/3410463.3414639</a>"
+              - "Acceptance Rate: ~25.9%"
+            index: "16."
+          - content:
+              - "(2020) Griffin: Hardware-Software Support for Efficient Page Migration in Multi-GPU Systems"
+              - html: "Trinayan Baruah, <span class=\"self-name\">Yifan Sun</span>, Ali Tolga Dinçer, Saiful A. Mojumder, José L. Abellán, Yash Ukidave, Ajay Joshi, Norman Rubin, John Kim, David Kaeli"
+              - "2020 IEEE International Symposium on High Performance Computer Architecture (HPCA 2020), 596–609."
+              - html: "DOI: <a href=\"https://doi.org/10.1109/HPCA47549.2020.00055\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1109/HPCA47549.2020.00055</a>"
+              - "Acceptance Rate: ~19.4%"
+            index: "15."
+          - content:
+              - "(2020) Introducing Gamettes: A Playful Approach for Capturing Decision-Making for Informing Behavioral Models"
+              - html: "Omid Mohaddesi, <span class=\"self-name\">Yifan Sun</span>, Rana Azghandi, Rozhin Doroudi, Sam Snodgrass, Ozlem Ergun, Jacqueline Griffin, David Kaeli, Stacy Marsella, Casper Harteveld"
+              - "2020 CHI Conference on Human Factors in Computing Systems (CHI 2020), 1–13."
+              - html: "DOI: <a href=\"https://doi.org/10.1145/3313831.3376571\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1145/3313831.3376571</a>"
+              - "Acceptance Rate: ~24.3%"
+            index: "14."
+          - content:
+              - "(2019) MGPUSim: Enabling Multi-GPU Performance Modeling and Optimization"
+              - html: "<span class=\"self-name\">Yifan Sun</span>, Trinayan Baruah, Saiful A. Mojumder, Shi Dong, Xiang Gong, Shane Treadway, Yuhui Bao, Spencer Hance, Carter McCardwell, Vincent Zhao, Harrison Barclay, Amir Kavyan Ziabari, Zhongliang Chen, Rafael Ubal, José L. Abellán, John Kim, Ajay Joshi, David Kaeli"
+              - "46th International Symposium on Computer Architecture (ISCA 2019), 197–209."
+              - html: "DOI: <a href=\"https://doi.org/10.1145/3307650.3322230\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1145/3307650.3322230</a>"
+              - "Acceptance Rate: 17.0%"
+            index: "13."
+          - content:
+              - "(2019) Exploiting Adaptive Data Compression to Improve Performance and Energy-efficiency of Compute Workloads in Multi-GPU Systems"
+              - html: "Mohammad Khavari Tavana, <span class=\"self-name\">Yifan Sun</span>, Nicolas Bohm Agostini, David Kaeli"
+              - "2019 IEEE International Parallel and Distributed Processing Symposium (IPDPS 2019), 664–674."
+              - html: "DOI: <a href=\"https://doi.org/10.1109/IPDPS.2019.00075\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1109/IPDPS.2019.00075</a>"
+              - "Acceptance Rate: ~27.7%"
+            index: "12."
+          - content:
+              - "(2018) An Integrated Simulation Framework for Examining Resiliency in Pharmaceutical Supply Chains Considering Human Behaviors"
+              - html: "Rozhin Doroudi, Rana Azghandi, Zlatan Feric, Omid Mohaddesi, <span class=\"self-name\">Yifan Sun</span>, Jacqueline Griffin, Ozlem Ergun, David Kaeli, Pedro Sequeira, Stacy Marsella, Casper Harteveld"
+              - "2018 Winter Simulation Conference (WSC 2018), 88–99."
+              - html: "DOI: <a href=\"https://doi.org/10.1109/WSC.2018.8632387\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1109/WSC.2018.8632387</a>"
+              - "Acceptance Rate: ~70.4%"
+            index: "11."
+          - content:
+              - "(2018) Profiling DNN Workloads on a Volta-based DGX-1 System"
+              - html: "Saiful A Mojumder, Marcia S Louis, <span class=\"self-name\">Yifan Sun</span>, Amir Kavyan Ziabari, José L Abellán, John Kim, David Kaeli, Ajay Joshi"
+              - "2018 IEEE International Symposium on Workload Characterization (IISWC 2018), 122–133."
+              - html: "DOI: <a href=\"https://doi.org/10.1109/IISWC.2018.8573521\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1109/IISWC.2018.8573521</a>"
+              - "Acceptance Rate: ~36.2%"
+            index: "10."
+          - content:
+              - "(2018) Characterizing the Microarchitectural Implications of a Convolutional Neural Network (CNN) on GPUs"
+              - html: "Shi Dong, Gong Xiang, <span class=\"self-name\">Yifan Sun</span>, Trinayan Baruah, David Kaeli"
+              - "2018 ACM/SPEC International Conference on Performance Engineering (ICPE 2018), 96–106."
+              - html: "DOI: <a href=\"https://doi.org/10.1145/3184407.3184423\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1145/3184407.3184423</a>"
+              - "Acceptance Rate: 24.0%"
+            index: "9."
+          - content:
+              - "(2018) Evaluating Performance Tradeoffs on the Radeon Open Compute Platform"
+              - html: "<span class=\"self-name\">Yifan Sun</span>, Saoni Mukherjee, Trinayan Baruah, Shi Dong, Julian Gutierrez, Prannory Mohan, David Kaeli"
+              - "2018 IEEE International Symposium on Performance Analysis of Systems and Software (ISPASS 2018), 209–218."
+              - html: "DOI: <a href=\"https://doi.org/10.1109/ISPASS.2018.00034\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1109/ISPASS.2018.00034</a>"
+              - "Acceptance Rate: ~31.3%"
+            index: "8."
+          - content:
+              - "(2018) Airavat: Improving Energy Efficiency of Heterogeneous Applications"
+              - html: "Trinayan Baruah, <span class=\"self-name\">Yifan Sun</span>, Shi Dong, David Kaeli, Norm Rubin"
+              - "2018 Design, Automation & Test in Europe Conference & Exhibition (DATE 2018), 731–736."
+              - html: "DOI: <a href=\"https://doi.org/10.23919/DATE.2018.8342104\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.23919/DATE.2018.8342104</a>"
+              - "Acceptance Rate: ~24.2%"
+            index: "7."
+          - content:
+              - "(2017) Moka: Model-based Concurrent Kernel Analysis"
+              - html: "Leiming Yu, Xun Gong, <span class=\"self-name\">Yifan Sun</span>, Qianqian Fang, Norm Rubin, David Kaeli"
+              - "2017 IEEE International Symposium on Workload Characterization (IISWC 2017)"
+            index: "6."
+          - content:
+              - "(2016) Comprehensive Performance Analysis of HSA and OpenCL 2.0"
+              - html: "Amir Kavyan Ziabari, <span class=\"self-name\">Yifan Sun</span>, Yenai Ma, Dana Schaa, Jose L. Abellan, John Kim, Ajay Joshi, David Kaeli"
+              - "2016 IEEE International Symposium on Performance Analysis of Systems and Software (ISPASS 2016), 183–193."
+              - html: "DOI: <a href=\"https://doi.org/10.1109/ISPASS.2016.7482093\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1109/ISPASS.2016.7482093</a>"
+              - "Acceptance Rate: ~35.1%"
+            index: "5."
+          - content:
+              - "(2016) Hetero-Mark, A Benchmark Suite for CPU-GPU Collaborative Computing"
+              - html: "<span class=\"self-name\">Yifan Sun</span>, Xiang Gong, Amir Kavyan Ziabari, Leiming Yu, Xiangyu Li, Saoni Mukherjee, Carter McCardwell, Alejandro Vilegas, David Kaeli"
+              - "2016 IEEE International Symposium on Workload Characterization (IISWC 2016), 1–10."
+              - html: "DOI: <a href=\"https://doi.org/10.1109/IISWC.2016.7581262\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1109/IISWC.2016.7581262</a>"
+              - "Acceptance Rate: ~30.4%"
+            index: "4."
+          - content:
+              - "(2016) Modeling Player Decisions in a Supply Chain Game"
+              - html: "<span class=\"self-name\">Yifan Sun</span>, Chisheng Liang, Steven Sutherland, Casper Harteveld, David Kaeli"
+              - "2016 IEEE Conference on Computational Intelligence and Games (CIG 2016), 1–8."
+              - html: "DOI: <a href=\"https://doi.org/10.1109/CIG.2016.7860444\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1109/CIG.2016.7860444</a>"
+              - "Acceptance Rate: unknown"
+            index: "3."
+          - content:
+              - "(2013) A Hybrid MAC Protocol with Channel-Dependent Optimized Scheduling for Clustered Underwater Acoustic Sensor Networks"
+              - html: "Jithin Jagannath, Anu Saji, Hovannes Kulhandjian, <span class=\"self-name\">Yifan Sun</span>, Emrecan Demirors, Tommaso Melodia"
+              - "8th International Conference on Underwater Networks & Systems (WUWNet 2013), Article 3, 1–8."
+              - html: "DOI: <a href=\"https://doi.org/10.1145/2532378.2532382\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1145/2532378.2532382</a>"
+              - "Acceptance Rate: 20.0%"
+            index: "2."
+          - content:
+              - "(2013) The Internet underwater: An IP-compatible protocol stack for commercial undersea modems"
+              - html: "<span class=\"self-name\">Yifan Sun</span>, Tommaso Melodia"
+              - "8th International Conference on Underwater Networks & Systems (WUWNet 2013), Article 37, 1–8."
+              - html: "DOI: <a href=\"https://doi.org/10.1145/2532378.2532407\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1145/2532378.2532407</a>"
+              - "Acceptance Rate: 20.0%"
+            index: "1."
+      - title: "Journal Articles"
+        entries:
+          - content:
+              - "(2025) Understanding the Practices, Perceptions, and (Dis)Trust of Generative AI among Instructors: A Mixed-methods Study in the U.S. Higher Education"
+              - html: "Wenhan Lyu, Shuang Zhang, Tingting (Rachel) Chung, <span class=\"self-name\">Yifan Sun</span>, Yixuan Zhang"
+              - "Computers & Education: Artificial Intelligence (CEAI), 8 (2025), 100383."
+              - html: "DOI: <a href=\"https://doi.org/10.1016/j.caeai.2025.100383\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1016/j.caeai.2025.100383</a>"
+            index: "8."
+          - content:
+              - "(2023) Visual Exploratory Analysis for Designing Large-Scale Network-on-Chip Architectures: A Domain Expert-Led Design Study"
+              - html: "Shaoyu Wang (co-first author), Hang Yan (co-first author), Katherine E. Isaacs, <span class=\"self-name\">Yifan Sun</span>"
+              - "IEEE Transactions on Visualization and Computer Graphics (TVCG), 30(4), 1970–1983."
+              - html: "DOI: <a href=\"https://doi.org/10.1109/TVCG.2023.3337173\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1109/TVCG.2023.3337173</a>"
+            index: "7."
+          - content:
+              - "(2021) Spartan: A Sparsity-Adaptive Framework to Accelerate Deep Neural Network Training on GPUs"
+              - html: "Shi Dong, <span class=\"self-name\">Yifan Sun</span>, Nicolas Bohm Agostini, Elmira Karimi, Daniel Lowell, Jing Zhou, José Cano, José L. Abellán, David Kaeli"
+              - "IEEE Transactions on Parallel and Distributed Systems (TPDS), 32(10), 2448–2463."
+              - html: "DOI: <a href=\"https://doi.org/10.1109/TPDS.2021.3067825\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1109/TPDS.2021.3067825</a>"
+            index: "6."
+          - content:
+              - "(2020) Effects of Trust-based Decision Making in Disrupted Supply Chains"
+              - html: "Rozhin Doroudi, Pedro Sequeira, Stacy Marsella, Ozlem Ergun, Rana Azghandi, David Kaeli, <span class=\"self-name\">Yifan Sun</span>, Jacqueline Griffin"
+              - "PLOS ONE, 15, 2 (February 2020), e0224761."
+              - html: "DOI: <a href=\"https://doi.org/10.1371/journal.pone.0224761\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1371/journal.pone.0224761</a>"
+            index: "5."
+          - content:
+              - "(2019) Priority-based PCIe scheduling for multi-tenant multi-GPU systems"
+              - html: "Chen Li, <span class=\"self-name\">Yifan Sun</span>, Lingling Jin, Lingjie Xu, Zheng Cao, Pengfei Fan, David Kaeli, Sheng Ma, Yang Guo, Jun Yang"
+              - "IEEE Computer Architecture Letters (IEEE CAL), 18(2), 157–160."
+              - html: "DOI: <a href=\"https://doi.org/10.1109/LCA.2019.2955119\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1109/LCA.2019.2955119</a>"
+            index: "4."
+          - content:
+              - "(2016) UMH: A Hardware-based Unified Memory Hierarchy for Systems with Multiple Discrete GPUs"
+              - html: "Amir Kavyan Ziabari, <span class=\"self-name\">Yifan Sun</span>, Yenai Ma, Dana Schaa, Jose L. Abellan, Rafael Ubal, John Kim, Ajay Joshi, David Kaeli"
+              - "ACM Transactions on Architecture and Code Optimization (TACO), 13, 4, Article 35 (December 2016), 25 pages."
+              - html: "DOI: <a href=\"https://doi.org/10.1145/2996190\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1145/2996190</a>"
+            index: "3."
+          - content:
+              - "(2015) Accessing Spectrum Databases using Interference Alignment in Vehicular Cognitive Radio Networks"
+              - html: "Abdulla K Al-Ali, <span class=\"self-name\">Yifan Sun</span>, Marco Di Felice, Jarkko Paavola, Kaushik R Chowdhury"
+              - "IEEE TRANSACTIONs on Vehicular Technology (IEEE TVT), 64(1), 263–272."
+              - html: "DOI: <a href=\"https://doi.org/10.1109/TVT.2014.2318837\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1109/TVT.2014.2318837</a>"
+            index: "2."
+          - content:
+              - "(2014) Enabling emergency communication through a cognitive radio vehicular network"
+              - html: "<span class=\"self-name\">Yifan Sun</span>, Kaushik R Chowdhury"
+              - "IEEE Communications Magazine (IEEE Commun. Mag.), 52, 10 (2014), 68–75."
+              - html: "DOI: <a href=\"https://doi.org/10.1109/MCOM.2014.6917404\" rel=\"noreferrer\" target=\"_blank\">https://doi.org/10.1109/MCOM.2014.6917404</a>"
+            index: "1."
+      - title: "Workshop Papers"
+        entries:
+          - content:
+              - "(2025) DaisenBot: Human-AI Collaboration in GPU Performance Analysis with Multi-Modal AI Assistant"
+              - html: "<span class=\"wm-advisee\">Enze Xu</span>, Jeremy Coonley, <span class=\"wm-advisee\">Daoxuan Xu</span>, <span class=\"self-name\">Yifan Sun</span>"
+              - "The 3rd Workshop on Computer Architecture Modeling and Simulation (CAMS 2025)"
+            index: "7."
+          - content:
+              - "(2025) ACTA: Automatic Configuration of the Tensor Memory Accelerator for High-End GPUs."
+              - html: "Nicolás Meseguer, <span class=\"self-name\">Yifan Sun</span>, Michael Pellauer, José L. Abellán, Manuel E. Acacio"
+              - "17th Workshop on General Purpose Processing Using GPU (GPGPU 2025)"
+            index: "6."
+          - content:
+              - "(2025) Exploring the Wafer-Scale GPUs"
+              - html: "<span class=\"wm-advisee\">Daoxuan Xu</span>, Le Xu, Jie Ren, <span class=\"self-name\">Yifan Sun</span>"
+              - "17th Workshop on General Purpose Processing Using GPUs (GPGPU 2025)"
+            index: "5."
+          - content:
+              - "(2024) A Survey of Artificial Intelligence Approaches to Safety and Mission-Critical Systems"
+              - html: "<span class=\"wm-advisee\">Chris Thames</span>, <span class=\"self-name\">Yifan Sun</span>"
+              - "24th Integrated Communications, Navigation and Surveillance Conference (ICNS 2024)"
+            index: "4."
+          - content:
+              - "(2023) A Regression-based Model for End-to-End Latency Prediction for DNN Execution on GPUs"
+              - html: "<span class=\"wm-advisee\">Ying Li</span>, <span class=\"self-name\">Yifan Sun</span>, Adwait Jog"
+              - "2023 IEEE International Symposium on Performance Analysis of Systems and Software (ISPASS 2023)"
+            index: "3."
+          - content:
+              - "(2023) TraceSim: a Lightweight Simulator for Large-Scale DNN Workloads on Multi-GPU Systems"
+              - html: "<span class=\"wm-advisee\">Ying Li</span>, Yuhui Bao, Pranav Vaid, Gongyu Wang, Adwait Jog, Darius Bunandar, Ajay Joshi, <span class=\"self-name\">Yifan Sun</span>"
+              - "First Workshop on Computer Architecture Modeling and Simulation (CAMS 2023)"
+            index: "2."
+          - content:
+              - "(2022) Understanding Wafer-Scale GPU Performance using an Architectural Simulator"
+              - html: "<span class=\"wm-advisee\">Chris Thames</span>, Hang Yan, <span class=\"self-name\">Yifan Sun</span>"
+              - "14th Workshop on General Purpose Processing Using GPU (GPGPU 2022)"
+            index: "1."
+      - title: "Books"
+        entries:
+          - content:
+              - "(2025) Accelerated Computing with HIP, 2nd Edition"
+              - html: "<span class=\"self-name\">Yifan Sun</span>, <span class=\"wm-advisee\">Sabila Al Jannat</span>, Trinayan Baruah, David Kaeli"
+              - "Self-published (Book), ISBN: 979-8218107444."
+            index: "2."
+          - content:
+              - "(2022) Accelerated Computing with HIP"
+              - html: "<span class=\"self-name\">Yifan Sun</span>, Trinayan Baruah, David Kaeli"
+              - "Self-published (Book), ISBN:979-8218107444."
+            index: "1."
+      - title: "Book Chapters"
+        entries:
+          - content:
+              - "(2016) HSA Simulators"
+              - html: "Shih‑Hao Hung, Thomas B. Jablin, <span class=\"self-name\">Yifan Sun</span>, Rafael Ubal, David Kaeli"
+              - "Heterogeneous System Architecture: Practical Applications for Industry (Book Chapter), Elsevier, 1st edition"
+            index: "1."
+      - title: "Book Translations"
+        entries:
+          - content:
+              - "(2024) ВЫСОКОПРОИЗВОДИТЕЛЬНЫЕ ВЫЧИСЛЕНИЯ С ПОМОЩЬЮ HIP"
+              - "Ифань Сун, Тринайан Баруа, Дэвид Каэли"
+              - "Russian translation of Accelerated Computing with HIP (Supercomputing Education Series, Moscow University Press)"
+            index: "1."
+      - title: "Patents"
+        entries:
+          - content:
+              - "(2021) Intelligent data coordination for accelerated computing in cloud environment"
+              - html: "Junping Zhao, <span class=\"self-name\">Yifan Sun</span>, Layne Peng, Jie Bao, Kun Wang"
+              - "United States Patent Application (US Patent), Patent No. US 10,891,156, Filed Apr 26, 2017, Issued Jan 12, 2021."
+            index: "4."
+          - content:
+              - "(2019) Managing Access to a Resource Pool of Graphics Processing Units under Fine Grain Control"
+              - html: "<span class=\"self-name\">Yifan Sun</span>, Layne Peng, Robert A Lincourt Jr, John Cardente, Junping Zhao"
+              - "United States Patent Application (US Patent), Patent No. US 10,262,390, Filed Apr 14, 2017, Issued Jun 27, 2019."
+            index: "3."
+          - content:
+              - "(2019) Checkpointing for GPU-as-a-Service in Cloud Computing Environment"
+              - html: "Zhao Junping, Layne Peng, Jie Bao, Kun Wang, <span class=\"self-name\">Yifan Sun</span>"
+              - "United States Patent Application (US Patent), Patent No. US 10,275,851, Filed Apr 25, 2017, Issued Apr 30, 2019."
+            index: "2."
+          - content:
+              - "(2018) Queue-based GPU Virtualization and Management System"
+              - html: "<span class=\"self-name\">Yifan Sun</span>, Layne Peng, Jr. Robert A. Lincourt, John Cardente, John S Harwood"
+              - "United States Patent Application (US Patent), Patent No. US 10,109,030, Filed Dec 27, 2016, Issued Oct 23, 2018."
+            index: "1."
+      - title: "Preprints"
+        entries:
+          - content:
+              - "(2020) Halcone: A Hardware-Level Timestamp-based Cache Coherence Scheme for Multi-gpu Systems"
+              - html: "Saiful A Mojumder, <span class=\"self-name\">Yifan Sun</span>, Leila Delshadtehrani, Yenai Ma, Trinayan Baruah, José L Abellán, John Kim, David Kaeli, Ajay Joshi"
+              - "arXiv, 2007.04292."
+            index: "4."
+          - content:
+              - "(2020) MGPU-TSM: A Multi-gpu System with Truly Shared Memory"
+              - html: "Saiful A Mojumder, <span class=\"self-name\">Yifan Sun</span>, Leila Delshadtehrani, Yenai Ma, Trinayan Baruah, José L Abellán, John Kim, David Kaeli, Ajay Joshi"
+              - "arXiv, 2008.02300."
+            index: "3."
+          - content:
+              - "(2019) Summarizing CPU and GPU Design Trends with Product Data"
+              - html: "<span class=\"self-name\">Yifan Sun</span>, Nicolas Bohm Agostini, Dong Shi, David Kaeli"
+              - "arXiv, 1911.11313."
+            index: "2."
+          - content:
+              - "(2018) MGSim+MGMark: A Framework for Multi-GPU System Research"
+              - html: "<span class=\"self-name\">Yifan Sun</span>, Trinayan Baruah, Saiful A Mojumder, Shi Dong, Rafael Ubal, Xiang Gong, Shane Treadway, Yuhui Bao, Vincent Zhao, José L Abellán, John Kim, Ajay Joshi, David Kaeli"
+              - "arXiv, 1811.02884."
+            index: "1."
+      - title: "Dissertations"
+        entries:
+          - content:
+              - "(2020) Enabling Collaborative Heterogeneous Computing"
+              - html: "<span class=\"self-name\">Yifan Sun</span>"
+              - "Ph.D. Dissertation, Northeastern University, 2020."
+            index: "1."
+
+
+  - id: softwareEntries
+    title: "Software & Datasets"
+    entries:
+      - content:
+          - "The CHIP Dataset"
+          - "https://chip-dataset.vercel.app"
+          - "A dataset with 2185 CPUs and 2668 GPUs helping researchers understand semiconductor development trends."
+          - "Featured in FiveThirtyEight and 'Data Is Plural' newsletter."
+          - "874 Downloads"
+        meta: []
+      - content:
+          - "MGPUSim"
+          - "https://github.com/sarchlab/mgpusim"
+          - "A multi-GPU system simulator based on AMD GCN3 GPUs."
+          - "187 Stars on GitHub"
+        meta: []
+      - content:
+          - "Akita"
+          - "https://github.com/sarchlab/akita"
+          - "A high-flexibility, high-performance, parallel computer architecture simulation framework."
+          - "89 Stars on GitHub"
+        meta: []
+      - content:
+          - "Hetero-Mark"
+          - "https://github.com/NUCAR-DEV/Hetero-Mark"
+          - "A benchmark suite for CPU-GPU collaborative computing."
+        meta: []
+      - content:
+          - "Drug Supply Chain Simulator"
+          - "https://gitlab.com/syifan/crisp"
+          - "A human-in-the-loop logistics simulator for the U.S. drug supply chain."
+        meta: []
+      - content:
+          - "VistaLights"
+          - "https://github.com/syifan/VistaLights"
+          - "Strategic game for maritime traffic management and disaster relief."
+        meta: []
+
+  - id: tutorials
+    title: "Tutorials"
+    entries:
+      - content:
+          - "Exploring Multi-GPU Simulation and Visual Profiling with MGPUSim"
+          - "With José L. Abellán, Trinayan Baruah, and David Kaeli. Tutorial at ISCA 2020"
+        meta: ["5/2020"]
+      - content:
+          - "Tutorial on the Akita Simulator Framework and MGPUSim"
+          - "With Trinayan Baruah, Shi Dong, and David Kaeli. Tutorial at HPCA 2020"
+        meta: ["2/2020"]
+      - content:
+          - "Multi2Sim 5.0"
+          - "Tutorial at IISWC 2016"
+        meta: ["9/2016"]
+      
+
+  - id: talkEntries
+    title: "Talks"
+    entries:
+      - content:
+          - "User-Friendly Tools in Akita 3.0"
+          - "The 2nd Workshop on Computer Architecture Modeling and Simulation (CAMS '24)"
+        meta: ["11/2024"]
+      - content:
+          - "On the Human Side of Computer Architecture, Towards Explainable Architecture"
+          - "North Carolina State University"
+        meta: ["10/2024"]
+      - content:
+          - "Towards Building Explainable Computer Architecture"
+          - "Lehigh University"
+        meta: ["2/2023"]
+      - content:
+          - "MGPUSim: A One-Stop Solution for GPU Architecture Simulation"
+          - "The 2020 International Conference on High Performance Computing & Simulation (HPCS '20)"
+        meta: ["1/2021"]
+      - content:
+          - "MGPUSim: A High-Flexibility, High-Performance, Multi-GPU Simulator"
+          - "Alibaba"
+        meta: ["7/2020"]
+      - content:
+          - "Collaborative Heterogeneous Computing"
+          - "William & Mary; University of California, Santa Cruz; University of Pittsburgh; University of Central Florida"
+        meta: ["3/2020"]
+      - content:
+          - "Research in the NUCAR Laboratory at Northeastern University"
+          - "FutureWei. With David Kaeli"
+        meta: ["7/2019"]
+      - content:
+          - "MGSim: a Flexible High-Performance Simulator for Multi-GPU Systems"
+          - "International Workshop on OpenCL (IWOCL)"
+        meta: ["5/2019"]
+      - content:
+          - "AKITA: A Go-Based Computer Architecture Simulator Framework"
+          - "Google"
+        meta: ["5/2019"]
+      - content:
+          - "Enabling Multi-GPU High Performance Computing with Memory System Design"
+          - "Lightning talk at Boston University Red Hat Collaboratory"
+        meta: ["2/2019"]
+      - content:
+          - "Benchmarking the New Unified Memory of CUDA 8"
+          - "With Frank Zhao. GTC 2017, San Jose"
+        meta: ["8/2017"]
+      
+
+  - id: teaching
+    title: "Teaching"
+    subsections:
+      - id: teachingWMEntries
+        title: "Teaching @ William & Mary"
+        entries:
+          - content: ["CSCI432 - Web Programming", "Senior undergraduate-level course"]
+            meta: ["Fall 2025"]
+          - content: ["CSCI654 - Advanced Computer Architecture", "Graduate-level course; new course"]
+            meta: ["Spring 2025"]
+          - content: ["CSCI432 - Web Programming", "Senior undergraduate-level course; new course"]
+            meta: ["Fall 2024"]
+          - content: ["CSCI780 - Data Visualization", "Ph.D.-level course"]
+            meta: ["Spring 2024"]
+          - content:
+              - "CSCI141 - Computational Problem Solving"
+              - "Undergraduate Python programming course (1st-2nd year)"
+              - "Redesigned the lab instruction materials that unifies the sections"
+            meta: ["Fall 2023"]
+          - content: ["CSCI780 - Computer Architecture Modeling and Simulation", "Ph.D.-level course"]
+            meta: ["Spring 2023"]
+          - content: ["CSCI141 - Computational Problem Solving", "Undergraduate Python programming course (1st-2nd year)"]
+            meta: ["Fall 2022"]
+          - content: ["CSCI780 - Data Visualization", "Ph.D.-level course; new course"]
+            meta: ["Spring 2022"]
+          - content: ["CSCI141 - Computational Problem Solving", "Undergraduate Python programming course (1st-2nd year)"]
+            meta: ["Fall 2021"]
+          - content: ["CSCI780 - Topics in Computer Architecture", "Ph.D.-level course; new course"]
+            meta: ["Spring 2021"]
+          - content: ["CSCI141 - Computational Problem Solving", "Undergraduate Python programming course (1st-2nd year)"]
+            meta: ["Fall 2020"]
+
+      - id: teachingNEUEntries
+        title: "Teaching @ Northeastern University"
+        entries:
+          - content:
+              - "EECE2322 - Fundamental Digital Design and Computer Organization"
+              - "Co-instructor with Dr. Pereira da Silva Aloizio"
+              - "Intermediate-level undergraduate course (3rd year)"
+            meta: ["Fall 2019"]
+          - content:
+              - "EECE2560 - Fundamentals of Engineering Algorithms"
+              - "Instructor"
+              - "Intermediate-level undergraduate course (3rd year)"
+              - "Course redesign with student learning score 4.7/5; instructor effectiveness 4.4/5"
+            meta: ["Spring 2018"]
+          - content:
+              - "EECE2160 - Embedded Design Enabling Robotics"
+              - "Instructor"
+              - "Intermediate-level undergraduate course (2nd year)"
+              - "Instructor effectiveness 4.6/5"
+            meta: ["Fall 2017"]
+
+  - id: mentees
+    title: "Student Mentees"
+    subsections:
+      - id: menteePhDEntries
+        title: "Ph.D. Students"
+        condensed: true
+        entries:
+          - content: ["Yijia Shi", "William & Mary"]
+            meta: ["2024 - Present"]
+          - content: ["Enze Xu", "William & Mary"]
+            meta: ["2024 - Present"]
+          - content: ["Daoxuan Xu", "William & Mary", "Co-advised with Jie Ren"]
+            meta: ["2023 - Present"]
+          - content: ["Sabila Al Jannat", "William & Mary"]
+            meta: ["2022 - Present"]
+          - content: ["Ying Li", "William & Mary"]
+            meta: ["2021 - Present"]
+          - content: ["Chris Thames", "William & Mary", "Part-time, with full-time job at NASA"]
+            meta: ["2020 - Present"]
+      - id: menteeMasterEntries
+        title: "Master Researchers"
+        condensed: true
+        entries:
+          - content: ["Daoxuan Xu", "University of Florida"]
+            meta: ["2022 - 2023"]
+          - content: ["Yuhui Bao", "Northeastern University"]
+            meta: ["2018 - 2020"]
+      - id: menteeUndergradEntries
+        title: "Undergraduate Researchers"
+        entries:
+          - content:
+              - "William & Mary"
+              - "Zhuoyan Zheng, Mengyang He, Pablo Ibarz, Aibo Li, Yexi Zheng, Xuzhong Wang, Huizhi Zhao, Jeremy Coonley"
+            meta: []
+          - content: ["University of Michigan, Ann Arbor", "Ali Mosallaei"]
+            meta: []
+          - content:
+              - "Huazhong University of Science & Technology (China)"
+              - "Shaoyu Wang, Hang Yan, Chen Gong"
+            meta: []
+          - content: ["Istanbul Technical University (Turkey)", "Ali Tolga Dinçer"]
+            meta: []
+          - content: ["Northeastern University", "Xin Li (REU Student)"]
+            meta: []
+
+  - id: mediaCoverageEntries
+    title: "Selected Media Coverage"
+    entries:
+      - content:
+          - "William & Mary News"
+          - "William & Mary professor wins NSF CAREER award to study computer chip performance; Sun brings human-centered approach to computer architecture"
+        meta: ["2025"]
+      - content:
+          - "William & Mary News"
+          - "Books published by William & Mary faculty in 2023"
+        meta: ["2023"]
+      - content:
+          - "FiveThirtyEight"
+          - "The Datasets We're Looking At This Week (CHIP dataset highlighted by the 'Data Is Plural' column)"
+        meta: ["2022"]
+      - content:
+          - "William & Mary News"
+          - "Misinformation examination: How trust and distrust shift during COVID-19"
+        meta: ["2022"]
+      - content:
+          - "WYDaily"
+          - "W&M Professor Helps Medical Experts Study COVID-19 With GPUs"
+        meta: ["2021"]
+      - content:
+          - "William & Mary News"
+          - "Sun is Teaching COVID-19 Researchers How to Use High-Performance AMD Computers"
+        meta: ["2021"]
+      - content:
+          - "HiPEAC info 58"
+          - "MGPUSim announced at ISCA 2019"
+        meta: ["2019"]
+      - content:
+          - "News@Northeastern College of Engineering"
+          - "Yifan Sun and NUCAR Research Lab featured in HiPEAC News"
+        meta: ["2019"]
+      - content:
+          - "WIRED"
+          - "Finally, the Underwater We've All Been Waiting For"
+        meta: ["2013"]
+      - content:
+          - "NBC News"
+          - "Deep-sea Internet to Detect Tsunamis, Spy on Smugglers, and Discover Oil"
+        meta: ["2013"]
+
+  - id: service
+    title: "Service to the Profession"
+    subsections:
+      - id: servicePhdCommitteeEntries
+        title: "Ph.D. Dissertation Committee"
+        entries:
+          - content: ["Lishan Yang", "Joined GMU as Assistant Professor"]
+            meta: ["William & Mary", "Defended Spring 2022"]
+          - content: ["Yuhui Bao", "First Job @ AMD Inc."]
+            meta: ["Northeastern University"]
+          - content: ["Matin Raayai"]
+            meta: ["Northeastern University"]
+      - id: serviceMasterCommitteeEntries
+        title: "Master Thesis Committee"
+        entries:
+          - content: ["Jiangtao Kong", "Continued Ph.D. study at William & Mary"]
+            meta: ["William & Mary", "Defended Spring 2023"]
+      - id: serviceOrgEntries
+        title: "Professional Organization Participation"
+        entries:
+          - content:
+              - "Member"
+              - "Technical Community on Microprogramming and Microarchitecture (TCuARCH)"
+            meta: ["2025 - Present"]
+
+      - id: serviceConferenceOrgEntries
+        title: "Conference Organization"
+        entries:
+          - content:
+              - "Local Organization Chair"
+              - "The 17th NASA Formal Methods Symposium (NFM '25)"
+            meta: ["2025"]
+          - content:
+              - "Artifact Evaluation Chair"
+              - "2025 IEEE International Symposium on Workload Characterization (IISWC '25)"
+            meta: ["2025"]
+          - content:
+              - "Workshop/Tutorial Chair"
+              - "IEEE International Symposium on High-Performance Computer Architecture (HPCA '23)"
+            meta: ["2023"]
+
+      - id: serviceWorkshopChairEntries
+        title: "Workshop Chairing"
+        condensed: true
+        entries:
+          - content: ["Chair", "17th Workshop on General Purpose Processing Using GPU (GPGPU '25)"]
+            meta: ["2025"]
+          - content: ["Chair", "2nd Workshop on Computer Architecture Modeling and Simulation (CAMS '24)"]
+            meta: ["2024"]
+          - content: ["Chair", "16th Workshop on General Purpose Processing Using GPU (GPGPU '24)"]
+            meta: ["2024"]
+          - content: ["Chair", "1st Workshop on Computer Architecture Modeling and Simulation (CAMS '23)"]
+            meta: ["2023"]
+          - content: ["Chair", "15th Workshop on General Purpose Processing Using GPU (GPGPU '23)"]
+            meta: ["2023"]
+          - content: ["Chair", "14th Workshop on General Purpose Processing Using GPU (GPGPU '22)"]
+            meta: ["2022"]
+          - content: ["Web Chair", "6th Workshop on General Purpose Processing Using GPU (GPGPU '16)"]
+            meta: ["2016"]
+      - id: serviceFundingPanelEntries
+        title: "Funding Agency Panelist"
+        entries:
+          - content:
+              - "DOE Panelist"
+              - "Office of Advanced Scientific Computing Research (ASCR), Early Career Research Program (ECRP)"
+            meta: ["2025"]
+          - content:
+              - "NSF Panelist"
+              - "NSF Cyberinfrastructure for Sustained Scientific Innovation (CSSI), Element"
+            meta: ["2022"]
+      - id: serviceProgramCommitteeEntries
+        title: "Program Committee"
+        condensed: true
+        entries:
+          - content: ["HPCA '25", "31st IEEE International Symposium on High-Performance Computer Architecture"]
+            meta: ["2025"]
+          - content: ["CF '24", "21st ACM International Conference on Computing Frontiers"]
+            meta: ["2024"]
+          - content: ["HPCA '24", "30th IEEE International Symposium on High-Performance Computer Architecture"]
+            meta: ["2024"]
+          - content: ["AccML '24", "6th Workshop on Accelerated Machine Learning"]
+            meta: ["2024"]
+          - content: ["ICCD '24", "42nd IEEE International Conference on Computer Design"]
+            meta: ["2024"]
+          - content: ["ICCD '23", "41st IEEE International Conference on Computer Design"]
+            meta: ["2023"]
+          - content: ["CF '23", "20th ACM International Conference on Computing Frontiers"]
+            meta: ["2023"]
+          - content: ["AccML '23", "5th Workshop on Accelerated Machine Learning"]
+            meta: ["2023"]
+          - content: ["HPCA '23", "IEEE International Symposium on High-Performance Computer Architecture"]
+            meta: ["2023"]
+          - content: ["SBAC-PAD '22", "International Symposium on Computer Architecture and High Performance Computing"]
+            meta: ["2022"]
+          - content: ["ICCD '22", "40th IEEE International Conference on Computer Design"]
+            meta: ["2022"]
+          - content: ["AccML '22", "4th Workshop on Accelerated Machine Learning"]
+            meta: ["2022"]
+          - content: ["SBAC-PAD '21", "IEEE International Symposium on Computer Architecture and High Performance Computing"]
+            meta: ["2021"]
+          - content: ["ICCD '21", "40th IEEE International Conference on Computer Design"]
+            meta: ["2021"]
+          - content: ["ICCD '20", "39th IEEE International Conference on Computer Design"]
+            meta: ["2020"]
+          - content: ["GPGPU '20", "13th Workshop on General Purpose Processing Using GPU"]
+            meta: ["2020"]
+      - id: serviceJournalReviewerEntries
+        title: "Journal Reviewer"
+        condensed: true
+        entries:
+          - content: ["FGCS", "Future Generation Computer Systems"]
+            meta: ["2025"]
+          - content: ["TACO X3", "ACM Transactions on Architecture and Code Optimization"]
+            meta: ["2025"]
+          - content: ["TCC", "IEEE Transactions on Cloud Computing"]
+            meta: ["2024"]
+          - content: ["JPDC", "Journal of Parallel and Distributed Computing"]
+            meta: ["2023"]
+          - content: ["TACO", "ACM Transactions on Architecture and Code Optimization"]
+            meta: ["2023"]
+          - content: ["TOMPECS", "ACM Transactions on Modeling and Performance Evaluation of Computing Systems"]
+            meta: ["2022"]
+          - content: ["TACO", "ACM Transactions on Architecture and Code Optimization"]
+            meta: ["2022"]
+          - content: ["FGCS", "Future Generation Computer Systems"]
+            meta: ["2022"]
+          - content: ["TPDS", "IEEE Transactions on Parallel and Distributed Systems"]
+            meta: ["2022"]
+          - content: ["IEEE Micro"]
+            meta: ["2022"]
+          - content: ["TPDS", "IEEE Transactions on Parallel and Distributed Systems"]
+            meta: ["2021"]
+          - content: ["TACO", "ACM Transactions on Architecture and Code Optimization"]
+            meta: ["2021"]
+          - content: ["CAL", "IEEE Computer Architecture Letters"]
+            meta: ["2021"]
+          - content: ["JPDC", "Journal of Parallel and Distributed Computing"]
+            meta: ["2020"]
+          - content: ["TPDS", "IEEE Transactions on Parallel and Distributed Systems"]
+            meta: ["2020"]
+          - content: ["TOC", "IEEE Transactions on Computers"]
+            meta: ["2020"]
+          - content: ["TACO", "ACM Transactions on Architecture and Code Optimization"]
+            meta: ["2020"]
+      - id: serviceExternalReviewEntries
+        title: "External Review Committee / Ad-hoc Reviewer"
+        condensed: true
+        entries:
+          - content: ["ISPASS '25", "IEEE International Symposium on Performance Analysis of Systems and Software"]
+            meta: ["2025"]
+          - content: ["ISCA '24", "International Symposium on Computer Architecture (External Review Committee)"]
+            meta: ["2024"]
+          - content: ["PacificVis '24", "IEEE Pacific Visualization Symposium (Ad-hoc Reviewer)"]
+            meta: ["2024"]
+
+  - id: serviceToWm
+    title: "Service to William & Mary"
+    subsections:
+    - id: eventOrganization
+      title: "Event Organization"
+      entries:
+        - content:
+          - "Local Organization Chair"
+          - "The 17th NASA Formal Methods Symposium (NFM '25)"
+          - "Secured $8,000+ in sponsorship funding from William & Mary CS Department, School of Arts & Sciences, and Provost's Office"
+          - "Coordinated full conference logistics including venue, AV infrastructure, parking, and hospitality services for attendees"
+          - "Room Tidewater at Saddler Center, William & Mary, Williamsburg, VA"
+          meta: ["6/11/2025"]
+          
+        - content:
+          - "Chair"
+          - "The 3rd William & Mary Computer Science Symposium for Graduate Studies"
+          - "110+ Participants"
+          - "Developed academic program featuring faculty lightning talks, competitive poster session, and panel discussions across 10 research areas"
+          - "Supported national recruitment effort targeting prospective MS and PhD candidates"
+          meta: ["11/9/2024"]
+    - id: serviceWmAdvisingEntries
+      title: "William & Mary Undergraduate Advising"
+      condensed: true
+      entries:
+        - content: ["Pre-Major Advisor", "7 students"]
+          meta: ["2025 - 2026"]
+        - content: ["Pre-Major Advisor", "7 students"]
+          meta: ["2024 - 2025"]
+        - content: ["CS Major Advisor", "4 students"]
+          meta: ["2023 - 2024"]
+        - content: ["Pre-Major Advisor", "8 students"]
+          meta: ["2023 - 2024"]
+        - content: ["CS Major Advisor", "2 students"]
+          meta: ["2022 - 2023"]
+        - content: ["Pre-Major Advisor", "10 students"]
+          meta: ["2022 - 2023"]
+        - content: ["Pre-Major Advisor", "6 students"]
+          meta: ["2021 - 2022"]
+    - id: serviceWmUniversityEntries
+      title: "William & Mary University-Wide Committee"
+      condensed: true
+      entries:
+        - content:
+            - "Member"
+            - "Generative AI University Teaching & Learning Project (UTLP)"
+          meta: ["2023 - 2024"]
+        - content:
+            - "Member"
+            - "S. Laurie Sanderson Awards for Excellence in Undergraduate Mentoring Committee"
+          meta: ["2022 - 2023"]
+        - content: ["Member", "Research Computing Advisory Committee"]
+          meta: ["2022 - 2023"]
+        - content:
+            - "Member"
+            - "S. Laurie Sanderson Awards for Excellence in Undergraduate Mentoring Committee"
+          meta: ["2021 - 2022"]
+    - id: serviceWmDepartmentEntries
+      title: "William & Mary Department-Level Committee"
+      condensed: true
+      entries:
+        - content: ["Member", "Computer Science Undergraduate Curriculum"]
+          meta: ["2025 - 2026"]
+        - content: ["Member", "Computer Science Web Presence"]
+          meta: ["2025 - 2026"]
+        - content: ["Chair", "Computer Science Graduate Recruiting"]
+          meta: ["2024 - 2025"]
+        - content: ["Member", "Computer Science Web Presence"]
+          meta: ["2024 - 2025"]
+        - content: ["Member", "Computer Science Colloquium"]
+          meta: ["2024 - 2025"]
+        - content: ["Member", "Computer Science Graduate Recruiting"]
+          meta: ["2023 - 2024"]
+        - content: ["Member", "Computer Science Web Presence"]
+          meta: ["2023 - 2024"]
+        - content: ["Member", "Computer Science Colloquium"]
+          meta: ["2023 - 2024"]
+        - content: ["Chair", "Computer Science Web Presence"]
+          meta: ["2022 - 2023"]
+        - content: ["Member", "Data Science Faculty Recruitment"]
+          meta: ["2022 - 2023"]
+        - content: ["Member", "Computer Science Colloquium"]
+          meta: ["2022 - 2023"]
+        - content: ["Chair", "Computer Science Graduate Admission"]
+          meta: ["2022 - 2023"]
+        - content: ["Member", "Computer Science Graduate Recruiting"]
+          meta: ["2022 - 2023"]
+        - content: ["Member", "Computer Science System"]
+          meta: ["2022 - 2023"]
+        - content: ["Member", "Computer Science Web Presence"]
+          meta: ["2021 - 2022"]
+        - content: ["Member", "Computer Science Curriculum"]
+          meta: ["2021 - 2022"]
