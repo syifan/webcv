@@ -204,7 +204,7 @@ const renderTagline = (tags) => {
 };
 
 const renderHeader = (header, contactEntries) => {
-  const headerElement = createElement("header", { className: "cv-header" });
+  const headerElement = createElement("header", { className: "easycv-header" });
   const nameWrapper = document.createElement("div");
   const heading = document.createElement("h1");
   heading.textContent = header.name ?? "";
@@ -295,7 +295,7 @@ const renderTableEntry = (entry, condensed) => {
     tr.className = rowClassNames.filter(Boolean).join(" ");
 
     if (hasIndexColumn) {
-      const td = createElement("td", { className: "hanging-cell" });
+      const td = createElement("td", { className: "index-cell" });
       if (rowIndex === 0) {
         const valueNode = renderValueNode(entry.index);
         if (valueNode) {
@@ -306,7 +306,7 @@ const renderTableEntry = (entry, condensed) => {
     }
 
     if (hasMetaColumn) {
-      const td = createElement("td", { className: "right-cell" });
+      const td = createElement("td", { className: "meta-cell" });
       const metaValue = meta[rowIndex];
       if (hasContent(metaValue)) {
         const valueNode = renderValueNode(metaValue);
@@ -319,7 +319,7 @@ const renderTableEntry = (entry, condensed) => {
 
     if (condensed) {
       if (rowIndex === 0) {
-        const td = createElement("td", { className: "left-cell" });
+        const td = createElement("td", { className: "content-cell" });
         td.setAttribute("rowspan", String(rowCount));
         content.forEach((value, contentIndex) => {
           if (!hasContent(value)) {
@@ -327,7 +327,7 @@ const renderTableEntry = (entry, condensed) => {
           }
           const span = createElement("span", {
             className:
-              contentIndex === 0 ? "left-header-span" : "left-entry-span",
+              contentIndex === 0 ? "content-header-span" : "content-entry-span",
           });
           const valueNode = renderValueNode(value, {
             strong: contentIndex === 0,
@@ -343,7 +343,7 @@ const renderTableEntry = (entry, condensed) => {
       const contentValue = content[rowIndex];
       const td = document.createElement("td");
       if (rowIndex === 0 && hasContent(contentValue)) {
-        td.className = "left-header";
+        td.className = "content-header";
       }
       const valueNode = renderValueNode(contentValue, {
         strong: rowIndex === 0,
@@ -361,7 +361,7 @@ const renderTableEntry = (entry, condensed) => {
 };
 
 const renderTable = (entries, condensed) => {
-  const table = createElement("table", { className: "cv-table" });
+  const table = createElement("table", { className: "easycv-table" });
   const tbody = document.createElement("tbody");
 
   entries.forEach((entry) => {
@@ -376,7 +376,7 @@ const renderTable = (entries, condensed) => {
 };
 
 const renderSubsection = (subsection) => {
-  const wrapper = createElement("div", { className: "subsection" });
+  const wrapper = createElement("div", { className: "easycv-subsection" });
   if (subsection.id) {
     wrapper.id = subsection.id;
   }
@@ -406,7 +406,7 @@ const renderSection = (section) => {
     return null;
   }
   const sectionElement = createElement("section", {
-    className: "cv-section",
+    className: "easycv-section",
     attrs: {
       id: section.id || undefined,
       "aria-label": section.title || undefined,
@@ -536,8 +536,8 @@ const createFloatingActions = (printTargetId) => {
 };
 
 const createCvDom = (data, { includeActions = true } = {}) => {
-  const container = createElement("div", { className: "cv-container" });
-  const page = createElement("div", { className: "cv-page" });
+  const container = createElement("div", { className: "easycv-container" });
+  const page = createElement("div", { className: "easycv-page" });
   const printId = createPrintId();
   container.dataset.easycvPrintId = printId;
   const headerData = data?.header ?? { name: "" };

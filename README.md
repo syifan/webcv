@@ -36,10 +36,11 @@ If you just want a fresh copy of EasyCV, the fastest path is the scaffolder:
 npx create-easycv my-cv
 cd my-cv
 npm install
+npm run dev
 # Edit public/cv_data.yml to customize your CV
 ```
 
-The generator pulls the latest `main` branch from this repository, strips build artifacts, and updates `package.json` with your project name. Because it shells out to `git`, make sure Git ≥2.0 is installed locally. Use `npx create-easycv --help` to see extra flags such as `--ref <tag>` (pin to a release), `--repo <owner/name>` (use your own fork), or `--force` (allow writing into a non-empty directory).
+When the tool runs, pick either the Vanilla JS or React template. It pulls the latest `main` branch from this repository, copies the matching `example/` project, and updates `package.json` with your project name. Because it shells out to `git`, make sure Git ≥2.0 is installed locally. Use `npx create-easycv --help` to see extra flags such as `--ref <tag>` (pin to a release), `--repo <owner/name>` (use your own fork), or `--force` (allow writing into a non-empty directory).
 
 ### Method 2: Drop EasyCV Into Any Site
 
@@ -218,25 +219,32 @@ sections:
 
 ### Styling
 
-Customize the visual appearance by editing `src/App.css`:
+You can layer custom styles on top of the built-in CSS by importing your own file after `easycv/easycv.css`. Both example projects load `src/customize_easycv.css` this way:
 
-- **Colors**: Modify the color scheme (currently dark blue `#1d2f4b`)
-- **Typography**: Adjust font families, sizes, and weights
-- **Spacing**: Change margins, padding, and layout dimensions
-- **Print Styles**: Customize the PDF output in the `@media print` section
+```js
+import "easycv/easycv.css";
+import "./customize_easycv.css"; // override or add styles here
+```
 
-Example color customization:
+For instance, the demo uses that file to style tagged names:
 
 ```css
-/* Change primary color from blue to green */
-.header-title {
-  color: #2d5016; /* Was #1d2f4b */
+.self-name {
+  text-decoration: underline;
+  text-decoration-thickness: 0.125rem;
+  text-decoration-color: #1d2f4b;
+}
+
+.wm-advisee {
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #1d2f4b;
 }
 ```
 
 ### Advanced Usage
 
-- **Manual DOM control**: `createCvElement(data, { actions: false })` returns the fully rendered `.cv-container` node so you can insert it into a shadow-root, virtual scroller, etc.
+- **Manual DOM control**: `createCvElement(data, { actions: false })` returns the fully rendered `.easycv-container` node so you can insert it into a shadow-root, virtual scroller, etc.
 - **Custom document titles**: `renderCv(container, data, { titleTemplate: "Résumé – %s" })` changes how the `<title>` tag is generated. Pass `setDocumentTitle: false` to opt out entirely.
 - **Bring your own data**: You are not limited to YAML. The renderer only cares about plain JavaScript objects that follow the schema shown above, so you can fetch JSON from an API, hydrate from CMS data, or generate it at build time.
 
