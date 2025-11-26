@@ -40,7 +40,7 @@ jobs:
         run: npm run build
 
       - name: Install vanilla example deps
-        run: npm ci
+        run: npm install --no-package-lock
         working-directory: example/vanilla
 
       - name: Build vanilla example
