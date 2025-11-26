@@ -7,7 +7,7 @@ const { spawnSync } = require("child_process");
 const readline = require("readline");
 
 const DEFAULT_REPO = "https://github.com/syifan/easycv.git";
-const DEFAULT_REF = process.env.EASYCV_TEMPLATE_REF || "main";
+const DEFAULT_REF = process.env.EASYCV_TEMPLATE_REF || "v0.3.2";
 const TEMPLATES = {
   vanilla: {
     label: "Vanilla JS",
@@ -218,6 +218,19 @@ function copyTemplate(sourceDir, targetDir) {
   });
 }
 
+function allowPackageLock(targetDir) {
+  const gitignorePath = path.join(targetDir, ".gitignore");
+  if (!fs.existsSync(gitignorePath)) return;
+
+  const content = fs.readFileSync(gitignorePath, "utf8");
+  const lines = content.split(/\r?\n/);
+  const filtered = lines.filter((line) => line.trim() !== "package-lock.json");
+
+  if (filtered.length !== lines.length) {
+    fs.writeFileSync(gitignorePath, `${filtered.join("\n")}\n`);
+  }
+}
+
 function updatePackageName(targetDir, dirInput) {
   const pkgPath = path.join(targetDir, "package.json");
   if (!fs.existsSync(pkgPath)) {
@@ -292,6 +305,7 @@ async function main() {
 
       console.log(`Copying ${TEMPLATES[template].label} project files...`);
       copyTemplate(templateDir, targetDir);
+      allowPackageLock(targetDir);
       updatePackageName(targetDir, dirInput);
     } finally {
       removeIfExists(tempDir);
