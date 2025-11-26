@@ -126,7 +126,10 @@ function selectTemplate(preference) {
     rl.question("Enter 1 or 2 [1]: ", (answer) => {
       rl.close();
       const normalizedAnswer = answer.trim();
-      if (normalizedAnswer === "2" || normalizedAnswer.toLowerCase() === "react") {
+      if (
+        normalizedAnswer === "2" ||
+        normalizedAnswer.toLowerCase() === "react"
+      ) {
         resolve("react");
       } else {
         resolve("vanilla");
@@ -273,7 +276,11 @@ function normalizeEasycvDependency(targetDir) {
   let changed = false;
   for (const section of sections) {
     const deps = pkg[section];
-    if (deps && typeof deps.easycv === "string" && deps.easycv.startsWith("file:")) {
+    if (
+      deps &&
+      typeof deps.easycv === "string" &&
+      deps.easycv.startsWith("file:")
+    ) {
       deps.easycv = EASYCV_VERSION_RANGE;
       changed = true;
     }
