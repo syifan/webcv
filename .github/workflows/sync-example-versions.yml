@@ -1,0 +1,169 @@
+name: Sync easycv dependents
+
+on:
+  workflow_run:
+    workflows:
+      - Publish to npm
+    types:
+      - completed
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  sync:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    environment: npm_publish
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.workflow_run.head_branch || github.event.repository.default_branch }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Determine latest published easycv version
+        run: echo "LATEST_VERSION=$(npm view easycv version)" >> $GITHUB_ENV
+
+      - name: Update examples to latest easycv
+        env:
+          LATEST_VERSION: ${{ env.LATEST_VERSION }}
+        run: |
+          set -euo pipefail
+          echo "Updating examples to easycv ^${LATEST_VERSION}"
+
+          for dir in example/vanilla example/react; do
+            export DIR="$dir"
+            node - <<'NODE'
+              const fs = require('fs');
+              const path = process.env.DIR + '/package.json';
+              const desired = '^' + process.env.LATEST_VERSION;
+              const pkg = JSON.parse(fs.readFileSync(path, 'utf8'));
+              if (!pkg.dependencies || !pkg.dependencies.easycv) {
+                console.log(`Skip ${path} (no easycv dependency)`);
+                return;
+              }
+              if (pkg.dependencies.easycv === desired) {
+                console.log(`No change needed in ${path}`);
+                return;
+              }
+              pkg.dependencies.easycv = desired;
+              fs.writeFileSync(path, JSON.stringify(pkg, null, 2) + '\n');
+              console.log(`Updated ${path} to ${desired}`);
+            NODE
+
+            (cd "$dir" && npm install --package-lock-only --ignore-scripts --no-progress --prefer-offline --audit=false --fund=false)
+          done
+
+      - name: Update create-easycv default ref to latest easycv tag
+        env:
+          LATEST_VERSION: ${{ env.LATEST_VERSION }}
+        run: |
+          set -euo pipefail
+          echo "CREATE_EASYCV_UPDATED=no" >> $GITHUB_ENV
+
+          NEW_REF="v${LATEST_VERSION}"
+          FILE="create-easycv/bin/index.js"
+          export FILE NEW_REF
+
+          node - <<'NODE'
+            const fs = require('fs');
+            const path = process.env.FILE;
+            const desired = process.env.NEW_REF;
+
+            const src = fs.readFileSync(path, 'utf8');
+            const pattern = /const DEFAULT_REF = process\.env\.EASYCV_TEMPLATE_REF \|\| "([^"]+)";/;
+            const match = src.match(pattern);
+            if (!match) {
+              throw new Error('DEFAULT_REF pattern not found in create-easycv/bin/index.js');
+            }
+
+            const current = match[1];
+            if (current === desired) {
+              console.log(`DEFAULT_REF already set to ${desired}`);
+              process.exit(0);
+            }
+
+            const updated = src.replace(pattern, `const DEFAULT_REF = process.env.EASYCV_TEMPLATE_REF || "${desired}";`);
+            fs.writeFileSync(path, updated);
+            console.log(`DEFAULT_REF updated from ${current} to ${desired}`);
+          NODE
+
+          if ! git diff --quiet -- "$FILE"; then
+            echo "CREATE_EASYCV_UPDATED=yes" >> $GITHUB_ENV
+          fi
+
+      - name: Bump create-easycv patch version
+        if: env.CREATE_EASYCV_UPDATED == 'yes'
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+            const fs = require('fs');
+            const path = 'create-easycv/package.json';
+            const lockPath = 'create-easycv/package-lock.json';
+
+            const pkg = JSON.parse(fs.readFileSync(path, 'utf8'));
+            const parts = pkg.version.split('.').map((n) => parseInt(n, 10));
+            if (parts.length !== 3 || parts.some(Number.isNaN)) {
+              throw new Error(`Unexpected create-easycv version: ${pkg.version}`);
+            }
+
+            const next = [parts[0], parts[1], parts[2] + 1].join('.');
+            pkg.version = next;
+            fs.writeFileSync(path, JSON.stringify(pkg, null, 2) + '\n');
+
+            if (fs.existsSync(lockPath)) {
+              const lock = JSON.parse(fs.readFileSync(lockPath, 'utf8'));
+              if (lock.version) lock.version = next;
+              if (lock.packages && lock.packages['']) {
+                lock.packages[''].version = next;
+              }
+              fs.writeFileSync(lockPath, JSON.stringify(lock, null, 2) + '\n');
+            }
+
+            console.log(`create-easycv version bumped to ${next}`);
+            console.log(`CREATE_EASYCV_VERSION=${next}`);
+            fs.appendFileSync(process.env.GITHUB_ENV, `CREATE_EASYCV_VERSION=${next}\n`);
+          NODE
+
+      - name: Commit and push changes
+        env:
+          LATEST_VERSION: ${{ env.LATEST_VERSION }}
+          CREATE_EASYCV_UPDATED: ${{ env.CREATE_EASYCV_UPDATED }}
+          CREATE_EASYCV_VERSION: ${{ env.CREATE_EASYCV_VERSION }}
+        run: |
+          set -euo pipefail
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add \
+            example/vanilla/package.json example/vanilla/package-lock.json \
+            example/react/package.json example/react/package-lock.json \
+            create-easycv/package.json create-easycv/package-lock.json create-easycv/bin/index.js
+
+          MSG="chore: sync easycv ${LATEST_VERSION} deps"
+          if [ "${CREATE_EASYCV_UPDATED:-no}" = "yes" ]; then
+            MSG="$MSG and bump create-easycv to ${CREATE_EASYCV_VERSION}"
+          fi
+
+          git commit -m "$MSG"
+          git push origin HEAD:main
+
+      - name: Publish create-easycv to npm
+        if: env.CREATE_EASYCV_UPDATED == 'yes'
+        working-directory: create-easycv
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --provenance --access public
