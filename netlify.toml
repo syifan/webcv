@@ -1,7 +1,7 @@
 [build]
-  base = "example/react-local"
+  base = "example/react"
   # Build the library first (two levels up), then build the React example.
-  command = "cd ../.. && npm ci && npm run build && cd example/react-local && npm install && npm run build"
+  command = "cd ../.. && npm ci && npm run build && cd example/react && npm install && npm run build"
   publish = "dist"
 
 [build.environment]

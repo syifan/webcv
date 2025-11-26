@@ -83,7 +83,7 @@ Already have a site (React, Vue, Astro, vanilla HTML, etc.)? Import the renderer
 
 The CSS and Font Awesome icons ship with the package, so importing `renderCv` automatically applies the correct styles.
 
-Want to see this running without any bundler? Check `example/vanilla/` for a plain HTML + YAML demo that pulls EasyCV from the installed package and runs with `npm run dev`.
+Want to see this running without any bundler? Check `example/vanilla/` for a plain HTML + YAML demo. In this repo it pulls EasyCV from the local workspace, so run `npm run build` at the root first, then `npm install` and `npm run dev` inside the example.
 
 ### Method 3: Fork this repository
 
@@ -97,6 +97,8 @@ npm run build
 The actual website is in the `example/react/` folder. You can run it locally with:
 
 ```bash
+npm install
+npm run build               # builds the local easycv package used by the example
 cd example/react
 npm install
 npm run dev
