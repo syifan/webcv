@@ -7,7 +7,10 @@ const { spawnSync } = require("child_process");
 const readline = require("readline");
 
 const DEFAULT_REPO = "https://github.com/syifan/easycv.git";
-const DEFAULT_REF = process.env.EASYCV_TEMPLATE_REF || "v0.3.2";
+// Keep in sync with the root easycv package version
+const EASYCV_VERSION = "0.3.2";
+const EASYCV_VERSION_RANGE = `^${EASYCV_VERSION}`;
+const DEFAULT_REF = process.env.EASYCV_TEMPLATE_REF || `v${EASYCV_VERSION}`;
 const TEMPLATES = {
   vanilla: {
     label: "Vanilla JS",
@@ -123,7 +126,10 @@ function selectTemplate(preference) {
     rl.question("Enter 1 or 2 [1]: ", (answer) => {
       rl.close();
       const normalizedAnswer = answer.trim();
-      if (normalizedAnswer === "2" || normalizedAnswer.toLowerCase() === "react") {
+      if (
+        normalizedAnswer === "2" ||
+        normalizedAnswer.toLowerCase() === "react"
+      ) {
         resolve("react");
       } else {
         resolve("vanilla");
@@ -246,6 +252,46 @@ function updatePackageName(targetDir, dirInput) {
   fs.writeFileSync(pkgPath, `${JSON.stringify(pkg, null, 2)}\n`);
 }
 
+function dropPackageLock(targetDir) {
+  const lockPath = path.join(targetDir, "package-lock.json");
+  if (fs.existsSync(lockPath)) {
+    fs.rmSync(lockPath, { force: true });
+  }
+}
+
+function normalizeEasycvDependency(targetDir) {
+  const pkgPath = path.join(targetDir, "package.json");
+  if (!fs.existsSync(pkgPath)) {
+    return;
+  }
+
+  const pkg = JSON.parse(fs.readFileSync(pkgPath, "utf8"));
+  const sections = [
+    "dependencies",
+    "devDependencies",
+    "optionalDependencies",
+    "peerDependencies",
+  ];
+
+  let changed = false;
+  for (const section of sections) {
+    const deps = pkg[section];
+    if (
+      deps &&
+      typeof deps.easycv === "string" &&
+      deps.easycv.startsWith("file:")
+    ) {
+      deps.easycv = EASYCV_VERSION_RANGE;
+      changed = true;
+    }
+  }
+
+  if (changed) {
+    fs.writeFileSync(pkgPath, `${JSON.stringify(pkg, null, 2)}\n`);
+    dropPackageLock(targetDir);
+  }
+}
+
 function makePackageName(dirBase, originalInput) {
   if (originalInput === "." || originalInput === "./") {
     return sanitizeName(dirBase);
@@ -307,6 +353,7 @@ async function main() {
       copyTemplate(templateDir, targetDir);
       allowPackageLock(targetDir);
       updatePackageName(targetDir, dirInput);
+      normalizeEasycvDependency(targetDir);
     } finally {
       removeIfExists(tempDir);
     }
