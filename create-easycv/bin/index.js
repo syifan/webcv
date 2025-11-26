@@ -7,7 +7,7 @@ const { spawnSync } = require("child_process");
 const readline = require("readline");
 
 const DEFAULT_REPO = "https://github.com/syifan/easycv.git";
-const DEFAULT_REF = process.env.EASYCV_TEMPLATE_REF || "main";
+const DEFAULT_REF = process.env.EASYCV_TEMPLATE_REF || "v0.3.1";
 const TEMPLATES = {
   vanilla: {
     label: "Vanilla JS",

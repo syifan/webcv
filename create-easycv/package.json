@@ -1,6 +1,6 @@
 {
   "name": "create-easycv",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Scaffold an EasyCV resume site in seconds",
   "bin": {
     "create-easycv": "./bin/index.js"
