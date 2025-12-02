@@ -18,7 +18,7 @@ EasyCV is a framework-free CV/resume library that allows users to maintain a sin
 - **Language:** Vanilla JavaScript (ES6+)
 - **Styling:** CSS (included in package)
 - **Icons:** Font Awesome (bundled in CSS)
-- **YAML Parsing:** js-yaml (required by consuming applications, not used by library itself)
+- **YAML Parsing:** js-yaml (listed as dependency but not imported by library; consuming applications import it directly)
 - **Node Version:** >=18.0.0
 
 ## Repository Structure
