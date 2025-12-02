@@ -484,7 +484,62 @@ const createPrintId = () => {
   )}`;
 };
 
-const createFloatingActions = (printTargetId) => {
+const THEME_KEY = "easycv-theme";
+
+const createThemeToggleButton = (container) => {
+  const button = createElement("button", {
+    className: "theme-toggle-button",
+    attrs: { 
+      type: "button",
+      "aria-label": "Toggle theme",
+      title: "Toggle theme"
+    },
+  });
+
+  const getStoredTheme = () => {
+    if (typeof localStorage === "undefined") return "system";
+    return localStorage.getItem(THEME_KEY) || "system";
+  };
+
+  const setStoredTheme = (theme) => {
+    if (typeof localStorage !== "undefined") {
+      localStorage.setItem(THEME_KEY, theme);
+    }
+  };
+
+  const applyTheme = (theme) => {
+    if (theme === "system") {
+      container.removeAttribute("data-theme");
+    } else {
+      container.setAttribute("data-theme", theme);
+    }
+  };
+
+  const themes = ["light", "dark", "system"];
+  const themeIcons = {
+    light: "☀️",
+    dark: "🌙",
+    system: "🖥️"
+  };
+
+  let currentTheme = getStoredTheme();
+  button.textContent = themeIcons[currentTheme];
+  applyTheme(currentTheme);
+
+  button.addEventListener("click", () => {
+    const currentIndex = themes.indexOf(currentTheme);
+    const nextIndex = (currentIndex + 1) % themes.length;
+    currentTheme = themes[nextIndex];
+    
+    button.textContent = themeIcons[currentTheme];
+    setStoredTheme(currentTheme);
+    applyTheme(currentTheme);
+  });
+
+  return button;
+};
+
+const createFloatingActions = (printTargetId, container, enableDarkMode) => {
   const actions = createElement("div", {
     className: "floating-actions",
     attrs: { "aria-label": "page controls" },
@@ -558,6 +613,12 @@ const createFloatingActions = (printTargetId) => {
 
   actions.appendChild(topButton);
   actions.appendChild(downloadButton);
+  
+  if (enableDarkMode) {
+    const themeToggle = createThemeToggleButton(container);
+    actions.appendChild(themeToggle);
+  }
+  
   return actions;
 };
 
@@ -570,8 +631,15 @@ const createCvDom = (data, { includeActions = true } = {}) => {
   const sections = normalizeArray(data?.sections);
   const contactEntries = buildContactEntries(headerData.contact);
 
-  // Get CV-level meta-on-right setting (default is false)
+  // Get CV-level configuration
   const cvMetaOnRight = Boolean(data?.["meta-on-right"]);
+  const enableDarkMode = Boolean(data?.["enable-dark-mode"] ?? true); // default: true
+  const printAsScreen = Boolean(data?.["print-as-screen"] ?? false); // default: false
+
+  // Set print-as-screen attribute
+  if (printAsScreen) {
+    container.setAttribute("data-print-as-screen", "true");
+  }
 
   page.appendChild(renderHeader(headerData, contactEntries));
 
@@ -588,7 +656,7 @@ const createCvDom = (data, { includeActions = true } = {}) => {
   container.appendChild(createAttribution());
 
   if (includeActions) {
-    container.appendChild(createFloatingActions(printId));
+    container.appendChild(createFloatingActions(printId, container, enableDarkMode));
   }
 
   return {
