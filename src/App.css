@@ -342,6 +342,7 @@
 
   .easycv-container td,
   .meta-cell,
+  .meta-cell-right,
   .content-cell {
     display: block;
     padding-right: 0;
