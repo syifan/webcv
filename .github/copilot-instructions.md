@@ -17,8 +17,8 @@ EasyCV is a framework-free CV/resume library that allows users to maintain a sin
 - **Package Format:** Dual ESM/CJS output
 - **Language:** Vanilla JavaScript (ES6+)
 - **Styling:** CSS (included in package)
-- **Icons:** Font Awesome
-- **YAML Parsing:** js-yaml (bundled dependency)
+- **Icons:** Font Awesome (bundled in CSS)
+- **YAML Parsing:** js-yaml (required by consuming applications, not used by library itself)
 - **Node Version:** >=18.0.0
 
 ## Repository Structure
@@ -197,7 +197,7 @@ The library is published to npm via GitHub Actions:
 1. **HTML Injection**: Always use `isHtmlValue` check before setting `innerHTML`
 2. **Null/Undefined**: Use `hasContent` to validate data before rendering
 3. **Array Assumptions**: Use `normalizeArray` rather than assuming `Array.isArray`
-4. **Font Awesome Icons**: Icons are bundled, but only Font Awesome classes are supported - custom icons require URLs
+4. **Font Awesome Icons**: Only Font Awesome CSS classes are supported (e.g., `fa-solid fa-phone`). The code checks if the icon value matches the pattern `/\bfa-[\w-]+/i`. Custom icons (URLs, images) are not rendered - they return null from `getIconDescriptor`
 
 ### Build Output
 
