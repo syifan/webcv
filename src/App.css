@@ -261,6 +261,12 @@
   width: 1%;
 }
 
+.meta-cell-right {
+  padding-right: 0;
+  padding-left: 1rem;
+  text-align: right;
+}
+
 .content-header {
   font-weight: 600;
 }

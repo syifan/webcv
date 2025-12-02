@@ -267,7 +267,7 @@ const renderValueNode = (value, { strong = false } = {}) => {
   return strongEl;
 };
 
-const renderTableEntry = (entry, condensed) => {
+const renderTableEntry = (entry, condensed, metaOnRight = false) => {
   const content = normalizeArray(entry?.content ?? []);
   const meta = normalizeArray(entry?.meta ?? []);
   const hasIndexColumn = hasContent(entry?.index);
@@ -305,7 +305,8 @@ const renderTableEntry = (entry, condensed) => {
       tr.appendChild(td);
     }
 
-    if (hasMetaColumn) {
+    // Render meta column on left (default) if metaOnRight is false
+    if (hasMetaColumn && !metaOnRight) {
       const td = createElement("td", { className: "meta-cell" });
       const metaValue = meta[rowIndex];
       if (hasContent(metaValue)) {
@@ -354,18 +355,31 @@ const renderTableEntry = (entry, condensed) => {
       tr.appendChild(td);
     }
 
+    // Render meta column on right if metaOnRight is true
+    if (hasMetaColumn && metaOnRight) {
+      const td = createElement("td", { className: "meta-cell meta-cell-right" });
+      const metaValue = meta[rowIndex];
+      if (hasContent(metaValue)) {
+        const valueNode = renderValueNode(metaValue);
+        if (valueNode) {
+          td.appendChild(valueNode);
+        }
+      }
+      tr.appendChild(td);
+    }
+
     fragment.appendChild(tr);
   }
 
   return fragment;
 };
 
-const renderTable = (entries, condensed) => {
+const renderTable = (entries, condensed, metaOnRight = false) => {
   const table = createElement("table", { className: "easycv-table" });
   const tbody = document.createElement("tbody");
 
   entries.forEach((entry) => {
-    const rowFragment = renderTableEntry(entry, condensed);
+    const rowFragment = renderTableEntry(entry, condensed, metaOnRight);
     if (rowFragment) {
       tbody.appendChild(rowFragment);
     }
@@ -375,7 +389,7 @@ const renderTable = (entries, condensed) => {
   return table;
 };
 
-const renderSubsection = (subsection) => {
+const renderSubsection = (subsection, inheritedMetaOnRight = false) => {
   const wrapper = createElement("div", { className: "easycv-subsection" });
   if (subsection.id) {
     wrapper.id = subsection.id;
@@ -393,15 +407,21 @@ const renderSubsection = (subsection) => {
     }
   });
 
+  // Determine meta position for this subsection
+  // subsection.meta-on-right overrides inherited value
+  const metaOnRight = subsection["meta-on-right"] !== undefined 
+    ? Boolean(subsection["meta-on-right"]) 
+    : inheritedMetaOnRight;
+
   const entries = normalizeArray(subsection.entries);
   if (entries.length > 0) {
-    wrapper.appendChild(renderTable(entries, Boolean(subsection.condensed)));
+    wrapper.appendChild(renderTable(entries, Boolean(subsection.condensed), metaOnRight));
   }
 
   return wrapper;
 };
 
-const renderSection = (section) => {
+const renderSection = (section, inheritedMetaOnRight = false) => {
   if (!section) {
     return null;
   }
@@ -427,16 +447,22 @@ const renderSection = (section) => {
     }
   });
 
+  // Determine meta position for this section
+  // section.meta-on-right overrides inherited value
+  const metaOnRight = section["meta-on-right"] !== undefined 
+    ? Boolean(section["meta-on-right"]) 
+    : inheritedMetaOnRight;
+
   const entries = normalizeArray(section.entries);
   if (entries.length > 0) {
     sectionElement.appendChild(
-      renderTable(entries, Boolean(section.condensed))
+      renderTable(entries, Boolean(section.condensed), metaOnRight)
     );
   }
 
   const subsections = normalizeArray(section.subsections);
   subsections.forEach((subsection) => {
-    const subsectionNode = renderSubsection(subsection);
+    const subsectionNode = renderSubsection(subsection, metaOnRight);
     sectionElement.appendChild(subsectionNode);
   });
 
@@ -544,11 +570,14 @@ const createCvDom = (data, { includeActions = true } = {}) => {
   const sections = normalizeArray(data?.sections);
   const contactEntries = buildContactEntries(headerData.contact);
 
+  // Get CV-level meta-on-right setting (default is false)
+  const cvMetaOnRight = Boolean(data?.["meta-on-right"]);
+
   page.appendChild(renderHeader(headerData, contactEntries));
 
   const main = document.createElement("main");
   sections.forEach((section) => {
-    const sectionNode = renderSection(section);
+    const sectionNode = renderSection(section, cvMetaOnRight);
     if (sectionNode) {
       main.appendChild(sectionNode);
     }
