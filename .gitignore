@@ -162,3 +162,7 @@ yarn-debug.log*
 yarn-error.log*
 
 .history
+
+# Test files
+test_meta_on_right.html
+test_meta_on_right.yml

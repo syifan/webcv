@@ -1,5 +1,8 @@
 version: 1
 
+# Demo: meta column on right by default for all sections
+meta-on-right: true
+
 header:
   name: "Yifan Sun"
   tags:
@@ -31,6 +34,8 @@ sections:
 
   - id: educationEntries
     title: "Education"
+    # Demo: Override to show meta on left for this section
+    meta-on-right: false
     entries:
       - content:
           - "Ph.D. in Computer Engineering"
@@ -198,10 +203,14 @@ sections:
 
   - id: publication
     title: "Publications"
+    # Demo: Override to show meta on left for Publications section
+    meta-on-right: false
     meta:
       - html: "<span class=\"self-name\">Yifan Sun</span> -- self-name, <span class=\"wm-advisee\">First Last</span> -- my PhD advisee at William &amp; Mary"
     subsections:
       - title: "Conference Papers"
+        # Demo: Override again to show meta on right for this subsection only
+        meta-on-right: true
         entries:
           - content:
               - "(2025) Will Your Next Pair Programming Partner Be Human? An Empirical Evaluation of Generative AI as a Collaborative Teammate in a Semester-Long Classroom Setting"
