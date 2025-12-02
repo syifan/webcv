@@ -488,7 +488,7 @@ const THEME_KEY = "easycv-theme";
 
 const createThemeToggleButton = (container) => {
   const button = createElement("button", {
-    className: "theme-toggle-button",
+    className: "action-button theme-toggle-button",
     attrs: { 
       type: "button",
       "aria-label": "Toggle theme",
@@ -612,12 +612,13 @@ const createFloatingActions = (printTargetId, container, enableDarkMode) => {
   });
 
   actions.appendChild(topButton);
-  actions.appendChild(downloadButton);
   
   if (enableDarkMode) {
     const themeToggle = createThemeToggleButton(container);
     actions.appendChild(themeToggle);
   }
+  
+  actions.appendChild(downloadButton);
   
   return actions;
 };
