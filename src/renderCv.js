@@ -484,7 +484,92 @@ const createPrintId = () => {
   )}`;
 };
 
-const createFloatingActions = (printTargetId) => {
+const THEME_KEY = "easycv-theme";
+
+const createThemeToggleButton = (container) => {
+  const wrapper = createElement("div", {
+    className: "theme-toggle-wrapper",
+  });
+
+  const getStoredTheme = () => {
+    if (typeof localStorage === "undefined") return "system";
+    return localStorage.getItem(THEME_KEY) || "system";
+  };
+
+  const setStoredTheme = (theme) => {
+    if (typeof localStorage !== "undefined") {
+      localStorage.setItem(THEME_KEY, theme);
+    }
+  };
+
+  const applyTheme = (theme) => {
+    if (theme === "system") {
+      container.removeAttribute("data-theme");
+    } else {
+      container.setAttribute("data-theme", theme);
+    }
+  };
+
+  const themes = ["light", "system", "dark"];
+  const themeLabels = {
+    light: "Light",
+    system: "Auto",
+    dark: "Dark"
+  };
+
+  let currentTheme = getStoredTheme();
+  applyTheme(currentTheme);
+
+  const toggleContainer = createElement("div", {
+    className: "theme-toggle-container",
+    attrs: {
+      role: "group",
+      "aria-label": "Theme selector",
+    },
+  });
+
+  const buttons = themes.map((theme) => {
+    const button = createElement("button", {
+      className: `theme-toggle-option${currentTheme === theme ? " active" : ""}`,
+      attrs: {
+        type: "button",
+        "aria-label": `${themeLabels[theme]} theme`,
+        "aria-pressed": currentTheme === theme ? "true" : "false",
+      },
+    });
+    button.textContent = themeLabels[theme];
+    
+    button.addEventListener("click", () => {
+      if (currentTheme !== theme) {
+        currentTheme = theme;
+        setStoredTheme(currentTheme);
+        applyTheme(currentTheme);
+        
+        // Update active states
+        buttons.forEach((btn, index) => {
+          const isActive = themes[index] === currentTheme;
+          if (isActive) {
+            btn.classList.add("active");
+            btn.setAttribute("aria-pressed", "true");
+          } else {
+            btn.classList.remove("active");
+            btn.setAttribute("aria-pressed", "false");
+          }
+        });
+      }
+    });
+    
+    return button;
+  });
+
+  buttons.forEach(button => toggleContainer.appendChild(button));
+
+  wrapper.appendChild(toggleContainer);
+
+  return wrapper;
+};
+
+const createFloatingActions = (printTargetId, container, enableDarkMode) => {
   const actions = createElement("div", {
     className: "floating-actions",
     attrs: { "aria-label": "page controls" },
@@ -557,7 +642,14 @@ const createFloatingActions = (printTargetId) => {
   });
 
   actions.appendChild(topButton);
+  
+  if (enableDarkMode) {
+    const themeToggle = createThemeToggleButton(container);
+    actions.appendChild(themeToggle);
+  }
+  
   actions.appendChild(downloadButton);
+  
   return actions;
 };
 
@@ -570,8 +662,20 @@ const createCvDom = (data, { includeActions = true } = {}) => {
   const sections = normalizeArray(data?.sections);
   const contactEntries = buildContactEntries(headerData.contact);
 
-  // Get CV-level meta-on-right setting (default is false)
+  // Get CV-level configuration
   const cvMetaOnRight = Boolean(data?.["meta-on-right"]);
+  const enableDarkMode = Boolean(data?.["enable-dark-mode"] ?? true); // default: true
+  const printAsScreen = Boolean(data?.["print-as-screen"] ?? false); // default: false
+
+  // Set print-as-screen attribute
+  if (printAsScreen) {
+    container.setAttribute("data-print-as-screen", "true");
+  }
+
+  // Force light mode when dark mode is disabled to prevent system preferences from applying
+  if (!enableDarkMode) {
+    container.setAttribute("data-theme", "light");
+  }
 
   page.appendChild(renderHeader(headerData, contactEntries));
 
@@ -588,7 +692,7 @@ const createCvDom = (data, { includeActions = true } = {}) => {
   container.appendChild(createAttribution());
 
   if (includeActions) {
-    container.appendChild(createFloatingActions(printId));
+    container.appendChild(createFloatingActions(printId, container, enableDarkMode));
   }
 
   return {

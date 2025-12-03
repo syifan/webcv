@@ -1,5 +1,9 @@
 version: 1
 
+# Dark mode configuration
+enable-dark-mode: true  # Enable dark mode feature (default: true)
+print-as-screen: false  # Always print in day mode (default: false)
+
 # Demo: meta column on right by default for all sections
 meta-on-right: true
 
