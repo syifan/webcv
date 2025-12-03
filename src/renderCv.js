@@ -512,66 +512,59 @@ const createThemeToggleButton = (container) => {
 
   const themes = ["light", "system", "dark"];
   const themeLabels = {
-    light: "☀️",
-    system: "AUTO",
-    dark: "🌙"
+    light: "Light",
+    system: "Auto",
+    dark: "Dark"
   };
 
   let currentTheme = getStoredTheme();
   applyTheme(currentTheme);
 
-  const toggleContainer = createElement("button", {
+  const toggleContainer = createElement("div", {
     className: "theme-toggle-container",
     attrs: {
-      type: "button",
-      "aria-label": `Theme: ${currentTheme}. Click to cycle through themes.`,
+      role: "group",
+      "aria-label": "Theme selector",
     },
   });
 
-  const slider = createElement("div", {
-    className: "theme-toggle-slider",
-  });
-
-  const updateSlider = () => {
-    const index = themes.indexOf(currentTheme);
-    slider.style.transform = `translateX(${index * 100}%)`;
-  };
-
-  const labels = themes.map((theme) => {
-    const label = createElement("span", {
+  const buttons = themes.map((theme) => {
+    const button = createElement("button", {
       className: `theme-toggle-option${currentTheme === theme ? " active" : ""}`,
+      attrs: {
+        type: "button",
+        "aria-label": `${themeLabels[theme]} theme`,
+        "aria-pressed": currentTheme === theme ? "true" : "false",
+      },
     });
-    label.textContent = themeLabels[theme];
-    return label;
-  });
-
-  labels.forEach(label => toggleContainer.appendChild(label));
-  toggleContainer.appendChild(slider);
-
-  toggleContainer.addEventListener("click", () => {
-    const currentIndex = themes.indexOf(currentTheme);
-    const nextIndex = (currentIndex + 1) % themes.length;
-    currentTheme = themes[nextIndex];
-    setStoredTheme(currentTheme);
-    applyTheme(currentTheme);
+    button.textContent = themeLabels[theme];
     
-    // Update active states
-    labels.forEach((label, index) => {
-      if (index === nextIndex) {
-        label.classList.add("active");
-      } else {
-        label.classList.remove("active");
+    button.addEventListener("click", () => {
+      if (currentTheme !== theme) {
+        currentTheme = theme;
+        setStoredTheme(currentTheme);
+        applyTheme(currentTheme);
+        
+        // Update active states
+        buttons.forEach((btn, index) => {
+          const isActive = themes[index] === currentTheme;
+          if (isActive) {
+            btn.classList.add("active");
+            btn.setAttribute("aria-pressed", "true");
+          } else {
+            btn.classList.remove("active");
+            btn.setAttribute("aria-pressed", "false");
+          }
+        });
       }
     });
     
-    // Update aria-label
-    toggleContainer.setAttribute("aria-label", `Theme: ${currentTheme}. Click to cycle through themes.`);
-    
-    updateSlider();
+    return button;
   });
 
+  buttons.forEach(button => toggleContainer.appendChild(button));
+
   wrapper.appendChild(toggleContainer);
-  updateSlider();
 
   return wrapper;
 };

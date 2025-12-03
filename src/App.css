@@ -18,6 +18,7 @@
   --easycv-shadow: rgba(0, 0, 0, 0.12);
   --easycv-shadow-hover: rgba(0, 0, 0, 0.18);
   --easycv-shadow-active: rgba(0, 0, 0, 0.2);
+  --easycv-link-color: #0366d6;
 }
 
 /* Dark mode variables */
@@ -513,13 +514,12 @@
 
 .theme-toggle-container {
   position: relative;
-  display: flex;
+  display: inline-flex;
   background: var(--easycv-bg-page);
   border: 1px solid var(--easycv-border-color);
   border-radius: 999px;
-  padding: 0.2rem;
+  padding: 0.15rem;
   box-shadow: 0 0.375rem 1rem var(--easycv-shadow-hover);
-  cursor: pointer;
   transition: box-shadow 0.2s ease;
 }
 
@@ -533,28 +533,24 @@
   color: var(--easycv-text-tertiary);
   border: none;
   border-radius: 999px;
-  padding: 0.4rem 0.7rem;
-  font-size: 0.65rem;
-  transition: color 0.2s ease;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all 0.2s ease;
   z-index: 2;
-  min-width: 2.5rem;
+  min-width: 3.2rem;
   white-space: nowrap;
-  pointer-events: none;
+}
+
+.theme-toggle-option:hover:not(.active) {
+  color: var(--easycv-text-secondary);
 }
 
 .theme-toggle-option.active {
   color: #fff;
-}
-
-.theme-toggle-slider {
-  position: absolute;
-  top: 0.2rem;
-  left: 0.2rem;
-  bottom: 0.2rem;
-  width: calc(33.333% - 0.133rem);
   background: var(--easycv-accent-primary);
-  border-radius: 999px;
-  transition: transform 0.3s ease;
-  z-index: 1;
-  pointer-events: none;
+  box-shadow: 0 0.125rem 0.375rem var(--easycv-shadow);
 }
