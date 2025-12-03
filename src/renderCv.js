@@ -487,13 +487,8 @@ const createPrintId = () => {
 const THEME_KEY = "easycv-theme";
 
 const createThemeToggleButton = (container) => {
-  const button = createElement("button", {
-    className: "action-button theme-toggle-button",
-    attrs: { 
-      type: "button",
-      "aria-label": "Toggle theme",
-      title: "Toggle theme"
-    },
+  const wrapper = createElement("div", {
+    className: "theme-toggle-wrapper",
   });
 
   const getStoredTheme = () => {
@@ -515,28 +510,70 @@ const createThemeToggleButton = (container) => {
     }
   };
 
-  const themes = ["light", "dark", "system"];
-  const themeIcons = {
+  const themes = ["light", "system", "dark"];
+  const themeLabels = {
     light: "☀️",
-    dark: "🌙",
-    system: "🖥️"
+    system: "AUTO",
+    dark: "🌙"
   };
 
   let currentTheme = getStoredTheme();
-  button.textContent = themeIcons[currentTheme];
   applyTheme(currentTheme);
 
-  button.addEventListener("click", () => {
+  const toggleContainer = createElement("button", {
+    className: "theme-toggle-container",
+    attrs: {
+      type: "button",
+      "aria-label": `Theme: ${currentTheme}. Click to cycle through themes.`,
+    },
+  });
+
+  const slider = createElement("div", {
+    className: "theme-toggle-slider",
+  });
+
+  const updateSlider = () => {
+    const index = themes.indexOf(currentTheme);
+    slider.style.transform = `translateX(${index * 100}%)`;
+  };
+
+  const labels = themes.map((theme) => {
+    const label = createElement("span", {
+      className: `theme-toggle-option${currentTheme === theme ? " active" : ""}`,
+    });
+    label.textContent = themeLabels[theme];
+    return label;
+  });
+
+  labels.forEach(label => toggleContainer.appendChild(label));
+  toggleContainer.appendChild(slider);
+
+  toggleContainer.addEventListener("click", () => {
     const currentIndex = themes.indexOf(currentTheme);
     const nextIndex = (currentIndex + 1) % themes.length;
     currentTheme = themes[nextIndex];
-    
-    button.textContent = themeIcons[currentTheme];
     setStoredTheme(currentTheme);
     applyTheme(currentTheme);
+    
+    // Update active states
+    labels.forEach((label, index) => {
+      if (index === nextIndex) {
+        label.classList.add("active");
+      } else {
+        label.classList.remove("active");
+      }
+    });
+    
+    // Update aria-label
+    toggleContainer.setAttribute("aria-label", `Theme: ${currentTheme}. Click to cycle through themes.`);
+    
+    updateSlider();
   });
 
-  return button;
+  wrapper.appendChild(toggleContainer);
+  updateSlider();
+
+  return wrapper;
 };
 
 const createFloatingActions = (printTargetId, container, enableDarkMode) => {
