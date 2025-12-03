@@ -672,6 +672,11 @@ const createCvDom = (data, { includeActions = true } = {}) => {
     container.setAttribute("data-print-as-screen", "true");
   }
 
+  // Force light mode when dark mode is disabled to prevent system preferences from applying
+  if (!enableDarkMode) {
+    container.setAttribute("data-theme", "light");
+  }
+
   page.appendChild(renderHeader(headerData, contactEntries));
 
   const main = document.createElement("main");
