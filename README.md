@@ -19,12 +19,17 @@ If you use Academic Pages, using EasyCV is simply replacing the `cv.md` file and
 **[cv_data.yml](https://github.com/syifan/easycv_academicpages_example/blob/master/files/cv_data.yml)**
 **[View Academic Pages Example →](https://syifan.github.io/easycv_academicpages_example/cv/)**
 
-## Why EasyCV
 
-- **Single Source of Truth**: Maintain one YAML file for both web and PDF versions—no more duplicate effort.
-- **Web-First**: Publish your CV online with a clean URL, making it easy to share and update.
-- **Easier Than Word/LaTeX**: Skip the tedious layout tweaks of word processors and LaTeX while still achieving professional results.
-- **Print-Ready Design**: Browsers can convert web-based CV to high-quality PDFs by printing.
+
+## Key Features
+
+1. **Single Source of Truth** — All CV data lives in one YAML file, used for both web and PDF output.
+2. **Web-First, PDF-Exportable** — Publish your CV online and generate polished PDFs via the browser's print dialog.
+3. **High-Level Style Configuration** — Control layout options like meta column position (left or right) directly in the YAML file. See [Meta Column Position](#meta-column-position).
+4. **Low-Level Entry Styling** — Use `{html: "<strong>text</strong>"}` in YAML entries for rich inline formatting.
+5. **Dark Mode** — Built-in Light/Auto/Dark theme toggle with persistent preferences. See [Dark Mode](#dark-mode).
+6. **Advanced: Dynamic Data** — Pre-process your YAML before rendering (e.g., fetch GitHub star counts automatically).
+7. **Advanced: Custom CSS** — Layer your own stylesheets on top of the built-in styles for fine-tuned control. See [Styling](#styling).
 
 ## Getting Started
 
@@ -211,13 +216,7 @@ sections:
               - "1843"
 ```
 
-**Key Features:**
 
-- **HTML Support**: Use `{html: "<strong>text</strong>"}` for rich formatting
-- **Icons**: Use FontAwesome classes (e.g., `fa-solid fa-phone`) or image URLs
-- **Links**: Set `newTab: true` to open links in a new window
-- **Condensed Layout**: Add `condensed: true` to sections for compact display
-- **Subsections**: Group related entries under a common heading
 
 ### Styling
 
@@ -249,6 +248,83 @@ For instance, the demo uses that file to style tagged names:
 - **Manual DOM control**: `createCvElement(data, { actions: false })` returns the fully rendered `.easycv-container` node so you can insert it into a shadow-root, virtual scroller, etc.
 - **Custom document titles**: `renderCv(container, data, { titleTemplate: "Résumé – %s" })` changes how the `<title>` tag is generated. Pass `setDocumentTitle: false` to opt out entirely.
 - **Bring your own data**: You are not limited to YAML. The renderer only cares about plain JavaScript objects that follow the schema shown above, so you can fetch JSON from an API, hydrate from CMS data, or generate it at build time.
+
+### Dark Mode
+
+EasyCV supports dark mode with a configurable theme toggle. By default, dark mode is enabled and users can switch between Light, Auto (system preference), and Dark themes using the floating action buttons.
+
+```yaml
+version: 1
+
+# Dark mode configuration
+enable-dark-mode: true   # Enable dark mode feature (default: true)
+print-as-screen: false   # Print using current theme instead of light mode (default: false)
+
+header:
+  name: "Ada Lovelace"
+  # ... rest of your CV
+```
+
+**Configuration Options:**
+
+| Option | Default | Description |
+|--------|---------|-------------|
+| `enable-dark-mode` | `true` | When `true`, displays a theme toggle (Light/Auto/Dark) in the floating actions. When `false`, the CV is always displayed in light mode. |
+| `print-as-screen` | `false` | When `false`, PDFs are always printed in light mode for better readability. When `true`, the PDF matches the current screen theme. |
+
+The theme preference is stored in the browser's localStorage, so users' choices persist across visits.
+
+### Meta Column Position
+
+By default, meta information (dates, locations, etc.) appears on the left side of entries. You can move it to the right side using `meta-on-right`. This setting supports inheritance: it can be set at the CV level, overridden at the section level, and further overridden at the subsection level.
+
+```yaml
+version: 1
+
+# CV-level: meta on right for all sections by default
+meta-on-right: true
+
+header:
+  name: "Ada Lovelace"
+
+sections:
+  - id: experience
+    title: "Experience"
+    # Inherits meta-on-right: true from CV level
+    entries:
+      - content:
+          - "Software Engineer"
+          - "Tech Company"
+        meta:
+          - "2020 - Present"    # Appears on the right
+
+  - id: education
+    title: "Education"
+    meta-on-right: false        # Override: meta on left for this section
+    entries:
+      - content:
+          - "BSc Computer Science"
+        meta:
+          - "2016 - 2020"       # Appears on the left
+
+  - id: publications
+    title: "Publications"
+    meta-on-right: false        # Section level: meta on left
+    subsections:
+      - title: "Conference Papers"
+        meta-on-right: true     # Subsection override: meta on right
+        entries:
+          - content:
+              - "Paper Title"
+            meta:
+              - "2023"          # Appears on the right
+```
+
+**Inheritance Rules:**
+1. If `meta-on-right` is not specified, it defaults to `false` (left side)
+2. Sections inherit from the CV-level setting
+3. Subsections inherit from their parent section
+4. Any level can override the inherited value by explicitly setting `meta-on-right`
 
 ## npx Scaffolder (create-easycv)
 
